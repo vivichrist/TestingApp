@@ -1,5 +1,5 @@
 <script>
-	export let identity = {signedIn: false};
+	export let identity;
 </script>
 
 <main>

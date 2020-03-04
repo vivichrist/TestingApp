@@ -27,7 +27,7 @@ const signOut = () => {
 const app = new App({
 	target: document.body,
 	props: {
-		identity,
+		identity: {signedIn: false},
 	}
 });
 
