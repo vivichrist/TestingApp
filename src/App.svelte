@@ -1,7 +1,7 @@
 <script>
 export let identity;
 
-export const onSignIn = (googleUser) => {
+window.onSignIn = (googleUser) => {
     // Useful data for your client-side scripts:
     var profile = googleUser.getBasicProfile();
     // The ID token you need to pass to your backend:
@@ -17,7 +17,7 @@ export const onSignIn = (googleUser) => {
 
 }
 
-export const signOut = () => {
+window.signOut = () => {
     var auth2 = gapi.auth2.getAuthInstance();
     auth2.signOut().then(function () {
         identity.signedIn = false;
@@ -25,15 +25,19 @@ export const signOut = () => {
 }
 </script>
 
+<svelte:head>
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+</svelte:head>
+
 <main>
-	{#if identity.signedIn}
-		<h1>Hello {identity.name}!</h1>
-		<img src='{identity.img_url}' />
-		<p>{identity.email}</p>
-		<p>{identity.token} for {identity.id}</p>
-	{:else}
-		<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
-	{/if}
+<!--	{#if identity.signedIn}-->
+<!--		<h1>Hello {identity.name}!</h1>-->
+<!--		<img src='{identity.img_url}' />-->
+<!--		<p>{identity.email}</p>-->
+<!--		<p>{identity.token} for {identity.id}</p>-->
+<!--	{:else}-->
+		<div class="g-signin2" data-longtitle="true" data-onsuccess="onSignIn" data-theme="dark" />
+<!--	{/if}-->
 </main>
 
 <style>
