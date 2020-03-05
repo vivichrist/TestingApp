@@ -32,7 +32,7 @@ export const signOut = () => {
 		<p>{identity.email}</p>
 		<p>{identity.token} for {identity.id}</p>
 	{:else}
-		<div class="g-signin2" data-onsuccess={onSignIn} data-theme="dark"></div>
+		<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
 	{/if}
 </main>
 
