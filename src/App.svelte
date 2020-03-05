@@ -1,5 +1,28 @@
 <script>
-	export let identity;
+export let identity;
+
+export const onSignIn = (googleUser) => {
+    // Useful data for your client-side scripts:
+    var profile = googleUser.getBasicProfile();
+    // The ID token you need to pass to your backend:
+    identity.id = profile.getId();
+    identity.name = profile.getName();
+    identity.given_name = profile.getGivenName();
+    identity.family_name = profile.getFamilyName();
+    identity.img_url = profile.getImageUrl();
+    identity.email = profile.getEmail();
+    identity.token = googleUser.getAuthResponse().id_token;
+
+    identity.signedIn = true;
+
+}
+
+export const signOut = () => {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+        identity.signedIn = false;
+    });
+}
 </script>
 
 <main>
@@ -8,11 +31,8 @@
 		<img src='{identity.img_url}' />
 		<p>{identity.email}</p>
 		<p>{identity.token} for {identity.id}</p>
-		<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-			to learn how to build Svelte apps.
-		</p>
 	{:else}
-		<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+		<div class="g-signin2" data-onsuccess={onSignIn} data-theme="dark"></div>
 	{/if}
 </main>
 
