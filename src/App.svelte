@@ -1,28 +1,45 @@
 <script>
-export let identity;
+  export let signedIn = false;
 
-window.onSignIn = (googleUser) => {
-    // Useful data for your client-side scripts:
-    var profile = googleUser.getBasicProfile();
-    // The ID token you need to pass to your backend:
-    identity.id = profile.getId();
-    identity.name = profile.getName();
-    identity.given_name = profile.getGivenName();
-    identity.family_name = profile.getFamilyName();
-    identity.img_url = profile.getImageUrl();
-    identity.email = profile.getEmail();
-    identity.token = googleUser.getAuthResponse().id_token;
+  let ident = {
+    id: "",
+    name: "",
+    given_name: "",
+    family_name: "",
+    img_url: "",
+    email: "",
+    token: "",
+  };
 
-    identity.signedIn = true;
+  window.onSignIn = (googleUser) => {
+      // Useful data for your client-side scripts:
+      const profile = googleUser.getBasicProfile();
+      // The ID token you need to pass to your backend:
+      ident.id = profile.getId();
+      ident.name = profile.getName();
+      ident.given_name = profile.getGivenName();
+      ident.family_name = profile.getFamilyName();
+      ident.img_url = profile.getImageUrl();
+      ident.email = profile.getEmail();
+      ident.token = googleUser.getAuthResponse().id_token;
 
-}
+      signedIn = true;
+  }
 
-window.signOut = () => {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-        identity.signedIn = false;
+  window.signOut = () => {
+    const auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(() => {
+    	ident.id = "";
+  		ident.name = "";
+  		ident.given_name = "";
+  		ident.family_name = "";
+  		ident.img_url = "";
+  		ident.email = "";
+  		ident.token = "";
+
+      signedIn = false;
     });
-}
+  }
 </script>
 
 <svelte:head>
@@ -30,14 +47,15 @@ window.signOut = () => {
 </svelte:head>
 
 <main>
-<!--	{#if identity.signedIn}-->
-<!--		<h1>Hello {identity.name}!</h1>-->
-<!--		<img src='{identity.img_url}' />-->
-<!--		<p>{identity.email}</p>-->
-<!--		<p>{identity.token} for {identity.id}</p>-->
-<!--	{:else}-->
+	{#if signedIn}
+		<h1>Hello {ident.name}!</h1>
+		<img src={ident.img_url} />
+		<p>{ident.email}</p>
+		<p>{ident.token} for {ident.id}</p>
+		<a onclick="signOut">Sign Out</a>
+	{:else}
 		<div class="g-signin2" data-longtitle="true" data-onsuccess="onSignIn" data-theme="dark" />
-<!--	{/if}-->
+	{/if}
 </main>
 
 <style>
