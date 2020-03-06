@@ -56,7 +56,7 @@
 		<img src={ident.img_url} />
 		<p>{ident.email}</p>
 		<p>{ident.token} for {ident.id}</p>
-		<button onclick="signOut">Sign Out</button>
+		<button onclick="window.signOut()">Sign Out</button>
 	{/if}
 </main>
 
