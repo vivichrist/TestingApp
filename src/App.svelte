@@ -24,6 +24,7 @@
       ident.token = googleUser.getAuthResponse().id_token;
 
       signedIn = true;
+      document.getElementById("signinButton").style.display = "none";
   }
 
   window.signOut = () => {
@@ -38,6 +39,7 @@
   		ident.token = "";
 
       signedIn = false;
+      document.getElementById("signinButton").style.display = "block";
     });
   }
 </script>
@@ -53,8 +55,6 @@
 		<p>{ident.email}</p>
 		<p>{ident.token} for {ident.id}</p>
 		<a onclick="signOut">Sign Out</a>
-	{:else}
-		<div class="g-signin2" data-longtitle="true" data-onsuccess="onSignIn" data-theme="dark" />
 	{/if}
 </main>
 
