@@ -25,6 +25,7 @@
 
       signedIn = true;
       document.getElementById("signinButton").style.display = "none";
+      console.log("onsign-in");
   }
 
   window.signOut = () => {
@@ -40,6 +41,7 @@
 
       signedIn = false;
       document.getElementById("signinButton").style.display = "block";
+      console.log("onsign-out");
     });
   }
 </script>
@@ -54,7 +56,7 @@
 		<img src={ident.img_url} />
 		<p>{ident.email}</p>
 		<p>{ident.token} for {ident.id}</p>
-		<a onclick="signOut">Sign Out</a>
+		<button onclick="signOut">Sign Out</button>
 	{/if}
 </main>
 
