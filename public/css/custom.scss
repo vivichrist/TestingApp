@@ -1,0 +1,15 @@
+
+@import "variables";
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+.article-content {
+    padding-left: 0.8em;
+    margin-top: 0.8em;
+    margin-bottom: 0.8em;
+    border-left: 0.25em solid $gray-400;
+}
+
+img {
+    box-shadow: 4px 6px 6px $dark;
+}
