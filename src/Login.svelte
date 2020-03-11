@@ -1,10 +1,8 @@
 <style>
   #customBtn {
-    display: inline-block;
-    background: white;
+    background: #A600A6;
     color: #444;
-    width: 190px;
-    border-radius: 5px;
+    width: 140px;
     border: thin solid #888;
     box-shadow: 1px 1px 1px grey;
     white-space: nowrap;
@@ -12,16 +10,9 @@
   #customBtn:hover {
     cursor: pointer;
   }
-  span.label {
-    font-family: serif;
-    font-weight: normal;
-  }
-  span.icon {
-    background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
-    display: inline-block;
-    vertical-align: middle;
-    width: 42px;
-    height: 42px;
+  #SignInWrapper {
+    padding: auto;
+    text-align: right;
   }
   span.buttonText {
     display: inline-block;
@@ -34,6 +25,7 @@
 </style>
 
 <div id="SignInWrapper">
+  <label for="email">@</label>
   <input type="email" class="form-control" placeholder="Enter email" id="email">
   <div id="customBtn" class="SignIn">
     <span class="buttonText">Login</span>
