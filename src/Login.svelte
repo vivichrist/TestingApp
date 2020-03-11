@@ -1,10 +1,5 @@
 <style>
   #customBtn {
-    background: #A600A6;
-    display: inline-block;
-    color: #444;
-    width: 140px;
-    border: thin solid #888;
     box-shadow: 1px 1px 1px grey;
     white-space: nowrap;
   }
@@ -12,29 +7,28 @@
     cursor: pointer;
   }
   #SignInWrapper {
-    padding: auto;
     text-align: right;
-    border: thin solid #888;
+    width: 22em;
   }
-  span.buttonText {
+  #email {
+    width: 300px;
     display: inline-block;
-    vertical-align: middle;
+  }
+  .buttonText {
+    display: inline-block;
     padding-left: 42px;
     padding-right: 42px;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  label {
-    background: #A600A6;
-    display: inline-block;
-    border: thin solid #888;
   }
 </style>
 
-<div id="SignInWrapper">
-  <label for="email">@</label>
-  <input type="email" class="form-control" placeholder="Enter email" id="email">
-  <div id="customBtn" class="SignIn">
+<div id="SignInWrapper" class="container">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text text-secondary bg-primary">@</span>
+    </div>
+    <input type="text" class="form-control" placeholder="Enter email" id="email">
+  </div>
+  <div id="customBtn" class="SignIn btn btn-outline-secondary bg-primary">
     <span class="buttonText">Login</span>
   </div>
 </div>
