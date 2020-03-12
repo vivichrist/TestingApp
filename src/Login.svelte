@@ -6,8 +6,14 @@
     text-align: right;
     width: 22em;
   }
+  #logo {
+    margin-right: 30%;
+    margin-left: 5%;
+    width: 66.66%;
+  }
 </style>
 
+<img src="agiledata-logo-full-purple.svg" alt="agile data logo" id="logo"/>
 <div id="SignInWrapper" class="container">
   <div class="input-group mb-3">
     <div class="input-group-prepend">
@@ -15,7 +21,7 @@
     </div>
     <input type="text" class="form-control" placeholder="Enter email" id="email">
   </div>
-  <div id="customBtn" class="SignIn btn btn-outline-info bg-info">
+  <div id="customBtn" class="SignIn btn btn-outline-primary bg-primary">
     <span class="text-info">Login</span>
   </div>
 </div>
