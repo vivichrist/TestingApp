@@ -69,13 +69,13 @@ $table-dark-border-color:     darken($gray-500, 7.5%) !default;
 
 // Buttons
 
-$input-btn-padding-x:         0.5rem !default;
+$input-btn-padding-x:         1rem !default;
 
 // Forms
 
 $input-disabled-bg:              $gray-400 !default;
 
-$input-border-color:             $white !default;
+$input-border-color:             $gray-400 !default;
 
 $input-group-addon-color:           $white !default;
 $input-group-addon-bg:              $gray-700 !default;
