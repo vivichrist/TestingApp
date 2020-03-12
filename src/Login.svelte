@@ -1,6 +1,5 @@
 <style>
   #customBtn {
-    box-shadow: 1px 1px 1px grey;
     white-space: nowrap;
   }
   #customBtn:hover {
@@ -9,15 +8,6 @@
   #SignInWrapper {
     text-align: right;
     width: 22em;
-  }
-  #email {
-    width: 300px;
-    display: inline-block;
-  }
-  .buttonText {
-    display: inline-block;
-    padding-left: 42px;
-    padding-right: 42px;
   }
 </style>
 
