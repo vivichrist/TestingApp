@@ -86,9 +86,9 @@
 <style>
 	main {
     align-content: center;
-    margin: auto;
+    margin: 10em;
     text-align: center;
-		padding: 1em;
+		padding: auto;
 		max-width: 240px;
 		margin: 0 auto;
 	}

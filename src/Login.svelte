@@ -7,6 +7,7 @@
     width: 22em;
   }
   #logo {
+    box-shadow: none;
     margin-right: 30%;
     margin-left: 5%;
     width: 66.66%;
