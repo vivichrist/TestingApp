@@ -4,14 +4,21 @@
     padding: 2em;
   }
   li {
-    margin-right: 2rem;
+    margin-right: 6rem;
+  }
+  button {
+    padding: 0.5rem, 1rem;
+    margin-left: 5%;
+    margin-right: 3%;
+    font-size: 15pt;
+    font-weight: bold;
   }
 </style>
 
-<header class="bg-info">
-  <ul class="nav nav-tabs">
+<header class="bg-primary">
+  <ul class="navbar-nav navbar-expand-sm ">
     <li class="nav-Item">
-      <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+      <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown">
         Icealicous
       </button>
       <div class="dropdown-menu">
@@ -21,16 +28,19 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="#">Active</a>
+      <h5 class="nav-link active" href="#">Catalog</h5>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
+      <h5 class="nav-link" href="#">Events</h5>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
+      <h5 class="nav-link" href="#">Rules</h5>
     </li>
     <li class="nav-item">
-      <a class="nav-link disabled" href="#">Disabled</a>
+      <h5 class="nav-link" href="#">Consume</h5>
+    </li>
+    <li class="nav-item">
+      <h5 class="nav-link" href="#">Manage</h5>
     </li>
   </ul>
 </header>
