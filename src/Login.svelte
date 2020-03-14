@@ -2,11 +2,29 @@
   #customBtn:hover {
     cursor: pointer;
   }
-  #SignInWrapper {
-    text-align: right;
-    width: 22em;
+  @media only screen and (orientation: landscape) {
+    #SignInWrapper {
+      margin-top: 10%;
+      margin-bottom: 10%;
+      padding-left: 10%;
+      padding-right: 10%;
+      text-align: right;
+      width: 80%;
+    }
+  }
+  @media only screen and (orientation: portrait) {
+    #SignInWrapper {
+      margin-top: 40%;
+      margin-bottom: 40%;
+      padding-left: 10%;
+      padding-right: 10%;
+      text-align: right;
+      width: 80%;
+    }
   }
   #logo {
+    padding-top: 10%;
+    padding-left: 10%;
     box-shadow: none;
     margin-right: 30%;
     margin-left: 5%;

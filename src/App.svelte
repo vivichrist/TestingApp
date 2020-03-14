@@ -1,7 +1,8 @@
 <script>
   import Login from './Login.svelte'
+  import Page1 from './Page1.svelte'
 
-  export let signedIn = false;
+  export let signedIn = true;
 
   let ident = {
     id: "",
@@ -74,10 +75,7 @@
 
 <main>
 	{#if signedIn}
-		<h1>Hello {ident.name}!</h1>
-		<img src={ident.img_url} />
-		<p>{ident.email}</p>
-		<button onclick="signOut()">Sign Out</button>
+		<Page1 />
   {:else}
     <Login />
 	{/if}
@@ -86,11 +84,7 @@
 <style>
 	main {
     align-content: center;
-    margin: 10em;
     text-align: center;
-		padding: auto;
-		max-width: 240px;
-		margin: 0 auto;
 	}
 	@media (min-width: 640px) {
 		main {
