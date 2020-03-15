@@ -40,14 +40,16 @@
         cookiepolicy: 'single_host_origin',
         scope: 'profile email',
       });
-      let element = document.getElementById('customBtn');
-      auth2.attachClickHandler(element, {},
-        function(user) {
-          onSignIn(user);
-        }, function(error) {
-          alert(JSON.stringify(error, undefined, 2));
-        }
-      );
+      if (signedIn === false) {
+        let element = document.getElementById('customBtn');
+        auth2.attachClickHandler(element, {},
+          function(user) {
+            onSignIn(user);
+          }, function(error) {
+            alert(JSON.stringify(error, undefined, 2));
+          }
+        );
+      }
     });
   };
 
