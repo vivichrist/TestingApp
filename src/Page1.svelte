@@ -100,6 +100,8 @@
         <a class="dropdown-item text-dark" href="#">Link 4</a>
       </div>
     </li>
+  </ul>
+  <ul class="navbar-nav ml-auto mr-3">
     <li class="nav-item">
       <div role="button" class="btn btn-primary btn-lg">
         <i class="fas fa-plus"></i>
