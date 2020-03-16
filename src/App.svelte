@@ -1,8 +1,8 @@
 <script>
   import Login from './Login.svelte'
-  import Page1 from './Page1.svelte'
+  import Menu from './Menu.svelte'
 
-  export let signedIn = false;
+  let signedIn = false;
 
   let ident = {
     id: "",
@@ -13,7 +13,6 @@
     email: "",
     token: "",
   };
-
 
   window.onSignIn = (user) => {
       // Useful data for your client-side scripts:
@@ -75,7 +74,8 @@
 
 <main>
 	{#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()}
-		<Page1 user=ident.name pic=ident.img_url />
+  <!-- {#if signedIn} -->
+		<Menu bind:user={ident.name} bind:pic={ident.img_url} />
   {:else}
     <Login />
 	{/if}
