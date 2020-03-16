@@ -2,7 +2,7 @@
   import Login from './Login.svelte'
   import Page1 from './Page1.svelte'
 
-  export let signedIn = true;
+  export let signedIn = false;
 
   let ident = {
     id: "",
@@ -40,16 +40,14 @@
         cookiepolicy: 'single_host_origin',
         scope: 'profile email',
       });
-      if (signedIn === false) {
-        let element = document.getElementById('customBtn');
-        auth2.attachClickHandler(element, {},
-          function(user) {
-            onSignIn(user);
-          }, function(error) {
-            alert(JSON.stringify(error, undefined, 2));
-          }
-        );
-      }
+      let element = document.getElementById('customBtn');
+      auth2.attachClickHandler(element, {},
+        function(user) {
+          onSignIn(user);
+        }, function(error) {
+          alert(JSON.stringify(error, undefined, 2));
+        }
+      );
     });
   };
 
@@ -76,7 +74,7 @@
 </svelte:head>
 
 <main>
-	{#if signedIn}
+	{#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()}
 		<Page1 />
   {:else}
     <Login />
