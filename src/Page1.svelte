@@ -167,7 +167,7 @@
     </li>
     <li class="nav-item">
       <div role="button" class="btn btn-primary btn-lg ficon">
-        <img src=pic class="rounded" alt=user />
+        <img src={pic} class="rounded" alt={user} />
       </div>
     </li>
   </ul>
