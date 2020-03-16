@@ -1,5 +1,9 @@
 <script>
   import Search from './Search.svelte'
+
+  export let user;
+  export let pic;
+
 </script>
 <style>
 
@@ -159,6 +163,11 @@
     <li class="nav-item">
       <div role="button" class="btn btn-primary btn-lg ficon">
         <i class="fas fa-cog"></i>
+      </div>
+    </li>
+    <li class="nav-item">
+      <div role="button" class="btn btn-primary btn-lg ficon">
+        <img src=pic class="rounded" alt=user />
       </div>
     </li>
   </ul>

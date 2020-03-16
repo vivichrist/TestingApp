@@ -75,7 +75,7 @@
 
 <main>
 	{#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()}
-		<Page1 />
+		<Page1 user=ident.name pic=ident.img_url />
   {:else}
     <Login />
 	{/if}
