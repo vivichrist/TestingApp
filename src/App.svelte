@@ -75,7 +75,7 @@
 <main>
 	{#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()}
   <!-- {#if signedIn} -->
-		<Menu bind:user={ident.name} bind:pic={ident.img_url} />
+		<Menu user={ident.name} pic={ident.img_url} />
   {:else}
     <Login />
 	{/if}
