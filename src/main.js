@@ -1,6 +1,6 @@
-import App from './App.svelte';
+import DummieApp from './DummieApp.svelte';
 
-const app = new App({
+const app = new DummieApp({
 	target: document.body,
 	props: {}
 });

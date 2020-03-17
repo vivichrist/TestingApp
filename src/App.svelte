@@ -1,6 +1,7 @@
 <script>
-  import Login from './Login.svelte'
   import Menu from './Menu.svelte'
+  import Search from './Search.svelte'
+  import Login from './Login.svelte'
 
   let signedIn = false;
 
@@ -76,6 +77,7 @@
 	{#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()}
   <!-- {#if signedIn} -->
 		<Menu user={ident.name} pic={ident.img_url} />
+    <Search />
   {:else}
     <Login />
 	{/if}
