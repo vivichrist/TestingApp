@@ -7139,3 +7139,19 @@ a.text-dark:hover, a.text-dark:focus {
   .table .thead-dark th {
     color: inherit;
     border-color: #ffc107; } }
+
+/* WebKit browsers */
+input:focus::-webkit-input-placeholder {
+  color: transparent; }
+
+/* Mozilla Firefox 4 to 18 */
+input:focus:-moz-placeholder {
+  color: transparent; }
+
+/* Mozilla Firefox 19+ */
+input:focus::-moz-placeholder {
+  color: transparent; }
+
+/* Internet Explorer 10+ */
+input:focus:-ms-input-placeholder {
+  color: transparent; }

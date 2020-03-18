@@ -1,4 +1,34 @@
+<script>
+  import { fly } from 'svelte/transition';
+  let visible = false;
+  let placeholder = "Search";
+
+  const focus = () => {
+    visible = true;
+    placeholder = "";
+  }
+
+  const blur = () => {
+    visible = false;
+    setTimeout( () => placeholder = "Search", 480);
+  }
+</script>
+
 <style>
+.trans {
+  z-index: 6;
+  position: absolute;
+  padding-left: 4.5rem;
+}
+.trans::before {
+  z-index: 6;
+}
+.mid {
+  text-align: left;
+}
+.input-group {
+  margin-top: 1.5rem;
+}
 @media only screen and (orientation: portrait) {
   @media screen and (min-height: 1200px) {
     .mid {
@@ -60,12 +90,19 @@
   }
 }
 </style>
-
-<div class="input-group mid">
-  <div class="input-group-prepend">
-    <span class="input-group-text bg-light">
-      <i class="fas fa-search text-dark"></i>
-    </span>
+<div class="container-flex mid">
+  {#if visible}
+  <label in transition:fly="{{ y: 40, duration: 500, opacity: 1 }}" for="searchbox" class="text-dark trans">
+    Search
+  </label>
+  {/if}
+  <div class="input-group">
+    <div class="input-group-prepend">
+      <span class="input-group-text bg-light">
+        <i class="fas fa-search text-dark"></i>
+      </span>
+    </div>
+    <input id="searchbox" on:focus="{focus}" on:blur="{blur}"
+           type="text" class="form-control p-4 m-0" placeholder="{placeholder}">
   </div>
-  <input type="text" class="form-control p-4 m-0" placeholder="Search">
 </div>

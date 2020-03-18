@@ -1,6 +1,7 @@
 
 <script>
   import MenuItem from "./MenuItem.svelte";
+  import MenuDrop from "./MenuDrop.svelte";
   import Icon from "./Icon.svelte";
 
   export let user = "";
@@ -15,31 +16,16 @@
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="navbar-nav">
       <li class="nav-Item btn-group">
-        <button type="button" class="btn btn-dark px-3 py-0 mx-4 my-3 dropdown-toggle" data-toggle="dropdown">
-          Icealicous
-        </button>
-        <div class="dropdown-menu mt-3 ml-3">
-          <a class="dropdown-item" href="#">Link 1</a>
-          <a class="dropdown-item" href="#">Link 2</a>
-          <a class="dropdown-item" href="#">Link 3</a>
-        </div>
+        <MenuDrop title="Icealicous"
+        items="Link_1 # Link_2 # Link_3 #" />
       </li>
       <li class="nav-item btn-group">
-        <div role="button" class="btn btn-primary py-4 border-0" data-toggle="dropdown">
-          Catalog
-        </div>
-        <div class="dropdown-menu bg-light mt-3">
-          <a class="dropdown-item text-dark" href="#">Link 1</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-dark" href="#">Link 2</a>
-          <a class="dropdown-item text-dark" href="#">Link 3</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item text-dark" href="#">Link 4</a>
-        </div>
+        <MenuItem title="Catalog"
+        items="Link_1 # divider # Link_2 # Link_3 # divider # Link_4 #" />
       </li>
       <li class="nav-item btn-group">
-      <MenuItem title="Events"
-      items="Link_1 # divider # Link_2 # Link_3 # divider # Link_4 #" />
+        <MenuItem title="Events"
+        items="Link_1 # divider # Link_2 # Link_3 # divider # Link_4 #" />
       </li>
       <li class="nav-item btn-group">
         <MenuItem title="Rules"
@@ -85,9 +71,6 @@
     padding: 0;
   }
   @media screen and (min-width: 1200px) {
-    .dropdown-item {
-      font-size: 14pt;
-    }
     .btn {
       font-size: 14pt;
       padding-left: 3rem;
@@ -103,9 +86,6 @@
     }
   }
   @media screen and (max-width: 1200px) {
-    .dropdown-item {
-      font-size: 12pt;
-    }
     .btn {
       font-size: 12pt;
       padding-left: 2rem;
@@ -121,9 +101,6 @@
     }
   }
   @media screen and (max-width: 930px) {
-    .dropdown-item {
-      font-size: 11pt;
-    }
     .btn {
       font-size: 11pt;
       padding-left: 1rem;

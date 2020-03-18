@@ -1,7 +1,5 @@
 
 <script>
-  import { fly } from 'svelte/transition';
-
   export let title = "";
   export let items;
   let named_links = [];
@@ -13,19 +11,18 @@
                                     .map(t => t = t.replace('_',' ')));
 </script>
 
-<div role="button" class="btn btn-primary py-4 border-0" data-toggle="dropdown">
+<button type="button" class="btn btn-dark px-3 py-0 mx-4 my-3 dropdown-toggle" data-toggle="dropdown">
   {title}
-</div>
-<div class="dropdown-menu bg-light mt-3">
+</button>
+<div class="dropdown-menu mt-3 ml-3">
   {#each named_links as [ mname, link ] }
     {#if mname === "divider"}
-      <div class="dropdown-divider"></div>
+      <div class="dropdown-divider text-light"></div>
     {:else}
-      <a class="dropdown-item text-dark" href={link}>{mname}</a>
+      <a class="dropdown-item" href={link}>{mname}</a>
     {/if}
   {/each}
 </div>
-
 
 <style>
   @media screen and (min-width: 1200px) {
