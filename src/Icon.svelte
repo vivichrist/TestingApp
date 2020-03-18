@@ -1,8 +1,10 @@
 <script>
+  import { fly } from 'svelte/transition';
+
   export let awesome;
 </script>
 
-<div role="button" class="btn btn-primary btn-lg">
+<div role="button" in transition:fly="{{x: 150, duration: 800}}" class="btn btn-primary btn-lg">
   <i class={awesome}></i>
 </div>
 

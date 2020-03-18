@@ -70,7 +70,7 @@
     margin: 0;
     padding: 0;
   }
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1260px) {
     .btn {
       font-size: 14pt;
       padding-left: 3rem;
@@ -85,7 +85,7 @@
       margin-right: 1rem;
     }
   }
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1260px) {
     .btn {
       font-size: 12pt;
       padding-left: 2rem;
@@ -100,7 +100,7 @@
       margin-right: 1rem;
     }
   }
-  @media screen and (max-width: 930px) {
+  @media screen and (max-width: 970px) {
     .btn {
       font-size: 11pt;
       padding-left: 1rem;

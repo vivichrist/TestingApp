@@ -1,6 +1,6 @@
 
 <script>
-  import { fly } from 'svelte/transition';
+  import { fly, slide } from 'svelte/transition';
 
   export let title = "";
   export let items;
@@ -13,10 +13,10 @@
                                     .map(t => t = t.replace('_',' ')));
 </script>
 
-<div role="button" class="btn btn-primary py-4 border-0" data-toggle="dropdown">
+<div role="button" in transition:fly="{{y: -100, duration: 500}}" class="btn btn-primary py-4 border-0" data-toggle="dropdown">
   {title}
 </div>
-<div class="dropdown-menu bg-light mt-3">
+<div class="dropdown-menu bg-light mt-3" in transition:slide="{{y: -100, duration: 500}}">
   {#each named_links as [ mname, link ] }
     {#if mname === "divider"}
       <div class="dropdown-divider"></div>
@@ -28,7 +28,7 @@
 
 
 <style>
-  @media screen and (min-width: 1200px) {
+  @media screen and (min-width: 1260px) {
     .dropdown-item {
       font-size: 14pt;
     }
@@ -38,7 +38,7 @@
       padding-right: 3rem;
     }
   }
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: 1260px) {
     .dropdown-item {
       font-size: 12pt;
     }
@@ -48,7 +48,7 @@
       padding-right: 2rem;
     }
   }
-  @media screen and (max-width: 930px) {
+  @media screen and (max-width: 970px) {
     .dropdown-item {
       font-size: 11pt;
     }

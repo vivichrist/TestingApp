@@ -1,5 +1,7 @@
 
 <script>
+  import { fly, slide } from 'svelte/transition';
+
   export let title = "";
   export let items;
   let named_links = [];
@@ -11,7 +13,7 @@
                                     .map(t => t = t.replace('_',' ')));
 </script>
 
-<button type="button" class="btn btn-dark px-3 py-0 mx-4 my-3 dropdown-toggle" data-toggle="dropdown">
+<button type="button" in transition:fly="{{x: -200, duration: 800}}" class="btn btn-dark px-3 py-0 mx-4 my-3 dropdown-toggle" data-toggle="dropdown">
   {title}
 </button>
 <div class="dropdown-menu mt-3 ml-3">
