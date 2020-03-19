@@ -29,11 +29,7 @@
       console.log("onsign-in");
   }
 
-  window.startApp = function() {
-    setTimeout(function() {
-      onSignIn();
-    }, 5000);
-  };
+  window.startApp = function() {};
 
   window.signOut = () => {
   	ident.id = "";
