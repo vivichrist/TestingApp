@@ -17,27 +17,27 @@
     <ul class="navbar-nav">
       <li class="nav-Item btn-group">
         <MenuDrop title="Icealicous"
-        items="Link_1 # Link_2 # Link_3 #" />
+        items="Link_1 0 Link_2 0 Link_3 0" />
       </li>
       <li class="nav-item btn-group">
         <MenuItem title="Catalog"
-        items="Link_1 # divider # Link_2 # Link_3 # divider # Link_4 #" />
+        items="Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0" />
       </li>
       <li class="nav-item btn-group">
         <MenuItem title="Events"
-        items="Link_1 # divider # Link_2 # Link_3 # divider # Link_4 #" />
+        items="Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0" />
       </li>
       <li class="nav-item btn-group">
         <MenuItem title="Rules"
-        items="Add_Rules # divider # All_Rules # Change_Rules # Validation_Rules # Consume_Rules # divider # Lineage #" />
+        items="Add_Rules 0 divider 0 All_Rules 0 Change_Rules 0 Validation_Rules 0 Consume_Rules 0 divider 0 Lineage 0" />
       </li>
       <li class="nav-item btn-group">
         <MenuItem title="Consume"
-        items="Link_1 # divider # Link_2 # Link_3 # divider # Link_4 #" />
+        items="Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0" />
       </li>
       <li class="nav-item btn-group">
         <MenuItem title="Manage"
-        items="Link_1 # divider # Link_2 # Link_3 # divider # Link_4 #" />
+        items="Link_1 2 divider 3 Link_2 4 Link_3 5 divider 6 Link_4 7" />
       </li>
     </ul>
     <ul class="navbar-nav ml-auto mr-3">

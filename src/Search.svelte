@@ -15,74 +15,75 @@
 </script>
 
 <style>
-.trans {
-  z-index: 6;
-  position: absolute;
-  padding-left: 4.5rem;
-}
-.trans::before {
-  z-index: 6;
-}
-.mid {
-  text-align: left;
-  padding-top: 45vh;
-}
-.input-group {
-  margin-top: 1.5rem;
-}
-@media only screen and (orientation: portrait) {
-  @media screen and (min-height: 1200px) {
-    .mid {
-      padding-left: 1rem;
-      padding-right: 1rem;
+  .trans {
+    z-index: 6;
+    position: absolute;
+    padding-left: 4.5rem;
+  }
+  .trans::before {
+    z-index: 6;
+  }
+  .mid {
+    text-align: left;
+    padding-top: 45vh;
+  }
+  .input-group {
+    margin-top: 1.5rem;
+  }
+  @media only screen and (orientation: portrait) {
+    @media screen and (min-height: 1200px) {
+      .mid {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+    @media screen and (max-height: 1200px) {
+      .mid {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+      }
+    }
+    @media screen and (max-height: 930px) {
+      .mid {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+    }
+    @media screen and (max-height: 768px) {
+      .mid {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+      }
     }
   }
-  @media screen and (max-height: 1200px) {
-    .mid {
-      padding-left: 0.75rem;
-      padding-right: 0.75rem;
+  @media only screen and (orientation: landscape) {
+    @media screen and (min-width: 1200px) {
+      .mid {
+        padding-left: 15rem;
+        padding-right: 15rem;
+      }
+    }
+    @media screen and (max-width: 1200px) {
+      .mid {
+        padding-left: 10rem;
+        padding-right: 10rem;
+      }
+    }
+    @media screen and (max-width: 930px) {
+      .mid {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+      }
+    }
+    @media screen and (max-width: 768px) {
+      .mid {
+        padding-left: 0.25rem;
+        padding-right: 0.25rem;
+      }
     }
   }
-  @media screen and (max-height: 930px) {
-    .mid {
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-    }
-  }
-  @media screen and (max-height: 768px) {
-    .mid {
-      padding-left: 0.25rem;
-      padding-right: 0.25rem;
-    }
-  }
-}
-@media only screen and (orientation: landscape) {
-  @media screen and (min-width: 1200px) {
-    .mid {
-      padding-left: 15rem;
-      padding-right: 15rem;
-    }
-  }
-  @media screen and (max-width: 1200px) {
-    .mid {
-      padding-left: 10rem;
-      padding-right: 10rem;
-    }
-  }
-  @media screen and (max-width: 930px) {
-    .mid {
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-    }
-  }
-  @media screen and (max-width: 768px) {
-    .mid {
-      padding-left: 0.25rem;
-      padding-right: 0.25rem;
-    }
-  }
-}
 </style>
+
 <div class="container-flex mid">
   {#if visible}
   <label in transition:fly="{{ y: 40, duration: 500, opacity: 1 }}" for="searchbox" class="text-dark trans">

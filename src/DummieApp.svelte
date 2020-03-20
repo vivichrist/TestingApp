@@ -1,9 +1,18 @@
 <script>
-  import Menu from './Menu.svelte'
-  import Search from './Search.svelte'
-  import Login from './Login.svelte'
+  import { content } from './stores.js';
+
+  import Menu from './Menu.svelte';
+  import Search from './Search.svelte';
+  import Login from './Login.svelte';
+  import Manage from './Manage.svelte';
 
   let signedIn = false;
+  let index = 0;
+
+  const unsubscribe = content.subscribe(value => {
+    index = value;
+    console.log("index value changed to: ", index);
+  });
 
   let ident = {
     id: "",
@@ -55,7 +64,11 @@
   <!-- {#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()} -->
 	{#if signedIn}
 		<Menu user={ident.name} pic={ident.img_url} />
-    <Search />
+    {#if index == 0}
+      <Search />
+    {:else if index > 0}
+      <Manage open={true}/>
+    {/if}
   {:else}
     <Login />
 	{/if}

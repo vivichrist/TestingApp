@@ -1,5 +1,5 @@
-
 <script>
+  import { content } from './stores.js'
   import { fly, slide } from 'svelte/transition';
 
   export let title = "";
@@ -11,6 +11,11 @@
                      .map(x => x = x.trim()
                                     .split(' ')
                                     .map(t => t = t.replace('_',' ')));
+
+  const sel_content = (num) => {
+    content.set(num);
+    console.log("set content pointer to: " + num);
+  };
 </script>
 
 <button type="button" in transition:fly="{{x: -200, duration: 800}}" class="btn btn-dark px-3 py-0 mx-4 my-3 dropdown-toggle" data-toggle="dropdown">
@@ -21,7 +26,7 @@
     {#if mname === "divider"}
       <div class="dropdown-divider text-light"></div>
     {:else}
-      <a class="dropdown-item" href={link}>{mname}</a>
+      <div role="button" on:click="{sel_content(link)}" class="dropdown-item">{mname}</div>
     {/if}
   {/each}
 </div>
