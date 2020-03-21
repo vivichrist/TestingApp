@@ -13,7 +13,7 @@
 </script>
 
 <div role="button" in transition:fly="{{x: -100, duration: 500}}"
-                   class="bg-white btn btn-block btn-lg btn-outline-primary border-5"
+                   class="bg-info btn btn-block btn-lg btn-outline-primary border-success py-0 my-2"
                    on:click="{sel_content(sel_num)}">
   {title}
 </div>
@@ -21,11 +21,11 @@
 
 <style>
   div {
-    width: 15vw;
+    width: 250px;
     padding-left: 0;
     padding-right: 0;
     margin-left: 1rem;
     margin-right: 1rem;
-    border-radius: 2rem;
+    border-radius: 0.6rem;
   }
 </style>

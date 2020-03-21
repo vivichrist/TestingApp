@@ -1,6 +1,7 @@
 
 <script>
   import MenuItem from "./MenuItem.svelte";
+  import TopItem from "./TopItem.svelte";
   import MenuDrop from "./MenuDrop.svelte";
   import Icon from "./Icon.svelte";
 
@@ -36,8 +37,7 @@
         items="Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0" />
       </li>
       <li class="nav-item btn-group">
-        <MenuItem title="Manage"
-        items="Link_1 2 divider 3 Link_2 4 Link_3 5 divider 6 Link_4 7" />
+        <TopItem title="Manage" selnum="2" />
       </li>
     </ul>
     <ul class="navbar-nav ml-auto mr-3">
@@ -102,7 +102,7 @@
   }
   @media screen and (max-width: 970px) {
     .btn {
-      font-size: 11pt;
+      font-size: 10pt;
       padding-left: 1rem;
       padding-right: 1rem;
     }

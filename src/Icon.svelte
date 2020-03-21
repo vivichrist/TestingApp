@@ -34,9 +34,9 @@
       font-size: 16pt;
     }
     .btn {
-      font-size: 11pt;
-      padding-left: 1rem;
-      padding-right: 1rem;
+      font-size: 10pt;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
     }
   }
 </style>

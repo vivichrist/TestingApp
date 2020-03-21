@@ -65,9 +65,15 @@
 	{#if signedIn}
 		<Menu user={ident.name} pic={ident.img_url} />
     {#if index == 0}
-      <Search />
+    <div class="container-flex">
+      <div class="row align-items-center justify-content-center">
+        <div class="w-100 col-md-auto col-sm-auto">
+          <Search />
+        </div>
+      </div>
+    </div>
     {:else if index > 0}
-      <Manage open={true}/>
+      <Manage />
     {/if}
   {:else}
     <Login />
@@ -76,9 +82,17 @@
 
 <style>
 	main {
+    height: 99vh;
     align-content: center;
     text-align: center;
 	}
+  .container-flex {
+    height: calc(100vh - 79px);
+    max-height: 100vh;
+  }
+  .row {
+    height: calc(100vh - 79px);
+  }
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
