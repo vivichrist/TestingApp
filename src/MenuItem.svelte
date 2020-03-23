@@ -15,7 +15,6 @@
 
   const sel_content = (num) => {
     content.set(num);
-    console.log("set content pointer to: " + num);
   };
 </script>
 
@@ -34,9 +33,6 @@
 
 
 <style>
-  .dropdown-menu {
-    box-shadow: 0 0 50px #AAA inset;
-  }
   @media screen and (min-width: 1260px) {
     .dropdown-item {
       font-size: 14pt;

@@ -7,7 +7,6 @@
 
   const unsubscribe = manage.subscribe(value => {
     open = value;
-    console.log("manage changed to: ", open);
   });
 </script>
 

@@ -14,7 +14,6 @@
 
   const sel_content = (num) => {
     content.set(num);
-    console.log("set content pointer to: " + num);
   };
 </script>
 

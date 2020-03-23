@@ -13,12 +13,10 @@
 
   const unsubscribe = content.subscribe(value => {
     index = value;
-    console.log("index value changed to: ", index);
   });
 
   const mansub = manage.subscribe(value => {
     mang = value;
-    console.log("index value changed to: ", index);
   });
 
   let ident = {
@@ -93,12 +91,12 @@
 
 <style>
 	main {
-    height: 99vh;
+    /* height: 99vh; */
     align-content: center;
     text-align: center;
 	}
   .container-flex {
-    height: calc(100vh - 79px);
+    /* height: calc(100vh - 79px); */
     max-height: 100vh;
   }
   .row {

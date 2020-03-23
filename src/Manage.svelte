@@ -1,8 +1,6 @@
 <script>
   import Sidebar from './SideBar.svelte';
   import Managed from './Managed.svelte';
-
-  export let index = 0;
 </script>
 
 <div class="container-flex">
@@ -11,7 +9,7 @@
       <Sidebar />
     </div>
     <div class="col-9 align-self-center">
-      <Managed {index}/>
+      <Managed />
     </div>
   </div>
 </div>

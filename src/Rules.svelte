@@ -5,10 +5,10 @@
     .then(jsn => data = jsn);
 </script>
 
-<div class="container">
-  <table class="table table-sm table-bordered table-striped table-hover mx-0 bg-info">
-    <thead class="thead-light">
-      <tr>
+<div class="container-flex">
+  <table class="table table-sm table-hover p-1 bg-white">
+    <thead class="thead-black">
+      <tr class="text-black">
         <th scope="col">#</th>
         <th scope="col">Dataset</th>
         <th scope="col">Identifier</th>
@@ -39,18 +39,17 @@
 
 <style>
   div {
+    overflow: auto;
     margin-top: 7%;
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-bottom: 0;
+    padding-bottom: 0;
     top: 7%;
-    height: calc(100vh - 14%);
+    height: 60%;
+    box-shadow: 0 0 20px rgb(180, 180, 180);
   }
-  table {
-    border-collapse: separate;
-    box-shadow: 0 0 20px rgb(190, 190, 190);
-  }
-  table, thead, th, tr {
-    border-radius: 0.2rem;
-  }
-  th {
-    box-shadow: 0 0 45px #888 inset;
+  table, thead, div {
+    border-radius: 0.5rem 0.5rem;
   }
 </style>
