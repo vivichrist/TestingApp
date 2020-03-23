@@ -91,14 +91,15 @@ $headings-color:         $gray-100 !default;
 
 // Tables
 
-$table-color:                   $white !default;
-$table-accent-bg:               rgba($white,.05) !default;
-$table-hover-bg:                rgba($white,.075) !default;
+$table-color:                   $black !default;
+$table-accent-bg:               rgba($yellow,.05) !default;
+$table-hover-bg:                rgba($light,.075) !default;
 
-$table-border-color:            $warning !default;
+$table-border-color:            $gray-300 !default;
+$table-border-width:          0.025rem !default;
 
-$table-dark-bg:               $warning !default;
-$table-dark-border-color:     darken($gray-500, 7.5%) !default;
+$table-dark-bg:               $primary !default;
+$table-dark-border-color:     darken($black, 7.5%) !default;
 
 // Buttons
 

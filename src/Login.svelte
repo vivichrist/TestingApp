@@ -2,6 +2,15 @@
   import Email from './Email.svelte'
 </script>
 
+<img src="agiledata-logo-full-purple.svg" alt="agile data logo" id="logo"/>
+<div id="SignInWrapper" class="container">
+  <Email icon="at" hint="email"/>
+  <div id="customBtn" class="SignIn btn btn-outline-primary bg-primary"
+                      on:click="{onSignIn}">
+    <span class="text-info">Login</span>
+  </div>
+</div>
+
 <style>
   #customBtn {
     margin-top: 2vh;
@@ -67,11 +76,3 @@
     }
   }
 </style>
-
-<img src="agiledata-logo-full-purple.svg" alt="agile data logo" id="logo"/>
-<div id="SignInWrapper" class="container">
-  <Email icon="at" hint="email"/>
-  <div id="customBtn" class="SignIn btn btn-outline-primary bg-primary" on:click="{onSignIn}">
-    <span class="text-info">Login</span>
-  </div>
-</div>

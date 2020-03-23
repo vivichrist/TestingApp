@@ -30,14 +30,14 @@
       </li>
       <li class="nav-item btn-group">
         <MenuItem title="Rules"
-        items="Add_Rules 0 divider 0 All_Rules 0 Change_Rules 0 Validation_Rules 0 Consume_Rules 0 divider 0 Lineage 0" />
+        items="Add_Rules 2 divider 0 All_Rules 3 Change_Rules 4 Validation_Rules 5 Consume_Rules 6 divider 0 Lineage 7" />
       </li>
       <li class="nav-item btn-group">
         <MenuItem title="Consume"
         items="Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0" />
       </li>
       <li class="nav-item btn-group">
-        <TopItem title="Manage" selnum="2" />
+        <TopItem title="Manage" />
       </li>
     </ul>
     <ul class="navbar-nav ml-auto mr-3">

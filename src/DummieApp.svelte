@@ -1,16 +1,23 @@
 <script>
-  import { content } from './stores.js';
+  import { content, manage } from './stores.js';
 
   import Menu from './Menu.svelte';
   import Search from './Search.svelte';
   import Login from './Login.svelte';
   import Manage from './Manage.svelte';
+  import Rules from './Rules.svelte';
 
   let signedIn = false;
+  let mang = false;
   let index = 0;
 
   const unsubscribe = content.subscribe(value => {
     index = value;
+    console.log("index value changed to: ", index);
+  });
+
+  const mansub = manage.subscribe(value => {
+    mang = value;
     console.log("index value changed to: ", index);
   });
 
@@ -64,16 +71,20 @@
   <!-- {#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()} -->
 	{#if signedIn}
 		<Menu user={ident.name} pic={ident.img_url} />
-    {#if index == 0}
-    <div class="container-flex">
-      <div class="row align-items-center justify-content-center">
-        <div class="w-100 col-md-auto col-sm-auto">
-          <Search />
+    {#if mang}
+      <Manage {index}/>
+    {:else}
+      {#if index == 0}
+      <div class="container-flex">
+        <div class="row align-items-center justify-content-center">
+          <div class="w-100 col-md-auto col-sm-auto">
+            <Search />
+          </div>
         </div>
       </div>
-    </div>
-    {:else if index > 0}
-      <Manage />
+      {:else if index > 0}
+        <Rules />
+      {/if}
     {/if}
   {:else}
     <Login />
