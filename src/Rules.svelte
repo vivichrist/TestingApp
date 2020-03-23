@@ -6,7 +6,7 @@
 </script>
 
 <div class="container">
-  <table class="table table-sm table-bordered table-striped table-hover mx-0">
+  <table class="table table-sm table-bordered table-striped table-hover mx-0 bg-info">
     <thead class="thead-light">
       <tr>
         <th scope="col">#</th>
@@ -45,10 +45,12 @@
   }
   table {
     border-collapse: separate;
-    box-shadow: 0 0 20px gray;
-    border-radius: 1rem 1rem 1rem 1rem;
+    box-shadow: 0 0 20px rgb(190, 190, 190);
   }
-  thead, th, tr {
-    border-radius: 0.7rem 0.7rem 0.7rem 0.7rem;
+  table, thead, th, tr {
+    border-radius: 0.2rem;
+  }
+  th {
+    box-shadow: 0 0 45px #888 inset;
   }
 </style>

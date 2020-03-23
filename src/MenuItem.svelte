@@ -7,7 +7,7 @@
   export let items;
   let named_links = [];
   // split items string into pairs of arguments (name, url)
-  let re = /\S+\s\S+\s?/g
+  let re = /\S+\s+\S+\s?/g
   named_links = items.match(re)
                      .map(x => x = x.trim()
                                     .split(' ')
@@ -22,7 +22,7 @@
 <div role="button" in transition:fly="{{y: -100, duration: 500}}" class="btn btn-primary py-4 border-0" data-toggle="dropdown">
   {title}
 </div>
-<div class="dropdown-menu bg-light mt-3" in transition:fly="{{y: -100, duration: 500}}">
+<div class="dropdown-menu bg-light mt-3">
   {#each named_links as [ mname, link ] }
     {#if mname === "divider"}
       <div class="dropdown-divider"></div>
@@ -34,6 +34,9 @@
 
 
 <style>
+  .dropdown-menu {
+    box-shadow: 0 0 50px #AAA inset;
+  }
   @media screen and (min-width: 1260px) {
     .dropdown-item {
       font-size: 14pt;

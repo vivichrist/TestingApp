@@ -32,6 +32,9 @@
 </div>
 
 <style>
+  .dropdown-menu {
+    box-shadow: 0 0 60px #444 inset;
+  }
   @media screen and (min-width: 1200px) {
     .dropdown-item {
       font-size: 14pt;
