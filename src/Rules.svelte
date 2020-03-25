@@ -52,6 +52,9 @@
     box-shadow: 0 0 10px #eee2ff;
     border-radius: 0.5rem 0.5rem;
   }
+  table > thead > tr:first-child > th {
+    border: none;
+  }
   @media screen and (min-width: 1260px) {
     .d-flex {
       height: calc(100vh - 4.5rem);
