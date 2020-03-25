@@ -3,16 +3,11 @@
   import { fly } from 'svelte/transition';
 
   export let title = "";
-  let open = false;
-
-  const unsubscribe = manage.subscribe(value => {
-    open = value;
-  });
 </script>
 
 <div role="button" in transition:fly="{{y: -100, duration: 500}}"
                    class="btn btn-primary py-4 border-0"
-                   on:click="{() => manage.set(!open)}">
+                   on:click="{() => manage.update(b => !b)}">
   {title}
 </div>
 

@@ -1,12 +1,13 @@
-<script>
+<script context="module">
   let data = [];
   fetch('https://agiledata-core-prd.appspot.com/rules/?apikey=977609nhgfty86HJKhjkl78')
     .then(res => res.json())
     .then(jsn => data = jsn);
 </script>
 
-<div class="container-flex">
-  <table class="table table-sm table-hover p-1 bg-white">
+<div class="d-flex flex-column">
+  <div class="inner">
+  <table class="table table-sm table-hover bg-white">
     <thead class="thead-black">
       <tr class="text-black">
         <th scope="col">#</th>
@@ -35,21 +36,39 @@
   {/each}}
     </tbody>
   </table>
+  </div>
 </div>
 
 <style>
-  div {
+  .d-flex {
+    display: flex;
     overflow: auto;
-    margin-top: 7%;
-    margin-left: 7%;
-    margin-right: 7%;
-    margin-bottom: 0;
-    padding-bottom: 0;
-    top: 7%;
-    height: 60%;
-    box-shadow: 0 0 20px rgb(180, 180, 180);
+    padding: 3rem;
   }
-  table, thead, div {
+  thead {
+    color: black;
+  }
+  .inner, table, thead, tbody {
+    box-shadow: 0 0 10px #eee2ff;
     border-radius: 0.5rem 0.5rem;
   }
+  @media screen and (min-width: 1260px) {
+    .d-flex {
+      height: calc(100vh - 4.5rem);
+    }
+  }
+  @media screen and (max-width: 1260px) {
+    .d-flex {
+      height: calc(100vh - 4.4rem);
+    }
+  }
+  @media screen and (max-width: 970px) {
+    .d-flex {
+      height: calc(100vh - 4.2rem);
+    }
+  }
+  table {
+    box-sizing: border-box;
+  }
+
 </style>

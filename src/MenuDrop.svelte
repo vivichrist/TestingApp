@@ -1,9 +1,11 @@
 <script>
   import { content } from './stores.js'
-  import { fly, slide } from 'svelte/transition';
+  import { fly } from 'svelte/transition';
 
   export let title = "";
-  export let items;
+  export let items = "";
+  console.log(items);
+  
   let named_links = [];
   // split items string into pairs of arguments (name, url)
   let re = /\S+\s\S+\s?/g
@@ -16,10 +18,13 @@
     content.set(num);
   };
 </script>
-
-<button type="button" in transition:fly="{{x: -200, duration: 800}}" class="btn btn-dark px-3 py-0 mx-4 my-3 dropdown-toggle" data-toggle="dropdown">
+<!-- the triggering button for the menu dropdown -->
+<button type="button" in transition:fly="{{x: -200, duration: 800}}"
+        class="btn btn-dark px-3 py-0 mx-4 my-3 dropdown-toggle"
+        data-toggle="dropdown">
   {title}
 </button>
+<!-- the menu that appears under the button -->
 <div class="dropdown-menu mt-3 ml-3">
   {#each named_links as [ mname, link ] }
     {#if mname === "divider"}

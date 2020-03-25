@@ -4,7 +4,7 @@
   import Menu from './Menu.svelte';
   import Search from './Search.svelte';
   import Login from './Login.svelte';
-  import Manage from './Manage.svelte';
+  import SideBar from './SideBar.svelte';
   import Rules from './Rules.svelte';
 
   let signedIn = false;
@@ -65,46 +65,34 @@
   <meta name="google-signin-client_id" content="461979086851-bbjhehqb9qpn3boroii8l4klmcc718bd.apps.googleusercontent.com"/>
 </svelte:head>
 
-<main>
-  <!-- {#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()} -->
-	{#if signedIn}
-		<Menu user={ident.name} pic={ident.img_url} />
+<!-- {#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()} -->
+{#if signedIn}
+  <Menu user={ident.name} pic={ident.img_url} />
+  <main class="d-flex flex-row align-items-center justify-content-center">
+    <!-- Management interface -->
     {#if mang}
-      <Manage {index}/>
-    {:else}
-      {#if index == 0}
-      <div class="container-flex">
-        <div class="row align-items-center justify-content-center">
-          <div class="w-100 col-md-auto col-sm-auto">
-            <Search />
-          </div>
-        </div>
-      </div>
-      {:else if index > 0}
-        <Rules />
-      {/if}
+      <SideBar />
     {/if}
-  {:else}
+    <!-- numbered content -->
+    {#if index == 0}
+      <Search />
+    {:else if index > 0}
+      <Rules />
+    {/if}
+  </main>
+{:else}
+  <div class="d-flex flex-column align-items-center justify-content-center">
     <Login />
-	{/if}
-</main>
+  </div>
+{/if}
 
 <style>
 	main {
-    /* height: 99vh; */
-    align-content: center;
-    text-align: center;
-	}
-  .container-flex {
-    /* height: calc(100vh - 79px); */
-    max-height: 100vh;
-  }
-  .row {
-    height: calc(100vh - 79px);
-  }
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+    display: flex;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: calc(100vh - 4.5rem);
 	}
 </style>

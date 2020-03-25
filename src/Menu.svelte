@@ -1,3 +1,12 @@
+<script context="module">
+  let menus = {
+    Icealicous: "Link_1 0 Link_2 0 Link_3 0",
+    Catalog: "Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0",
+    Events: "Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0",
+    Rules: "Add_Rules 2 divider 0 All_Rules 3 Change_Rules 4 Validation_Rules 5 Consume_Rules 6 divider 0 Lineage 7",
+    Consume: "Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0",
+  };
+</script>
 
 <script>
   import MenuItem from "./MenuItem.svelte";
@@ -7,6 +16,7 @@
 
   export let user = "";
   export let pic = "";
+  console.log(menus.Icealicious);
 </script>
 
 <header class="bg-primary">
@@ -14,45 +24,42 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <!-- nav menu -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-Item btn-group">
-        <MenuDrop title="Icealicous"
-        items="Link_1 0 Link_2 0 Link_3 0" />
-      </li>
-      <li class="nav-item btn-group">
-        <MenuItem title="Catalog"
-        items="Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0" />
-      </li>
-      <li class="nav-item btn-group">
-        <MenuItem title="Events"
-        items="Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0" />
-      </li>
-      <li class="nav-item btn-group">
-        <MenuItem title="Rules"
-        items="Add_Rules 2 divider 0 All_Rules 3 Change_Rules 4 Validation_Rules 5 Consume_Rules 6 divider 0 Lineage 7" />
-      </li>
-      <li class="nav-item btn-group">
-        <MenuItem title="Consume"
-        items="Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0" />
-      </li>
-      <li class="nav-item btn-group">
-        <TopItem title="Manage" />
-      </li>
-    </ul>
-    <ul class="navbar-nav ml-auto mr-3">
-      <li class="nav-item">
-        <Icon awesome="fas fa-plus" />
-      </li>
-      <li class="nav-item">
-        <Icon awesome="fas fa-cog" />
-      </li>
-      <li class="nav-item">
-        <div role="button" class="btn btn-primary mx-0 px-0">
-          <img src={pic} class="rounded-circle user" alt={user} />
-        </div>
-      </li>
-    </ul>
+      <ul class="navbar-nav">
+        <li class="nav-Item btn-group">
+          <MenuDrop title="Icealicous" items="{menus.Icealicous}" />
+        </li>
+        <li class="nav-item btn-group">
+          <MenuItem title="Catalog" items="{menus.Catalog}" />
+        </li>
+        <li class="nav-item btn-group">
+          <MenuItem title="Events" items="{menus.Events}" />
+        </li>
+        <li class="nav-item btn-group">
+          <MenuItem title="Rules" items="{menus.Rules}" />
+        </li>
+        <li class="nav-item btn-group">
+          <MenuItem title="Consume" items="{menus.Consume}" />
+        </li>
+        <li class="nav-item btn-group">
+          <TopItem title="Manage" />
+        </li>
+      </ul>
+      <!-- icon buttons and user button -->
+      <ul class="navbar-nav ml-auto mr-3">
+        <li class="nav-item">
+          <Icon awesome="fas fa-plus" />
+        </li>
+        <li class="nav-item">
+          <Icon awesome="fas fa-cog" />
+        </li>
+        <li class="nav-item">
+          <div role="button" class="btn btn-primary mx-0 px-0">
+            <img src={pic} class="user rounded-circle" alt={user} />
+          </div>
+        </li>
+      </ul>
     </div>
   </nav>
 </header>
@@ -69,8 +76,13 @@
   nav {
     margin: 0;
     padding: 0;
+    box-shadow: 0 5px 10px #d7baff;
+    z-index: 3;
   }
   @media screen and (min-width: 1260px) {
+    header {
+      height: 4.5rem;
+    }
     .btn {
       font-size: 14pt;
       padding-left: 3rem;
@@ -86,6 +98,9 @@
     }
   }
   @media screen and (max-width: 1260px) {
+    header {
+      height: 4.4rem;
+    }
     .btn {
       font-size: 12pt;
       padding-left: 2rem;
@@ -101,6 +116,9 @@
     }
   }
   @media screen and (max-width: 970px) {
+    header {
+      height: 4.2rem;
+    }
     .btn {
       font-size: 10pt;
       padding-left: 1rem;

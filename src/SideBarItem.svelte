@@ -8,19 +8,19 @@
 
   const sel_content = (num) => {
     content.set(num);
-    console.log("set managed content pointer to: " + num);
   };
 </script>
 
-<div role="button" in transition:fly="{{x: -100, duration: 500}}"
-                   class="bg-light btn btn-block btn-lg text-dark btn-outline-primary py-0 my-2"
-                   on:click="{sel_content(sel_num)}">
+<div role="button" class="bg-light btn btn-block btn-lg text-dark btn-outline-primary py-0 my-2"
+                   on:click="{sel_content(sel_num)}"
+                   in transition:fly="{{x: -100, duration: 500}}">
   {title}
 </div>
 
 
 <style>
   div {
+    box-sizing: border-box;
     width: 250px;
     padding-left: 0;
     padding-right: 0;

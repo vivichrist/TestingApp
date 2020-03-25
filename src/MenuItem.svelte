@@ -4,7 +4,9 @@
   import { fly, slide } from 'svelte/transition';
 
   export let title = "";
-  export let items;
+  export let items = "";
+  console.log(items);
+
   let named_links = [];
   // split items string into pairs of arguments (name, url)
   let re = /\S+\s+\S+\s?/g
@@ -26,7 +28,9 @@
     {#if mname === "divider"}
       <div class="dropdown-divider"></div>
     {:else}
-      <div class="dropdown-item text-dark" on:click="{sel_content(link)}">{mname}</div>
+      <div class="dropdown-item text-dark" on:click={() => sel_content(link)}>
+        {mname}
+      </div>
     {/if}
   {/each}
 </div>
