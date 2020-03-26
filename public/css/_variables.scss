@@ -69,7 +69,7 @@ $border-radius:               .25rem !default;
 $border-radius-lg:            .5rem !default;
 $border-radius-sm:            .2rem !default;
 
-$rounded-pill:                50rem !default;
+$rounded-pill:                25rem !default;
 
 $box-shadow-sm:               0 .125rem .25rem rgba($black, .075) !default;
 $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
@@ -87,7 +87,7 @@ $h3-font-size: 2.5rem !default;
 $h4-font-size: 2rem !default;
 $h5-font-size: 1.5rem !default;
 
-$headings-color:         $gray-100 !default;
+$headings-color:         $dark !default;
 
 // Tables
 
@@ -144,12 +144,12 @@ $custom-file-border-color:          $gray-700 !default;
 
 // Dropdowns
 
-$dropdown-bg:                    $gray-700 !default;
+$dropdown-bg:                    $light !default;
 $dropdown-divider-bg:            $gray-800 !default;
 
-$dropdown-link-color:            $white !default;
-$dropdown-link-hover-color:      $white !default;
-$dropdown-link-hover-bg:         $primary !default;
+$dropdown-link-color:            $dark !default;
+$dropdown-link-hover-color:      $light !default;
+$dropdown-link-hover-bg:         $success !default;
 
 // Dropdowns
 
@@ -157,7 +157,7 @@ $dropdown-min-width:                10rem !default;
 $dropdown-padding-y:                .5rem !default;
 $dropdown-spacer:                   .125rem !default;
 $dropdown-font-size:                $font-size-base !default;
-$dropdown-color:                    $body-color !default;
+$dropdown-color:                    $dark !default;
 
 $dropdown-border-color:             $black !default;
 $dropdown-border-radius:            $border-radius !default;
@@ -166,10 +166,6 @@ $dropdown-inner-border-radius:      subtract($dropdown-border-radius, $dropdown-
 // $dropdown-divider-bg:               $gray-200 !default;
 // $dropdown-divider-margin-y:         $nav-divider-margin-y !default;
 // $dropdown-box-shadow:               0 .5rem 1rem rgba($black, .175) !default;
-
-// $dropdown-link-color:               $gray-900 !default;
-// $dropdown-link-hover-color:         darken($gray-900, 5%) !default;
-// $dropdown-link-hover-bg:            $gray-100 !default;
 
 // $dropdown-link-active-color:        $component-active-color !default;
 // $dropdown-link-active-bg:           $component-active-bg !default;
@@ -238,7 +234,7 @@ $navbar-dark-brand-hover-color:           $navbar-dark-active-color !default;
 // Pagination
 
 $pagination-color:                     $white !default;
-$pagination-bg:                        $gray-700 !default;
+$pagination-bg:                        $success !default;
 $pagination-border-color:              transparent !default;
 
 $pagination-hover-color:               $white !default;

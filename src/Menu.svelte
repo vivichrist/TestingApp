@@ -16,7 +16,6 @@
 
   export let user = "";
   export let pic = "";
-  console.log(menus.Icealicious);
 </script>
 
 <header class="bg-primary">

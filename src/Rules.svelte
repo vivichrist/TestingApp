@@ -2,29 +2,50 @@
   let data = [];
   fetch('https://agiledata-core-prd.appspot.com/rules/?apikey=977609nhgfty86HJKhjkl78')
     .then(res => res.json())
-    .then(jsn => data = jsn);
+    .then(jsn => data = jsn.map(obj => {
+      for (let key in obj) {
+        obj[key] = obj[key].replace(/_/g, ' ');
+      }
+      return obj;
+    }));
+</script>
+
+<script>
+  import Pagination from "./Pagination.svelte";
+
+  export let rng = 10;
+  export let pos = 1;
+
+  let limit;
+  let startrng;
+  let endrng;
+  let dataseg;
+  $: {
+    limit = Math.floor(data.length / rng);
+    startrng = Math.max(1, Math.min(limit, Number(pos) - 1)) * rng;
+    endrng = Math.min(startrng + Number(rng), data.length);
+    dataseg = data.slice(startrng, endrng);
+  }
 </script>
 
 <div class="d-flex flex-column">
   <div class="inner">
-  <table class="table table-sm table-hover bg-white">
+  <table class="table bg-white">
     <thead class="thead-black">
       <tr class="text-black">
-        <th scope="col">#</th>
-        <th scope="col">Dataset</th>
-        <th scope="col">Identifier</th>
-        <th scope="col">Project</th>
-        <th scope="col">Rule_Attributes</th>
-        <th scope="col">Rule_Name</th>
-        <th scope="col">Rule_Order</th>
-        <th scope="col">Rule_Type</th>
+        <th scope="col"><input type="text"  class="form-control" placeholder="Dataset"></th>
+        <th scope="col"><input type="text"  class="form-control" placeholder="Identifier"></th>
+        <th scope="col"><input type="text"  class="form-control" placeholder="Project"></th>
+        <th scope="col"><input type="text"  class="form-control" placeholder="Rule Attributes"></th>
+        <th scope="col"><input type="text"  class="form-control" placeholder="Rule Name"></th>
+        <th scope="col"><input type="text"  class="form-control" placeholder="Rule Order"></th>
+        <th scope="col"><input type="text"  class="form-control" placeholder="Rule Type"></th>
       </tr>
     </thead>
     <tbody>
-  {#each data as { Dataset, Identifier, Project,
-                    Rule_Attributes, Rule_Name, Rule_Order, Rule_Type }, i}
+  {#each dataseg as { Dataset, Identifier, Project,
+                    Rule_Attributes, Rule_Name, Rule_Order, Rule_Type }}
     <tr>
-      <th scope="row">{i}</th>
       <th>{Dataset}</th>
       <th>{Identifier}</th>
       <th>{Project}</th>
@@ -36,6 +57,7 @@
   {/each}}
     </tbody>
   </table>
+    <Pagination pages={5} bind:pos={pos} bind:limit={limit} bind:rng={rng}/>
   </div>
 </div>
 
@@ -43,7 +65,7 @@
   .d-flex {
     display: flex;
     overflow: auto;
-    padding: 3rem;
+    padding: 1.5rem;
   }
   thead {
     color: black;

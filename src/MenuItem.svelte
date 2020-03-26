@@ -5,7 +5,6 @@
 
   export let title = "";
   export let items = "";
-  console.log(items);
 
   let named_links = [];
   // split items string into pairs of arguments (name, url)
