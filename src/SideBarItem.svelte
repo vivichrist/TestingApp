@@ -5,14 +5,10 @@
 
   export let title = "";
   export let sel_num = 0;
-
-  const sel_content = (num) => {
-    content.set(num);
-  };
 </script>
 
 <div role="button" class="bg-light btn btn-block btn-lg text-dark btn-outline-primary py-0 my-2"
-                   on:click="{sel_content(sel_num)}"
+                   on:click="{() => $content = sel_num}"
                    in transition:fly="{{x: -100, duration: 500}}">
   {title}
 </div>

@@ -13,10 +13,6 @@
                      .map(x => x = x.trim()
                                     .split(' ')
                                     .map(t => t = t.replace('_',' ')));
-
-  const sel_content = (num) => {
-    content.set(num);
-  };
 </script>
 
 <div role="button" in transition:fly="{{y: -100, duration: 500}}" class="btn btn-primary py-4 border-0" data-toggle="dropdown">
@@ -27,7 +23,7 @@
     {#if mname === "divider"}
       <div class="dropdown-divider"></div>
     {:else}
-      <div class="dropdown-item text-dark" on:click={() => sel_content(link)}>
+      <div class="dropdown-item text-dark" on:click={() => $content = link}>
         {mname}
       </div>
     {/if}

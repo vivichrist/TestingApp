@@ -8,16 +8,6 @@
   import Rules from './Rules.svelte';
 
   let signedIn = false;
-  let mang = false;
-  let index = 0;
-
-  const unsubscribe = content.subscribe(value => {
-    index = value;
-  });
-
-  const mansub = manage.subscribe(value => {
-    mang = value;
-  });
 
   let ident = {
     id: "",
@@ -70,13 +60,13 @@
   <Menu user={ident.name} pic={ident.img_url} />
   <main class="d-flex flex-row align-items-center justify-content-center">
     <!-- Management interface -->
-    {#if mang}
+    {#if $manage}
       <SideBar />
     {/if}
     <!-- numbered content -->
-    {#if index == 0}
+    {#if $content == 0}
       <Search />
-    {:else if index > 0}
+    {:else if $content > 0}
       <Rules />
     {/if}
   </main>

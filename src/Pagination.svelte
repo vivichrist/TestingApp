@@ -20,7 +20,7 @@
     }
   };
 
-  $: update([pos]);
+  update(pos);
 </script>
 
 <style>

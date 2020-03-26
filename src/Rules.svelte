@@ -54,10 +54,10 @@
       <th>{Rule_Order}</th>
       <th>{Rule_Type}</th>
     </tr>
-  {/each}}
+  {/each}
     </tbody>
   </table>
-    <Pagination pages={5} bind:pos={pos} bind:limit={limit} bind:rng={rng}/>
+    <Pagination pages={5} bind:pos={pos} limit={limit} bind:rng={rng}/>
   </div>
 </div>
 

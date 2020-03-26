@@ -13,9 +13,6 @@
                                     .split(' ')
                                     .map(t => t = t.replace('_',' ')));
 
-  const sel_content = (num) => {
-    content.set(num);
-  };
 </script>
 <!-- the triggering button for the menu dropdown -->
 <button type="button" in transition:fly="{{x: -200, duration: 800}}"
@@ -29,7 +26,7 @@
     {#if mname === "divider"}
       <div class="dropdown-divider text-light"></div>
     {:else}
-      <div role="button" on:click="{sel_content(link)}" class="dropdown-item">{mname}</div>
+      <div role="button" on:click="{() => $content = link}" class="dropdown-item">{mname}</div>
     {/if}
   {/each}
 </div>
