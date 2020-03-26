@@ -4,7 +4,7 @@
     .then(res => res.json())
     .then(jsn => data = jsn.map(obj => {
       for (let key in obj) {
-        obj[key] = obj[key].replace(/_/g, ' ');
+        obj[key] = obj[key].replace(/_/g, ' '); // remove underscores
       }
       return obj;
     }));
@@ -22,7 +22,7 @@
   let dataseg;
   $: {
     limit = Math.floor(data.length / rng);
-    startrng = Math.max(1, Math.min(limit, Number(pos) - 1)) * rng;
+    startrng = Math.max(0, Math.min(limit, pos) - 1) * rng;
     endrng = Math.min(startrng + Number(rng), data.length);
     dataseg = data.slice(startrng, endrng);
   }

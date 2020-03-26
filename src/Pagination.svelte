@@ -7,10 +7,10 @@
   let arr = [];
 
   const update = newpos => {
-    console.log(`Pagination: ${newpos}`);
-    let np = Number(newpos);
-    if (Number(pos) != np && np < limit && np >= 0) {
-      let s = Math.max(1, Math.min(np - 1, limit - pages));
+    let np = Math.min(Number(newpos), limit);
+    if (np > 0) {
+      let s = Math.max(1, Math.min(np - Math.floor(pages / 2),
+                       limit - (pages - 1)));
       let e = s + pages;
       arr = []
       for (let i = s; i < e; ++i) {
@@ -20,11 +20,7 @@
     }
   };
 
-  let s = Math.max(1, Math.min(pos - 1, limit - pages));
-  let e = s + pages;
-  for (let i = s; i < e; ++i) {
-    arr.push(i);
-  }
+  $: update([pos]);
 </script>
 
 <style>
@@ -45,7 +41,7 @@
         {pos}
       </button>
       <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton" direction="left" aria-hidden="true">
-        {#each [...Array(limit).keys()] as i}
+        {#each [...Array(limit + 1).keys()] as i}
         <button class="dropdown-item" type="button" role="menuitem"
                 on:click={update(i)}>
           {i}
@@ -54,7 +50,7 @@
       </div>
     </div>
     <span>of</span>
-    limit
+    {limit}
   </span>
   <nav class="nav justify-content-center" aria-label="Page navigation">
     <ul class="pagination">
@@ -97,7 +93,7 @@
       <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton" direction="left" aria-hidden="true">
         {#each [...Array(16).keys()].map(n => n + 5) as i}
         <button class="dropdown-item" type="button" role="menuitem"
-                on:click={() => rng = i}>
+                on:click={() => {rng = i;update(1);}}>
           {i}
         </button>
         {/each}
