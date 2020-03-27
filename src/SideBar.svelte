@@ -12,13 +12,12 @@
 
 <style>
   nav {
-    display: flex;
     border-right-color: rgb(99, 77, 77);
     border-bottom-right-radius: 0.5rem;
     box-shadow: 5px 10px 10px #d7baff;
     width: 285px;
     height: 100%;
-    z-index: 3;
+    z-index: 0;
   }
 
   @media screen and (min-width: 1260px) {

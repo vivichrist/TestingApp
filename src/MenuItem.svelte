@@ -32,6 +32,9 @@
 
 
 <style>
+  div {
+    z-index: 1;
+  }
   @media screen and (min-width: 1260px) {
     .dropdown-item {
       font-size: 14pt;

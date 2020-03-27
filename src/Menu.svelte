@@ -76,7 +76,9 @@
     margin: 0;
     padding: 0;
     box-shadow: 0 5px 10px #d7baff;
-    z-index: 3;
+  }
+  .navbar {
+    position: static;
   }
   @media screen and (min-width: 1260px) {
     header {

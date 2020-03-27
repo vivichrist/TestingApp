@@ -41,10 +41,10 @@
         {pos}
       </button>
       <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton" direction="left" aria-hidden="true">
-        {#each [...Array(limit + 1).keys()] as i}
+        {#each [...Array(limit).keys()] as i}
         <button class="dropdown-item" type="button" role="menuitem"
-                on:click={update(i)}>
-          {i}
+                on:click={update(i + 1)}>
+          {Math.max(1, i + 1)}
         </button>
         {/each}
       </div>

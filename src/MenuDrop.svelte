@@ -24,17 +24,16 @@
 <div class="dropdown-menu mt-3 ml-3">
   {#each named_links as [ mname, link ] }
     {#if mname === "divider"}
-      <div class="dropdown-divider text-light"></div>
+      <div class="dropdown-divider text-dark"></div>
     {:else}
-      <div role="button" on:click="{() => $content = link}" class="dropdown-item">{mname}</div>
+      <div class="dropdown-item" role="button" on:click="{() => $content = link}">
+        {mname}
+      </div>
     {/if}
   {/each}
 </div>
 
 <style>
-  .dropdown-menu {
-    box-shadow: 0 0 60px #444 inset;
-  }
   @media screen and (min-width: 1200px) {
     .dropdown-item {
       font-size: 14pt;

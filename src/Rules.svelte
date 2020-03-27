@@ -16,16 +16,34 @@
   export let rng = 10;
   export let pos = 1;
 
+  let ftype = {
+    Dataset:"",
+    Identifier:"",
+    Project:"",
+    Rule_Attributes: "",
+    Rule_Name: "",
+    Rule_Order: "",
+    Rule_Type: "",
+  };
+  let fdata;
   let limit;
   let startrng;
   let endrng;
   let dataseg;
   $: {
-    limit = Math.floor(data.length / rng);
+    // filter the data according to the associated input boxes
+    fdata = data.filter(d => {
+      return Object.entries(ftype).every( t => {
+        console.log(t);
+        return d[t[0]].search(t[1]) >= 0;
+      } );
+    });
+    limit = Math.floor(fdata.length / rng);
     startrng = Math.max(0, Math.min(limit, pos) - 1) * rng;
     endrng = Math.min(startrng + Number(rng), data.length);
-    dataseg = data.slice(startrng, endrng);
+    dataseg = fdata.slice(startrng, endrng);
   }
+
 </script>
 
 <div class="d-flex flex-column">
@@ -33,13 +51,20 @@
   <table class="table bg-white">
     <thead class="thead-black">
       <tr class="text-black">
-        <th scope="col"><input type="text"  class="form-control" placeholder="Dataset"></th>
-        <th scope="col"><input type="text"  class="form-control" placeholder="Identifier"></th>
-        <th scope="col"><input type="text"  class="form-control" placeholder="Project"></th>
-        <th scope="col"><input type="text"  class="form-control" placeholder="Rule Attributes"></th>
-        <th scope="col"><input type="text"  class="form-control" placeholder="Rule Name"></th>
-        <th scope="col"><input type="text"  class="form-control" placeholder="Rule Order"></th>
-        <th scope="col"><input type="text"  class="form-control" placeholder="Rule Type"></th>
+        <th scope="col"><input type="text" class="form-control"
+            placeholder="Dataset" bind:value={ftype["Dataset"]}></th>
+        <th scope="col"><input type="text" class="form-control"
+            placeholder="Identifier" bind:value={ftype["Identifier"]}></th>
+        <th scope="col"><input type="text" class="form-control"
+            placeholder="Project" bind:value={ftype["Project"]}></th>
+        <th scope="col"><input type="text" class="form-control"
+            placeholder="Rule Attributes" bind:value={ftype["Rule_Attributes"]}></th>
+        <th scope="col"><input type="text" class="form-control"
+            placeholder="Rule Name" bind:value={ftype["Rule_Name"]}></th>
+        <th scope="col"><input type="text" class="form-control"
+            placeholder="Rule Order" bind:value={ftype["Rule_Order"]}></th>
+        <th scope="col"><input type="text" class="form-control"
+            placeholder="Rule Type" bind:value={ftype["Rule_Type"]}></th>
       </tr>
     </thead>
     <tbody>
