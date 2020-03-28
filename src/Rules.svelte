@@ -13,10 +13,19 @@
 <script>
   import Pagination from "./Pagination.svelte";
 
-  export let rng = 10;
-  export let pos = 1;
+  export let rng = 10; // how many items to display per page
+  export let pos = 1; // which page to view
 
-  let ftype = {
+  let asc = { // list of sorting directions
+    Dataset: true,
+    Identifier: true,
+    Project: true,
+    Rule_Attributes:  true,
+    Rule_Name:  true,
+    Rule_Order:  true,
+    Rule_Type:  true,
+  };
+  let ftype = { // list of filter strings, empty string means no filter
     Dataset:"",
     Identifier:"",
     Project:"",
@@ -25,11 +34,11 @@
     Rule_Order: "",
     Rule_Type: "",
   };
-  let fdata;
-  let limit;
-  let startrng;
-  let endrng;
-  let dataseg;
+  let fdata; // data filtered from all the data
+  let limit; // how many pages of items in total
+  let startrng; // start index of the current page
+  let endrng; // end index of the current page
+  let dataseg; // page data segment from fdata
 
   // filter the data according to the associated input boxes
   $: {
@@ -45,15 +54,16 @@
   };
 
   const sortByColumn = (col) => {
-    console.log(`Sort called with: ${col}`);
+
     data.sort( function(a, b) {
       let x = a[col].toLowerCase();
       let y = b[col].toLowerCase();
-      if (x < y) {return -1;}
-      if (x > y) {return 1;}
+      if (x < y) {return asc[col] ? -1 : 1;}
+      if (x > y) {return asc[col] ? 1 : -1;}
       return 0;
     });
-    fdata = data.filter(d => {
+    asc[col] = !asc[col];
+    fdata = data.filter( d => {
       return Object.entries(ftype).every( t => {
         return d[t[0]].search(t[1]) >= 0;
       });
@@ -63,7 +73,7 @@
 </script>
 
 <div class="d-flex flex-column">
-  <div class="inner">
+  <div class="inner table-responsive">
   <table class="table bg-white">
     <thead class="thead-black">
       <tr>
@@ -71,10 +81,10 @@
           <div class="input-group">
             <input type="text" class="form-control"
                    placeholder="Dataset" bind:value={ftype["Dataset"]}>
-            <div class="input-group-append">
-              <button class="btn btn-light px-0" type="button" on:click={() => sortByColumn('Dataset')}>
+            <div class="input-group-append" on:click={() => sortByColumn('Dataset')}>
+              <span class="input-group-text px-0">
                 <i class="fa fa-sort"></i>
-              </button>
+              </span>
             </div>
           </div>
         </th>
@@ -150,13 +160,13 @@
   {#each dataseg as { Dataset, Identifier, Project,
                     Rule_Attributes, Rule_Name, Rule_Order, Rule_Type }}
     <tr>
-      <th>{Dataset}</th>
-      <th>{Identifier}</th>
-      <th>{Project}</th>
-      <th>{Rule_Attributes}</th>
-      <th>{Rule_Name}</th>
-      <th>{Rule_Order}</th>
-      <th>{Rule_Type}</th>
+      <th class="text-truncate rows">{Dataset}</th>
+      <th class="text-truncate rows">{Identifier}</th>
+      <th class="text-truncate rows">{Project}</th>
+      <th class="text-truncate rows">{Rule_Attributes}</th>
+      <th class="text-truncate rows">{Rule_Name}</th>
+      <th class="text-truncate rows">{Rule_Order}</th>
+      <th class="text-truncate rows">{Rule_Type}</th>
     </tr>
   {/each}
     </tbody>
@@ -174,6 +184,11 @@
   .inner, table, thead, tbody {
     box-shadow: 0 0 10px #eee2ff;
     border-radius: 0.5rem 0.5rem;
+  }
+  .rows {
+    max-width: 12vw;
+    min-width: 3rem;
+    overflow: hidden;
   }
   table > thead > tr:first-child > th {
     border: none;
@@ -198,9 +213,12 @@
   }
   input {
     color: black;
+    padding: 0.125rem;
+    margin: 0.0126rem;
   }
   table {
     box-sizing: border-box;
+    max-width: 100%;
   }
 
 </style>
