@@ -133,19 +133,19 @@ $btn-border-radius-sm:        0.2rem !default;
 
 $input-disabled-bg:              $gray-400 !default;
 
-$input-border-color:             $gray-400 !default;
+$input-border-color:             $primary !default;
 
-$input-group-addon-color:           $white !default;
-$input-group-addon-bg:              $gray-700 !default;
+$input-group-addon-color:           $gray-700 !default;
+$input-group-addon-bg:              $light !default;
 $input-group-addon-border-color:    transparent !default;
 
-$custom-file-color:                 $white !default;
-$custom-file-border-color:          $gray-700 !default;
+$custom-file-color:                 $gray-700 !default;
+$custom-file-border-color:          $success !default;
 
 // Dropdowns
 
 $dropdown-bg:                    $light !default;
-$dropdown-divider-bg:            $gray-800 !default;
+$dropdown-divider-bg:            $success !default;
 
 $dropdown-link-color:            $dark !default;
 $dropdown-link-hover-color:      $light !default;
@@ -247,20 +247,20 @@ $pagination-disabled-border-color:     $pagination-border-color !default;
 
 // Jumbotron
 
-$jumbotron-bg:                   $gray-600 !default;
+$jumbotron-bg:                   $success !default;
 
 // Cards
 
-$card-bg:                  $gray-700 !default;
+$card-bg:                  $light !default;
 
 // Tooltips
 
-$tooltip-bg:                  $gray-700 !default;
+$tooltip-bg:                  $primary !default;
 $tooltip-opacity:             1 !default;
 
 // Popovers
 
-$popover-bg:                          $gray-700 !default;
+$popover-bg:                          $primary !default;
 
 // Modals
 
@@ -270,26 +270,26 @@ $modal-header-border-color:   $gray-700 !default;
 
 // Progress bars
 
-$progress-bg:                   $gray-700 !default;
+$progress-bg:                   $success !default;
 
 // List group
 
-$list-group-bg:                  $gray-800 !default;
-$list-group-border-color:        $gray-700 !default;
+$list-group-bg:                  $light !default;
+$list-group-border-color:        $success !default;
 
-$list-group-hover-bg:                 $primary !default;
+$list-group-hover-bg:                 $success !default;
 
-$list-group-disabled-bg:         $gray-700 !default;
+$list-group-disabled-bg:         $gray-300 !default;
 
 $list-group-action-active-bg:         $primary !default;
 
 // Breadcrumbs
 
-$breadcrumb-bg:                 $gray-700 !default;
+$breadcrumb-bg:                 $light !default;
 
 // Close
 
-$close-color:                 $white !default;
+$close-color:                 $primary !default;
 $close-text-shadow:           none !default;
 
 // Code

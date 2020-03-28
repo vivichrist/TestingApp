@@ -1408,7 +1408,7 @@ pre {
   color: #282828;
   background-color: #fff;
   background-clip: padding-box;
-  border: 1px solid #ADAFAE;
+  border: 1px solid #755A99;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
   @media (prefers-reduced-motion: reduce) {
@@ -2334,7 +2334,7 @@ input[type="button"].btn-block {
   height: 0;
   margin: 0.5rem 0;
   overflow: hidden;
-  border-top: 1px solid #222; }
+  border-top: 1px solid #9c87b8; }
 
 .dropdown-item {
   display: block;
@@ -2546,10 +2546,10 @@ input[type="button"].btn-block {
   font-size: 0.875rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #fff;
+  color: #282828;
   text-align: center;
   white-space: nowrap;
-  background-color: #282828;
+  background-color: #ece7f1;
   border: 1px solid transparent;
   border-radius: 0.25rem; }
   .input-group-text input[type="radio"],
@@ -2730,7 +2730,7 @@ input[type="button"].btn-block {
   color: #282828;
   vertical-align: middle;
   background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23222' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e") no-repeat right 1rem center/8px 10px;
-  border: 1px solid #ADAFAE;
+  border: 1px solid #755A99;
   border-radius: 0.25rem;
   appearance: none; }
   .custom-select:focus {
@@ -2801,9 +2801,9 @@ input[type="button"].btn-block {
   padding: 0.375rem 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #fff;
+  color: #282828;
   background-color: #fff;
-  border: 1px solid #282828;
+  border: 1px solid #9c87b8;
   border-radius: 0.25rem; }
   .custom-file-label::after {
     position: absolute;
@@ -2815,9 +2815,9 @@ input[type="button"].btn-block {
     height: calc(1.5em + 0.75rem);
     padding: 0.375rem 1rem;
     line-height: 1.5;
-    color: #fff;
+    color: #282828;
     content: "Browse";
-    background-color: #282828;
+    background-color: #ece7f1;
     border-left: inherit;
     border-radius: 0 0.25rem 0.25rem 0; }
 
@@ -3303,7 +3303,7 @@ input[type="button"].btn-block {
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #282828;
+  background-color: #ece7f1;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem; }
@@ -3468,7 +3468,7 @@ input[type="button"].btn-block {
   padding: 0.75rem 1rem;
   margin-bottom: 1rem;
   list-style: none;
-  background-color: #282828;
+  background-color: #ece7f1;
   border-radius: 0.25rem; }
 
 .breadcrumb-item + .breadcrumb-item {
@@ -3673,7 +3673,7 @@ input[type="button"].btn-block {
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  background-color: #555;
+  background-color: #9c87b8;
   border-radius: 0.5rem; }
   @media (min-width: 576px) {
     .jumbotron {
@@ -3788,7 +3788,7 @@ input[type="button"].btn-block {
   height: 1rem;
   overflow: hidden;
   font-size: 0.65625rem;
-  background-color: #282828;
+  background-color: #9c87b8;
   border-radius: 0.25rem; }
 
 .progress-bar {
@@ -3834,7 +3834,7 @@ input[type="button"].btn-block {
     z-index: 1;
     color: #282828;
     text-decoration: none;
-    background-color: #755A99; }
+    background-color: #9c87b8; }
   .list-group-item-action:active {
     color: #ece7f1;
     background-color: #755A99; }
@@ -3843,8 +3843,8 @@ input[type="button"].btn-block {
   position: relative;
   display: block;
   padding: 0.75rem 1.25rem;
-  background-color: #222;
-  border: 1px solid #282828; }
+  background-color: #ece7f1;
+  border: 1px solid #9c87b8; }
   .list-group-item:first-child {
     border-top-left-radius: 0.25rem;
     border-top-right-radius: 0.25rem; }
@@ -3854,7 +3854,7 @@ input[type="button"].btn-block {
   .list-group-item.disabled, .list-group-item:disabled {
     color: #555;
     pointer-events: none;
-    background-color: #282828; }
+    background-color: #dee2e6; }
   .list-group-item.active {
     z-index: 2;
     color: #fff;
@@ -4058,11 +4058,11 @@ input[type="button"].btn-block {
   font-size: 1.3125rem;
   font-weight: 700;
   line-height: 1;
-  color: #fff;
+  color: #755A99;
   text-shadow: none;
   opacity: .5; }
   .close:hover {
-    color: #fff;
+    color: #755A99;
     text-decoration: none; }
   .close:not(:disabled):not(.disabled):hover, .close:not(:disabled):not(.disabled):focus {
     opacity: .75; }
@@ -4302,7 +4302,7 @@ a.close.disabled {
     .bs-tooltip-top .arrow::before, .bs-tooltip-auto[x-placement^="top"] .arrow::before {
       top: 0;
       border-width: 0.4rem 0.4rem 0;
-      border-top-color: #282828; }
+      border-top-color: #755A99; }
 
 .bs-tooltip-right, .bs-tooltip-auto[x-placement^="right"] {
   padding: 0 0.4rem; }
@@ -4313,7 +4313,7 @@ a.close.disabled {
     .bs-tooltip-right .arrow::before, .bs-tooltip-auto[x-placement^="right"] .arrow::before {
       right: 0;
       border-width: 0.4rem 0.4rem 0.4rem 0;
-      border-right-color: #282828; }
+      border-right-color: #755A99; }
 
 .bs-tooltip-bottom, .bs-tooltip-auto[x-placement^="bottom"] {
   padding: 0.4rem 0; }
@@ -4322,7 +4322,7 @@ a.close.disabled {
     .bs-tooltip-bottom .arrow::before, .bs-tooltip-auto[x-placement^="bottom"] .arrow::before {
       bottom: 0;
       border-width: 0 0.4rem 0.4rem;
-      border-bottom-color: #282828; }
+      border-bottom-color: #755A99; }
 
 .bs-tooltip-left, .bs-tooltip-auto[x-placement^="left"] {
   padding: 0 0.4rem; }
@@ -4333,14 +4333,14 @@ a.close.disabled {
     .bs-tooltip-left .arrow::before, .bs-tooltip-auto[x-placement^="left"] .arrow::before {
       left: 0;
       border-width: 0.4rem 0 0.4rem 0.4rem;
-      border-left-color: #282828; }
+      border-left-color: #755A99; }
 
 .tooltip-inner {
   max-width: 200px;
   padding: 0.25rem 0.5rem;
   color: #fff;
   text-align: center;
-  background-color: #282828;
+  background-color: #755A99;
   border-radius: 0.25rem; }
 
 .popover {
@@ -4366,7 +4366,7 @@ a.close.disabled {
   line-break: auto;
   font-size: 0.765625rem;
   word-wrap: break-word;
-  background-color: #282828;
+  background-color: #755A99;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem; }
@@ -4394,7 +4394,7 @@ a.close.disabled {
     .bs-popover-top > .arrow::after, .bs-popover-auto[x-placement^="top"] > .arrow::after {
       bottom: 1px;
       border-width: 0.5rem 0.5rem 0;
-      border-top-color: #282828; }
+      border-top-color: #755A99; }
 
 .bs-popover-right, .bs-popover-auto[x-placement^="right"] {
   margin-left: 0.5rem; }
@@ -4410,7 +4410,7 @@ a.close.disabled {
     .bs-popover-right > .arrow::after, .bs-popover-auto[x-placement^="right"] > .arrow::after {
       left: 1px;
       border-width: 0.5rem 0.5rem 0.5rem 0;
-      border-right-color: #282828; }
+      border-right-color: #755A99; }
 
 .bs-popover-bottom, .bs-popover-auto[x-placement^="bottom"] {
   margin-top: 0.5rem; }
@@ -4423,7 +4423,7 @@ a.close.disabled {
     .bs-popover-bottom > .arrow::after, .bs-popover-auto[x-placement^="bottom"] > .arrow::after {
       top: 1px;
       border-width: 0 0.5rem 0.5rem 0.5rem;
-      border-bottom-color: #282828; }
+      border-bottom-color: #755A99; }
   .bs-popover-bottom .popover-header::before, .bs-popover-auto[x-placement^="bottom"] .popover-header::before {
     position: absolute;
     top: 0;
@@ -4432,7 +4432,7 @@ a.close.disabled {
     width: 1rem;
     margin-left: -0.5rem;
     content: "";
-    border-bottom: 1px solid #202020; }
+    border-bottom: 1px solid #6e548f; }
 
 .bs-popover-left, .bs-popover-auto[x-placement^="left"] {
   margin-right: 0.5rem; }
@@ -4448,15 +4448,15 @@ a.close.disabled {
     .bs-popover-left > .arrow::after, .bs-popover-auto[x-placement^="left"] > .arrow::after {
       right: 1px;
       border-width: 0.5rem 0 0.5rem 0.5rem;
-      border-left-color: #282828; }
+      border-left-color: #755A99; }
 
 .popover-header {
   padding: 0.5rem 0.75rem;
   margin-bottom: 0;
   font-size: 0.875rem;
   color: #443459;
-  background-color: #202020;
-  border-bottom: 1px solid #141414;
+  background-color: #6e548f;
+  border-bottom: 1px solid #614b7f;
   border-top-left-radius: calc(0.5rem - 1px);
   border-top-right-radius: calc(0.5rem - 1px); }
   .popover-header:empty {
