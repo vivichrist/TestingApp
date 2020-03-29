@@ -73,6 +73,9 @@
 </script>
 
 <div class="d-flex flex-column">
+  <div class="alert alert-success m-0 py-1" role="button">
+    <i class="fa fa-plus"></i> Add a Rule
+  </div>
   <div class="inner table-responsive">
   <table class="table bg-white">
     <thead class="thead-black">
