@@ -11,6 +11,7 @@
 </script>
 
 <script>
+  import RuleColumn from "./RuleColumn.svelte";
   import Pagination from "./Pagination.svelte";
 
   export let rng = 10; // how many items to display per page
@@ -34,27 +35,31 @@
     Rule_Order: "",
     Rule_Type: "",
   };
-  let fdata; // data filtered from all the data
-  let limit; // how many pages of items in total
-  let startrng; // start index of the current page
-  let endrng; // end index of the current page
-  let dataseg; // page data segment from fdata
+  // let fields = [
+  //   "Dataset",
+  //   "Identifier",
+  //   "Project",
+  //   "Rule_Attributes",
+  //   "Rule_Name",
+  //   "Rule_Order",
+  //   "Rule_Type"]
+  // };
+  let startrng;
+  let endrng;
+  let dataseg;
 
   // filter the data according to the associated input boxes
-  $: {
-    fdata = data.filter(d => {
+  $: fdata = data.filter(d => { // data filtered from all the data
       return Object.entries(ftype).every( t => {
         return d[t[0]].search(t[1]) >= 0;
       });
     });
-    limit = Math.floor(fdata.length / rng);
-    startrng = Math.max(0, Math.min(limit, pos) - 1) * rng;
-    endrng = Math.min(startrng + Number(rng), data.length);
-    dataseg = fdata.slice(startrng, endrng);
-  };
+  $: limit = Math.floor(fdata.length / rng); // how many pages of items in total
+  $: startrng = Math.max(0, Math.min(limit, pos) - 1) * rng; // start index of the current page
+  $: endrng = Math.min(startrng + Number(rng), data.length); // end index of the current page
+  $: dataseg = fdata.slice(startrng, endrng); // page data segment from fdata
 
   const sortByColumn = (col) => {
-
     data.sort( function(a, b) {
       let x = a[col].toLowerCase();
       let y = b[col].toLowerCase();
@@ -80,7 +85,7 @@
   <table class="table bg-white">
     <thead class="thead-black">
       <tr>
-        <th scope="col">
+        <!-- <th scope="col">
           <div class="input-group">
             <input type="text" class="form-control"
                    placeholder="Dataset" bind:value={ftype["Dataset"]}>
@@ -90,8 +95,12 @@
               </span>
             </div>
           </div>
-        </th>
-        <th scope="col">
+        </th> -->
+        {#each [...Object.keys(ftype)] as name}
+        <RuleColumn name={name} bind:filter={ftype[name]}
+                    callback={() => sortByColumn(name)} bind:asc={asc[name]} />
+        {/each}
+        <!-- <th scope="col">
           <div class="input-group align-self-center">
             <input type="text" class="form-control"
                    placeholder="Identifier" bind:value={ftype["Identifier"]}>
@@ -101,8 +110,8 @@
               </span>
             </div>
           </div>
-        </th>
-        <th scope="col">
+        </th> -->
+        <!-- <th scope="col">
           <div class="input-group align-self-center">
             <input type="text" class="form-control"
                    placeholder="Project" bind:value={ftype["Project"]}>
@@ -112,8 +121,8 @@
               </span>
             </div>
           </div>
-        </th>
-        <th scope="col">
+        </th> -->
+        <!-- <th scope="col">
           <div class="input-group align-self-center">
             <input type="text" class="form-control"
                    placeholder="Rule Attributes" bind:value={ftype["Rule_Attributes"]}>
@@ -123,8 +132,8 @@
               </span>
             </div>
           </div>
-        </th>
-        <th scope="col">
+        </th> -->
+        <!-- <th scope="col">
           <div class="input-group align-self-center">
             <input type="text" class="form-control"
                     placeholder="Rule Name" bind:value={ftype["Rule_Name"]}>
@@ -134,8 +143,8 @@
               </span>
             </div>
           </div>
-        </th>
-        <th scope="col">
+        </th> -->
+        <!-- <th scope="col">
           <div class="input-group align-self-center">
             <input type="text" class="form-control"
                     placeholder="Rule Order" bind:value={ftype["Rule_Order"]}>
@@ -145,8 +154,8 @@
               </span>
             </div>
           </div>
-        </th>
-        <th scope="col">
+        </th> -->
+        <!-- <th scope="col">
           <div class="input-group align-self-center">
             <input type="text" class="form-control"
                    placeholder="Rule Type" bind:value={ftype["Rule_Type"]}>
@@ -156,7 +165,7 @@
               </span>
             </div>
           </div>
-        </th>
+        </th> -->
       </tr>
     </thead>
     <tbody>
@@ -189,7 +198,7 @@
     border-radius: 0.5rem 0.5rem;
   }
   .rows {
-    max-width: 12vw;
+    max-width: 14vw;
     min-width: 3rem;
     overflow: hidden;
   }

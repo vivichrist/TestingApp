@@ -20,7 +20,8 @@
 
 <header class="bg-primary">
   <nav class="navbar navbar-expand-md bg-primary navbar-dark fixed-top">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- nav menu -->

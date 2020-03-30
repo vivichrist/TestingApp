@@ -29,6 +29,15 @@
     margin-left: 0.3rem;
     margin-right: 0.3rem;
   }
+  #page-btn {
+    width: 2.25rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
+  #np-btn {
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
+  }
 </style>
 
 <div class="d-flex flex-row justify-content-between">
@@ -37,12 +46,12 @@
     <div class="btn-group dropup">
       <button  type="button" id="dropdownMenuButton" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false"
-               class="btn btn-outline-primary btn-xs dropdown-toggle">
+               class="btn btn-outline-primary btn-xs dropdown-toggle rounded-pill p-1">
         {pos}
       </button>
       <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton" direction="left" aria-hidden="true">
         {#each [...Array(limit).keys()] as i}
-        <button class="dropdown-item" type="button" role="menuitem"
+        <button class="dropdown-item py-0" type="button" role="menuitem"
                 on:click={update(i + 1)}>
           {Math.max(1, i + 1)}
         </button>
@@ -56,27 +65,34 @@
     <ul class="pagination">
       <li class="page-item">
         <button
-          class="page-link"
+          class="btn btn-light btn-outline-primary rounded-pill m-1"
+                  id="np-btn"
           on:click={update(pos - 1)}
           aria-label="Previous">
-          <i aria-hidden="true" class="fas fa-arrow-alt-circle-left" />
+          <i aria-hidden="true" class="fas fa-angle-left" />
           <span class="sr-only">Previous</span>
         </button>
       </li>
       {#each arr as n}
         {#if n === pos}
           <li class="page-item active">
-            <button class="page-link" on:click={update(n)}>{n}</button>
+            <button class="btn btn-primary rounded-pill m-1"
+                    id="page-btn"
+                    on:click={update(n)}>{n}</button>
           </li>
         {:else}
           <li class="page-item">
-            <button class="page-link" on:click={update(n)}>{n}</button>
+            <button class="btn btn-outline-primary rounded-pill m-1"
+                    id="page-btn"
+                    on:click={update(n)}>{n}</button>
           </li>
         {/if}
       {/each}
       <li class="page-item">
-        <button class="page-link" on:click={update(pos + 1)} aria-label="Next">
-          <i aria-hidden="true" class="fas fa-arrow-alt-circle-right" />
+        <button class="btn btn-light btn-outline-primary rounded-pill m-1"
+                id="np-btn"
+                on:click={update(pos + 1)} aria-label="Next">
+          <i aria-hidden="true" class="fas fa-angle-right" />
           <span class="sr-only">Next</span>
         </button>
       </li>
@@ -87,12 +103,12 @@
     <div class="btn-group dropup">
       <button  type="button" id="dropdownMenuButton" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false"
-               class="btn btn-outline-primary btn-xs dropdown-toggle">
+               class="btn btn-outline-primary btn-xs dropdown-toggle rounded-pill p-1">
         {rng}
       </button>
       <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton" direction="left" aria-hidden="true">
-        {#each [...Array(16).keys()].map(n => n + 5) as i}
-        <button class="dropdown-item" type="button" role="menuitem"
+        {#each [10, 20, 50, 100, 200] as i}
+        <button class="dropdown-item py-0" type="button" role="menuitem"
                 on:click={() => {rng = i;update(1);}}>
           {i}
         </button>
