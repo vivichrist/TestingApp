@@ -14,8 +14,7 @@
 <th scope="col">
     <div class="input-group">
         <input type="text" class="form-control"
-               placeholder={name} bind:value={filter} data-toggle="tooltip"
-               data-placement="bottom" title={name}>
+               placeholder={name} bind:value={filter} />
         <div class="input-group-append" on:click={callback}>
             <span class="input-group-text px-0">
             {#if column == name}
@@ -41,6 +40,5 @@
     color: black;
     padding: 0.125rem;
     margin: 0.0126rem;
-    container: 'th';
   }
 </style>
