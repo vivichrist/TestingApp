@@ -41,4 +41,23 @@
     padding: 0.125rem;
     margin: 0.0126rem;
   }
+  @media screen and (min-width: 1260px) {
+    input {
+      max-width: 14vw;
+      font-size: 12pt;
+    }
+  }
+  @media screen and (max-width: 1260px) {
+
+    input {
+      max-width: 12vw;
+      font-size: 10pt;
+    }
+  }
+  @media screen and (max-width: 970px) {
+    input {
+      max-width: 10vw;
+      font-size: 9pt;
+    }
+  }
 </style>

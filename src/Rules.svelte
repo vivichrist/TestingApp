@@ -115,23 +115,35 @@
   /* table {
   } */
   .rows {
-    max-width: 14vw;
     min-width: 3rem;
     overflow: hidden;
+    font-weight: normal;
   }
   @media screen and (min-width: 1260px) {
     .d-flex {
       height: calc(100vh - 4.5rem);
+    }
+    .rows {
+      max-width: 14vw;
+      font-size: 12pt;
     }
   }
   @media screen and (max-width: 1260px) {
     .d-flex {
       height: calc(100vh - 4.4rem);
     }
+    .rows {
+      max-width: 12vw;
+      font-size: 10pt;
+    }
   }
   @media screen and (max-width: 970px) {
     .d-flex {
       height: calc(100vh - 4.2rem);
+    }
+    .rows {
+      max-width: 10vw;
+      font-size: 9pt;
     }
   }
   table {
