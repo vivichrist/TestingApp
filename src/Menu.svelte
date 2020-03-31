@@ -67,7 +67,6 @@
 <style>
   header {
     padding: 0;
-    font-family: Tahoma,sans-serif;
   }
   li {
     padding: 0;
@@ -86,7 +85,7 @@
       height: 4.5rem;
     }
     .btn {
-      font-size: 14pt;
+      font-size: 18pt;
       padding-left: 3rem;
       padding-right: 3rem;
     }
@@ -104,7 +103,7 @@
       height: 4.4rem;
     }
     .btn {
-      font-size: 12pt;
+      font-size: 16pt;
       padding-left: 2rem;
       padding-right: 2rem;
     }
@@ -122,7 +121,7 @@
       height: 4.2rem;
     }
     .btn {
-      font-size: 10pt;
+      font-size: 12pt;
       padding-left: 1rem;
       padding-right: 1rem;
     }

@@ -103,10 +103,11 @@
     <div class="btn-group dropup">
       <button  type="button" id="dropdownMenuButton" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false"
-               class="btn btn-outline-primary btn-xs dropdown-toggle rounded-pill p-1">
+               class="btn btn-outline-primary dropdown-toggle rounded-pill p-1">
         {rng}
       </button>
-      <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton" direction="left" aria-hidden="true">
+      <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton"
+           direction="left" aria-hidden="true">
         {#each [10, 20, 50, 100, 200] as i}
         <button class="dropdown-item py-0" type="button" role="menuitem"
                 on:click={() => {rng = i;update(1);}}>

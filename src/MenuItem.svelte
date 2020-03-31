@@ -32,6 +32,9 @@
 
 
 <style>
+  .btn:hover {
+    text-shadow: 1px 1px 2px black;
+  }
   div {
     z-index: 1;
   }

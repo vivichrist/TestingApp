@@ -16,17 +16,11 @@
 
   export let rng = 10; // how many items to display per page
   export let pos = 1; // which page to view
-
-  let asc = { // list of sorting directions
-    Dataset: true,
-    Identifier: true,
-    Project: true,
-    Rule_Attributes:  true,
-    Rule_Name:  true,
-    Rule_Order:  true,
-    Rule_Type:  true,
-  };
-  let ftype = { // list of filter strings, empty string means no filter
+  // list of sorting directions
+  let sorting = 2;
+  let column = "Dataset";
+  // list of filter strings, empty string means no filter
+  let ftype = {
     Dataset:"",
     Identifier:"",
     Project:"",
@@ -35,18 +29,6 @@
     Rule_Order: "",
     Rule_Type: "",
   };
-  // let fields = [
-  //   "Dataset",
-  //   "Identifier",
-  //   "Project",
-  //   "Rule_Attributes",
-  //   "Rule_Name",
-  //   "Rule_Order",
-  //   "Rule_Type"]
-  // };
-  let startrng;
-  let endrng;
-  let dataseg;
 
   // filter the data according to the associated input boxes
   $: fdata = data.filter(d => { // data filtered from all the data
@@ -54,26 +36,37 @@
         return d[t[0]].search(t[1]) >= 0;
       });
     });
-  $: limit = Math.floor(fdata.length / rng); // how many pages of items in total
-  $: startrng = Math.max(0, Math.min(limit, pos) - 1) * rng; // start index of the current page
-  $: endrng = Math.min(startrng + Number(rng), data.length); // end index of the current page
-  $: dataseg = fdata.slice(startrng, endrng); // page data segment from fdata
+  // how many pages of items in total.
+  $: limit = Math.floor(fdata.length / rng);
+  // start index of the current page.
+  $: startrng = Math.max(0, Math.min(limit, pos) - 1) * rng;
+  // end index of the current page.
+  $: endrng = Math.min(startrng + Number(rng), data.length);
+  // page data segment from fdata.
+  $: dataseg = fdata.slice(startrng, endrng);
 
   const sortByColumn = (col) => {
-    data.sort( function(a, b) {
-      let x = a[col].toLowerCase();
-      let y = b[col].toLowerCase();
-      if (x < y) {return asc[col] ? -1 : 1;}
-      if (x > y) {return asc[col] ? 1 : -1;}
-      return 0;
-    });
-    asc[col] = !asc[col];
-    fdata = data.filter( d => {
-      return Object.entries(ftype).every( t => {
-        return d[t[0]].search(t[1]) >= 0;
+    if (column === col) {
+      sorting = (sorting + 1) % 3;
+    } else {
+      column = col;
+      sorting = 0;
+    }
+    if (sorting < 2) {
+      data.sort( function(a, b) {
+        let x = a[col].toLowerCase();
+        let y = b[col].toLowerCase();
+        if (x < y) {return sorting === 0 ? -1 : 1;}
+        if (x > y) {return sorting === 0  ? 1 : -1;}
+        return 0;
       });
-    });
-    dataseg = fdata.slice(startrng, endrng);
+      fdata = data.filter( d => {
+        return Object.entries(ftype).every( t => {
+          return d[t[0]].search(t[1]) >= 0;
+        });
+      });
+      dataseg = fdata.slice(startrng, endrng);
+    }
   };
 </script>
 
@@ -85,105 +78,24 @@
   <table class="table bg-white">
     <thead class="thead-black">
       <tr>
-        <!-- <th scope="col">
-          <div class="input-group">
-            <input type="text" class="form-control"
-                   placeholder="Dataset" bind:value={ftype["Dataset"]}>
-            <div class="input-group-append" on:click={() => sortByColumn('Dataset')}>
-              <span class="input-group-text px-0">
-                <i class="fa fa-sort"></i>
-              </span>
-            </div>
-          </div>
-        </th> -->
         {#each [...Object.keys(ftype)] as name}
-        <RuleColumn name={name} bind:filter={ftype[name]}
-                    callback={() => sortByColumn(name)} bind:asc={asc[name]} />
+        <RuleColumn name={name} bind:filter={ftype[name]} bind:column={column}
+                    callback={() => sortByColumn(name)} bind:sort={sorting} />
         {/each}
-        <!-- <th scope="col">
-          <div class="input-group align-self-center">
-            <input type="text" class="form-control"
-                   placeholder="Identifier" bind:value={ftype["Identifier"]}>
-            <div class="input-group-append" on:click={() => sortByColumn('Identifier')}>
-              <span class="input-group-text px-0">
-                <i class="fa fa-sort"></i>
-              </span>
-            </div>
-          </div>
-        </th> -->
-        <!-- <th scope="col">
-          <div class="input-group align-self-center">
-            <input type="text" class="form-control"
-                   placeholder="Project" bind:value={ftype["Project"]}>
-            <div class="input-group-append" on:click={() => sortByColumn('Project')}>
-              <span class="input-group-text px-0">
-                <i class="fa fa-sort"></i>
-              </span>
-            </div>
-          </div>
-        </th> -->
-        <!-- <th scope="col">
-          <div class="input-group align-self-center">
-            <input type="text" class="form-control"
-                   placeholder="Rule Attributes" bind:value={ftype["Rule_Attributes"]}>
-            <div class="input-group-append" on:click="{() => sortByColumn('Rule_Attributes')}">
-              <span class="input-group-text px-0">
-                <i class="fa fa-sort"></i>
-              </span>
-            </div>
-          </div>
-        </th> -->
-        <!-- <th scope="col">
-          <div class="input-group align-self-center">
-            <input type="text" class="form-control"
-                    placeholder="Rule Name" bind:value={ftype["Rule_Name"]}>
-            <div class="input-group-append" on:click="{() => sortByColumn('Rule_Name')}">
-              <span class="input-group-text px-0">
-                <i class="fa fa-sort"></i>
-              </span>
-            </div>
-          </div>
-        </th> -->
-        <!-- <th scope="col">
-          <div class="input-group align-self-center">
-            <input type="text" class="form-control"
-                    placeholder="Rule Order" bind:value={ftype["Rule_Order"]}>
-            <div class="input-group-append" on:click="{() => sortByColumn('Rule_Order')}">
-              <span class="input-group-text px-0">
-                <i class="fa fa-sort"></i>
-              </span>
-            </div>
-          </div>
-        </th> -->
-        <!-- <th scope="col">
-          <div class="input-group align-self-center">
-            <input type="text" class="form-control"
-                   placeholder="Rule Type" bind:value={ftype["Rule_Type"]}>
-            <div class="input-group-append" on:click="{() => sortByColumn('Rule_Type')}">
-              <span class="input-group-text px-0">
-                <i class="fa fa-sort"></i>
-              </span>
-            </div>
-          </div>
-        </th> -->
       </tr>
     </thead>
     <tbody>
-  {#each dataseg as { Dataset, Identifier, Project,
-                    Rule_Attributes, Rule_Name, Rule_Order, Rule_Type }}
-    <tr>
-      <th class="text-truncate rows">{Dataset}</th>
-      <th class="text-truncate rows">{Identifier}</th>
-      <th class="text-truncate rows">{Project}</th>
-      <th class="text-truncate rows">{Rule_Attributes}</th>
-      <th class="text-truncate rows">{Rule_Name}</th>
-      <th class="text-truncate rows">{Rule_Order}</th>
-      <th class="text-truncate rows">{Rule_Type}</th>
-    </tr>
-  {/each}
+    {#each dataseg as seg}
+      <tr>
+      {#each [...Object.keys(ftype)] as name}
+        <th class="text-truncate rows">{seg[name]}</th>
+      {/each}
+      </tr>
+    {/each}
     </tbody>
   </table>
-    <Pagination pages={Math.min(5, fdata.length)} bind:pos={pos} bind:limit={limit} bind:rng={rng}/>
+    <Pagination pages={Math.min(5, fdata.length)} bind:pos={pos}
+                bind:limit={limit} bind:rng={rng}/>
   </div>
 </div>
 
@@ -191,19 +103,21 @@
   .d-flex {
     display: flex;
     overflow: auto;
-    padding: 1.5rem;
+    padding: 0.8rem;
   }
-  .inner, table, thead, tbody {
+  .inner {
+    background-color: white;
     box-shadow: 0 0 10px #eee2ff;
     border-radius: 0.5rem 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
+  /* table {
+  } */
   .rows {
     max-width: 14vw;
     min-width: 3rem;
     overflow: hidden;
-  }
-  table > thead > tr:first-child > th {
-    border: none;
   }
   @media screen and (min-width: 1260px) {
     .d-flex {
@@ -219,14 +133,6 @@
     .d-flex {
       height: calc(100vh - 4.2rem);
     }
-  }
-  input::placeholder {
-    color: #bd8eff;
-  }
-  input {
-    color: black;
-    padding: 0.125rem;
-    margin: 0.0126rem;
   }
   table {
     box-sizing: border-box;
