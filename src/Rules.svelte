@@ -47,7 +47,7 @@
 
   const sortByColumn = (col) => {
     if (column === col) {
-      sorting = (sorting + 1) % 3;
+      sorting = sorting ? 0 : 1;
     } else {
       column = col;
       sorting = 0;
@@ -117,7 +117,9 @@
   .rows {
     min-width: 3rem;
     overflow: hidden;
-    font-weight: normal;
+    font-weight: 400;
+    color: #505050;
+    line-height: 2.5rem;
   }
   @media screen and (min-width: 1260px) {
     .d-flex {
@@ -133,7 +135,7 @@
       height: calc(100vh - 4.4rem);
     }
     .rows {
-      max-width: 12vw;
+      max-width: 10vw;
       font-size: 10pt;
     }
   }
@@ -142,7 +144,7 @@
       height: calc(100vh - 4.2rem);
     }
     .rows {
-      max-width: 10vw;
+      max-width: 8vw;
       font-size: 9pt;
     }
   }
