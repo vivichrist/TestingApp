@@ -74,7 +74,7 @@
     <div class="btn-group dropup">
       <button  type="button" id="dropdownMenuButton" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false"
-               class="btn btn-outline-primary btn-xs dropdown-toggle rounded-pill p-1">
+               class="btn btn-outline-primary btn-xs dropdown-toggle rounded-pill py-0 px-2">
         {pos}
       </button>
       <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton"
@@ -146,7 +146,7 @@
     <div class="btn-group dropup">
       <button  type="button" id="dropdownMenuButton" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false"
-               class="btn btn-outline-primary dropdown-toggle rounded-pill p-1">
+               class="btn btn-outline-primary dropdown-toggle rounded-pill py-0 px-2">
         {rng}
       </button>
       <div class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuButton"
