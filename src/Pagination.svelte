@@ -115,7 +115,7 @@
                     id="page-btn"
                     on:click={update(n)}>{n}</button>
           </li>
-        {:else}
+        {:else if n <= limit}
           <li class="page-item">
             <button class="btn btn-outline-success font-weight-light rounded-pill nfc"
                     id="page-btn"
