@@ -5,6 +5,7 @@
     Events: "Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0",
     Rules: "Add_Rules 2 divider 0 All_Rules 3 Change_Rules 4 Validation_Rules 5 Consume_Rules 6 divider 0 Lineage 7",
     Consume: "Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0",
+    Plus: "Blah 0 divider 0 Blah_Blah 0"
   };
 </script>
 
@@ -12,6 +13,7 @@
   import MenuItem from "./MenuItem.svelte";
   import TopItem from "./TopItem.svelte";
   import MenuDrop from "./MenuDrop.svelte";
+  import MenuPopup from "./MenuPopup.svelte";
   import Icon from "./Icon.svelte";
 
   export let user = "";
@@ -48,8 +50,8 @@
       </ul>
       <!-- icon buttons and user button -->
       <ul class="navbar-nav ml-auto mr-3">
-        <li class="nav-item">
-          <Icon awesome="fas fa-plus" />
+        <li class="nav-item btn-group">
+          <MenuPopup awesome="fas fa-plus" items={menus.Plus}/>
         </li>
         <li class="nav-item">
           <Icon awesome="fas fa-cog" />
