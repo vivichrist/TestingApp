@@ -24,13 +24,15 @@
 </script>
 
 <style>
-  .page-link {
-    border-radius: 0.85rem;
-    margin-left: 0.3rem;
-    margin-right: 0.3rem;
-  }
   #page-btn {
     width: 2.25rem;
+  }
+  .nfc {
+    border-color: #c2c2c2;
+    color: #505050;
+  }
+  #np-btn.btn-white {
+    color: #c2c2c2;
   }
   #np-btn, #page-btn {
     padding-left: 0.8rem;
@@ -38,7 +40,7 @@
   }
   @media screen and (min-width: 1260px) {
     #page-btn {
-      font-size: 12pt;
+      font-size: 10pt;
       margin: 1rem;
     }
     #np-btn, #page-btn {
@@ -47,7 +49,7 @@
   }
   @media screen and (max-width: 1260px) {
     #page-btn {
-      font-size: 10pt;
+      font-size: 9pt;
       margin: 0.5rem;
     }
     #np-btn, #page-btn {
@@ -56,7 +58,7 @@
   }
   @media screen and (max-width: 970px) {
     #page-btn {
-      font-size: 9pt;
+      font-size: 8pt;
       padding-left: 0.125rem;
       padding-right: 0.125rem;
     }
@@ -91,35 +93,51 @@
   <nav class="nav justify-content-center" aria-label="Page navigation">
     <ul class="pagination">
       <li class="page-item">
+      {#if pos == 1}
+        <button class="btn btn-white btn-outline-light rounded-pill"
+                id="np-btn" aria-label="Previous">
+          <i aria-hidden="true" class="fas fa-angle-left" />
+          <span class="sr-only">Previous</span>
+        </button>
+      {:else}
         <button class="btn btn-light btn-outline-primary rounded-pill"
                 id="np-btn" on:click={update(pos - 1)}
                 aria-label="Previous">
           <i aria-hidden="true" class="fas fa-angle-left" />
           <span class="sr-only">Previous</span>
         </button>
+      {/if}
       </li>
       {#each arr as n}
         {#if n === pos}
           <li class="page-item active">
-            <button class="btn btn-primary rounded-pill"
+            <button class="btn btn-outline-dark font-weight-bold rounded-pill"
                     id="page-btn"
                     on:click={update(n)}>{n}</button>
           </li>
         {:else}
           <li class="page-item">
-            <button class="btn btn-outline-primary rounded-pill"
+            <button class="btn btn-outline-success font-weight-light rounded-pill nfc"
                     id="page-btn"
                     on:click={update(n)}>{n}</button>
           </li>
         {/if}
       {/each}
       <li class="page-item">
+      {#if pos == limit}
+        <button class="btn btn-white btn-outline-light rounded-pill"
+                id="np-btn" aria-label="Next">
+          <i aria-hidden="true" class="fas fa-angle-right" />
+          <span class="sr-only">Next</span>
+        </button>
+      {:else}
         <button class="btn btn-light btn-outline-primary rounded-pill"
                 id="np-btn"
                 on:click={update(pos + 1)} aria-label="Next">
           <i aria-hidden="true" class="fas fa-angle-right" />
           <span class="sr-only">Next</span>
         </button>
+      {/if}
       </li>
     </ul>
   </nav>
