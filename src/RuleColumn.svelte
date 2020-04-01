@@ -16,7 +16,7 @@
         <input type="text" class="form-control"
                placeholder={name} bind:value={filter} />
         <div class="input-group-append" on:click={callback}>
-            <span class="input-group-text px-0">
+            <span class="input-group-text bg-white border-light m-0 p-0">
             {#if column == name}
                 {#if sort == 1}
                     <img width=15 height=15 src={sorts[sort]}
@@ -37,6 +37,7 @@
     color: #bd8eff;
   }
   input {
+    border-color: #d7d7d7;
     color: black;
     padding: 0.125rem;
     margin: 0.0126rem;
