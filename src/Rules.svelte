@@ -37,7 +37,7 @@
       });
     });
   // how many pages of items in total.
-  $: limit = Math.floor(fdata.length / rng) + 1;
+  $: limit = Math.ceil(fdata.length / rng);
   // start index of the current page.
   $: startrng = Math.max(0, Math.min(limit, pos) - 1) * rng;
   // end index of the current page.
