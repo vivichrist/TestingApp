@@ -258,15 +258,15 @@ $card-bg:                  $white !default;
 
 $carousel-control-color:             $black !default;
 $carousel-control-width:             5% !default;
-$carousel-control-opacity:           .5 !default;
-$carousel-control-hover-opacity:     .9 !default;
+$carousel-control-opacity:           .3 !default;
+$carousel-control-hover-opacity:     .7 !default;
 $carousel-control-transition:        opacity .15s ease !default;
 
 $carousel-indicator-width:           30px !default;
 $carousel-indicator-height:          3px !default;
 $carousel-indicator-hit-area-height: 10px !default;
 $carousel-indicator-spacer:          3px !default;
-$carousel-indicator-active-bg:       $black !default;
+$carousel-indicator-active-bg:       $gray-600 !default;
 $carousel-indicator-transition:      opacity .6s ease !default;
 
 $carousel-caption-width:             70% !default;

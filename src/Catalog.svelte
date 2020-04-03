@@ -18,10 +18,11 @@
   let limit = Math.ceil(data.length / rng);
 </script>
 
-<div class="d-flex flex-row my-4">
+<h4 class="text-left mt-5 mb-0 pb-0" style="width: 90vw;">Some Heading for {name}</h4>
+<div class="d-flex flex-row">
   <div id="{name}Captions" class="carousel slide" data-interval="false">
     <ol class="carousel-indicators">
-    {#each [...Array(limit).keys()] as i}
+    {#each [...Array(limit - 1).keys()] as i}
       {#if i == 0}
         <li data-target="#{name}Captions" data-slide-to={i} class="active"></li>
       {:else}
@@ -86,9 +87,11 @@
   .carousel, .carousel-inner {
     width: 90vw;
     height: 15rem;
+    margin-top: 1rem;
+    margin-bottom: 2.5rem;
   }
   .carousel-indicators {
-    bottom: -10%;
+    bottom: 90%;
     margin-bottom: 0;
   }
   .carousel-control-prev {
