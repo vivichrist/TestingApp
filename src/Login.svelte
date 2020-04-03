@@ -1,19 +1,35 @@
 <script>
-  import Email from './Email.svelte'
+  import Email from './Email.svelte';
+
+  let images = [
+    "/img/beach-island.png",
+    "/img/beach-sunset.png"
+  ];
+
+  const rndImage = () => {
+    return images[Math.floor(Math.random() * images.length)];
+  };
 </script>
 
-<div class="mx-auto">
-  <img src="agiledata-logo-full-purple.svg" alt="agile data logo" id="logo"/>
-</div>
-<div id="SignInWrapper" class="mx-auto">
-  <Email icon="at" hint="email"/>
-  <div id="customBtn" class="SignIn btn btn-outline-primary bg-primary"
-                      on:click="{onSignIn}">
-    <span class="text-info">Login</span>
+<div class="container-fluid bgc" style="background-image: url({rndImage()});">
+  <div class="mx-auto">
+    <img src="agiledata-logo-full-purple.svg" alt="agile data logo" id="logo"/>
+  </div>
+  <div id="SignInWrapper" class="mx-auto">
+    <Email icon="at" hint="email"/>
+    <div id="customBtn" class="SignIn btn btn-outline-primary bg-primary"
+                        on:click="{onSignIn}">
+      <span class="text-info">Login</span>
+    </div>
   </div>
 </div>
 
 <style>
+  .bgc {
+    height: 100vh;
+    background-position: center;
+    background-size: 100vw;
+  }
   #customBtn {
     margin-top: 2vh;
   }
