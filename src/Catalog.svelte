@@ -13,18 +13,19 @@
 </script>
 
 <script>
-  let rng = 5;
+  export let rng = 5;
+  export let name = "";
   let limit = Math.ceil(data.length / rng);
 </script>
 
-<div class="d-flex flex-column">
-  <div id="dataCaptions" class="carousel slide" data-ride="carousel">
+<div class="d-flex flex-row my-4">
+  <div id="{name}Captions" class="carousel slide" data-interval="false">
     <ol class="carousel-indicators">
-    {#each [...Array(limit - 1).keys()] as i}
+    {#each [...Array(limit).keys()] as i}
       {#if i == 0}
-        <li data-target="#dataCaptions" data-slide-to={i} class="active"></li>
+        <li data-target="#{name}Captions" data-slide-to={i} class="active"></li>
       {:else}
-        <li data-target="#dataCaptions" data-slide-to={i}></li>
+        <li data-target="#{name}Captions" data-slide-to={i}></li>
       {/if}
     {/each}
     </ol>
@@ -32,17 +33,17 @@
       {#each [...Array(limit - 1).keys()] as i}
       {#if i == 0}
         <div class="carousel-item active">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex bd-highlight">
         {#each data.slice(0, Math.min(rng, data.length - 1)) as item}
-          <div class="card flex-fill">
+          <div class="card flex-fill flex-grow-1">
             <div class="card-body">
               <h5 class="card-title">{item.table_name}</h5>
-              <p class="card-text">{item.tablename}</p>
-              <p class="card-text">
-              {#each item.tokens as token, j}
-                {j} {token}<br/>
+              <h6 class="card-text">{item.tablename}</h6>
+              <ul class="card-text list-group list-group-horizontal flex-wrap">
+              {#each item.tokens as token}
+                <li class="list-group-item"> {token} </li>
               {/each}
-              </p>
+              </ul>
             </div>
           </div>
         {/each}
@@ -50,17 +51,18 @@
         </div>
       {:else}
         <div class="carousel-item">
-        <div class="d-flex justify-content-between">
+        <div class="d-flex bd-highlight justify-content-between">
         {#each data.slice(i * rng, Math.min((i + 1) * rng, data.length - 1)) as item}
-          <div class="card flex-fill">
+          <div class="card flex-fill flex-grow-1">
             <div class="card-body">
               <h5 class="card-title">{item.table_name}</h5>
-              <p class="card-text">{item.tablename}</p>
+              <h6 class="card-text">{item.tablename}</h6>
               <p class="card-text">
-              {#each item.tokens as token, j}
-                {j} {token}<br/>
+              <ul class="card-text list-group list-group-horizontal flex-wrap">
+              {#each item.tokens as token}
+                <li class="list-group-item"> {token} </li>
               {/each}
-              </p>
+              </ul>
             </div>
           </div>
         {/each}
@@ -69,90 +71,35 @@
       {/if}
       {/each}
     </div>
-    <a class="carousel-control-prev" href="#dataCaptions" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#{name}Captions" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#dataCaptions" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#{name}Captions" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
   </div>
 </div>
 
-<!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <div class="d-flex">
-        <div class="card flex-fill">
-          <div class="card-body">
-            This is some text within a card body.
-          </div>
-        </div>
-        <div class="card flex-fill">
-          <div class="card-body">
-            This is some text within a card body.
-          </div>
-        </div>
-        <div class="card flex-fill">
-          <div class="card-body">
-            This is some text within a card body.
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="card">
-        <div class="card-body">
-          This is some text within a card body.
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          This is some text within a card body.
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          This is some text within a card body.
-        </div>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <div class="card">
-        <div class="card-body">
-          This is some text within a card body.
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          This is some text within a card body.
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-body">
-          This is some text within a card body.
-        </div>
-      </div>
-    </div>
-  </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div> -->
-
 <style>
-
+  .carousel, .carousel-inner {
+    width: 90vw;
+    height: 15rem;
+  }
+  .carousel-indicators {
+    bottom: -10%;
+    margin-bottom: 0;
+  }
+  .carousel-control-prev {
+    left: -5%;
+  }
+  .carousel-control-next {
+    right: -5%;
+  }
+  ul {
+    list-style-image: url('/fontawesome/svgs/solid/info.svg');
+  }
   /* @media screen and (min-width: 1260px) {
     .d-flex {
       height: calc(100vh - 4.5rem);

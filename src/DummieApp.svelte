@@ -59,7 +59,7 @@
 <!-- {#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()} -->
 {#if signedIn}
   <Menu user={ident.name} pic={ident.img_url} />
-  <main class="d-flex flex-row align-items-center justify-content-center">
+  <main class="d-flex flex-row align-items-center justify-content-center flex-wrap">
     <!-- Management interface -->
     {#if $manage}
       <SideBar />
@@ -70,7 +70,9 @@
     {:else if $content == 1}
       <Rules />
     {:else if $content == 2}
-      <Catalog />
+      <Catalog name="c1" />
+      <Catalog name="c2" />
+      <Catalog name="c3" />
     {/if}
   </main>
 {:else}
