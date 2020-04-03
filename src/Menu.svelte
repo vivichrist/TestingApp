@@ -1,9 +1,9 @@
 <script context="module">
   let menus = {
     Icealicous: "Link_1 0 Link_2 0 Link_3 0",
-    Catalog: "Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0",
+    Catalog: "Link_1 2 divider 0 Link_2 2 Link_3 2 divider 0 Link_4 2",
     Events: "Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0",
-    Rules: "Add_Rules 2 divider 0 All_Rules 3 Change_Rules 4 Validation_Rules 5 Consume_Rules 6 divider 0 Lineage 7",
+    Rules: "Add_Rules 1 divider 0 All_Rules 1 Change_Rules 1 Validation_Rules 1 Consume_Rules 1 divider 0 Lineage 1",
     Consume: "Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0",
     Plus: "Blah 0 divider 0 Blah_Blah 0"
   };

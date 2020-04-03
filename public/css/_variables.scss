@@ -29,7 +29,7 @@ $primary:       $purple !default;
 $secondary:     $gray-700 !default;
 $success:       lighten($purple, 15%) !default;
 $info:          lighten($purple, 30%) !default;
-$warning:       $yellow !default;
+$warning:       $red !default;
 $danger:        darken($purple, 30%) !default;
 $light:         lighten($purple, 45%) !default;
 $dark:          darken($purple, 20%) !default;
@@ -40,7 +40,7 @@ $yiq-contrasted-threshold:  175 !default;
 // Body
 
 $body-bg:       $gray-100 !default;
-$body-color:    $light !default;
+$body-color:    $dark !default;
 
 // Options
 
@@ -251,7 +251,7 @@ $jumbotron-bg:                   $success !default;
 
 // Cards
 
-$card-bg:                  $light !default;
+$card-bg:                  $white !default;
 
 // Tooltips
 

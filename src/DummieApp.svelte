@@ -6,6 +6,7 @@
   import Login from './Login.svelte';
   import SideBar from './SideBar.svelte';
   import Rules from './Rules.svelte';
+  import Catalog from './Catalog.svelte';
 
   let signedIn = false;
 
@@ -66,8 +67,10 @@
     <!-- numbered content -->
     {#if $content == 0}
       <Search />
-    {:else if $content > 0}
+    {:else if $content == 1}
       <Rules />
+    {:else if $content == 2}
+      <Catalog />
     {/if}
   </main>
 {:else}
