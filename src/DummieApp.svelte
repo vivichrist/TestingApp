@@ -61,9 +61,9 @@
   <Menu user={ident.name} pic={ident.img_url} />
   <main class="d-flex flex-row align-items-center justify-content-center flex-wrap">
     <!-- Management interface -->
-    {#if $manage}
+    <!-- {#if $manage}
       <SideBar />
-    {/if}
+    {/if} -->
     <!-- numbered content -->
     {#if $content == 0}
       <Search />
@@ -76,7 +76,7 @@
     {/if}
   </main>
 {:else}
-  <div class="d-flex flex-column align-items-center justify-content-center">
+  <div class="d-flex flex-row align-items-between justify-content-center flex-wrap">
     <Login />
   </div>
 {/if}

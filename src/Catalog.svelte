@@ -38,8 +38,8 @@
         {#each data.slice(0, Math.min(rng, data.length - 1)) as item}
           <div class="card flex-fill flex-grow-1">
             <div class="card-body">
-              <h5 class="card-title">{item.table_name}</h5>
-              <h6 class="card-text">{item.tablename}</h6>
+              <h6 class="card-title"><b>{item.table_name}</b></h6>
+              <p class="card-text">{item.tablename}</p>
               <ul class="card-text list-group list-group-horizontal flex-wrap">
               {#each item.tokens as token}
                 <li class="list-group-item"> {token} </li>
@@ -56,9 +56,8 @@
         {#each data.slice(i * rng, Math.min((i + 1) * rng, data.length - 1)) as item}
           <div class="card flex-fill flex-grow-1">
             <div class="card-body">
-              <h5 class="card-title">{item.table_name}</h5>
-              <h6 class="card-text">{item.tablename}</h6>
-              <p class="card-text">
+              <h6 class="card-title"><b>{item.table_name}</b></h6>
+              <p class="card-text">{item.tablename}</p>
               <ul class="card-text list-group list-group-horizontal flex-wrap">
               {#each item.tokens as token}
                 <li class="list-group-item"> {token} </li>
