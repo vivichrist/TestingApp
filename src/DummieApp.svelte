@@ -1,5 +1,5 @@
 <script>
-  import { content, manage } from './stores.js';
+  import { content } from './stores.js';
 
   import Menu from './Menu.svelte';
   import Search from './Search.svelte';
@@ -34,7 +34,7 @@
       console.log("onsign-in");
   }
 
-  window.startApp = function() {};
+  window.startApp = function() {content.set(2)};
 
   window.signOut = () => {
   	ident.id = "";

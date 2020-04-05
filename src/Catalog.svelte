@@ -42,7 +42,7 @@
               <p class="card-text">{item.tablename}</p>
               <ul class="card-text list-group list-group-horizontal flex-wrap">
               {#each item.tokens as token}
-                <li class="list-group-item"> {token} </li>
+                <li class="list-group-item p-1"> {token} </li>
               {/each}
               </ul>
             </div>
@@ -60,7 +60,7 @@
               <p class="card-text">{item.tablename}</p>
               <ul class="card-text list-group list-group-horizontal flex-wrap">
               {#each item.tokens as token}
-                <li class="list-group-item"> {token} </li>
+                <li class="list-group-item p-1"> {token} </li>
               {/each}
               </ul>
             </div>
@@ -85,12 +85,12 @@
 <style>
   .carousel, .carousel-inner {
     width: 90vw;
-    height: 15rem;
+    height: 7rem;
     margin-top: 1rem;
     margin-bottom: 2.5rem;
   }
   .carousel-indicators {
-    bottom: 90%;
+    bottom: 80%;
     margin-bottom: 0;
   }
   .carousel-control-prev {

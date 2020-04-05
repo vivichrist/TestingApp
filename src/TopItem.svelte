@@ -1,13 +1,14 @@
 <script>
-  import { manage } from './stores.js'
+  import { content } from './stores.js'
   import { fly } from 'svelte/transition';
 
   export let title = "";
+  export let index = 0;
 </script>
 
 <div role="button" in transition:fly="{{y: -100, duration: 500}}"
                    class="btn btn-primary py-4 border-0"
-                   on:click="{() => manage.update(b => !b)}">
+                   on:click="{() => content.set(index)}">
   {title}
 </div>
 

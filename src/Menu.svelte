@@ -1,7 +1,6 @@
 <script context="module">
   let menus = {
     Icealicous: "Link_1 0 Link_2 0 Link_3 0",
-    Catalog: "Link_1 2 divider 0 Link_2 2 Link_3 2 divider 0 Link_4 2",
     Events: "Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0",
     Rules: "Add_Rules 1 divider 0 All_Rules 1 Change_Rules 1 Validation_Rules 1 Consume_Rules 1 divider 0 Lineage 1",
     Consume: "Link_1 0 divider 0 Link_2 0 Link_3 0 divider 0 Link_4 0",
@@ -33,7 +32,7 @@
           <MenuDrop title="Icealicous" items="{menus.Icealicous}" />
         </li>
         <li class="nav-item btn-group">
-          <MenuItem title="Catalog" items="{menus.Catalog}" />
+          <TopItem title="Catalog" index=2 />
         </li>
         <li class="nav-item btn-group">
           <MenuItem title="Events" items="{menus.Events}" />
@@ -45,7 +44,7 @@
           <MenuItem title="Consume" items="{menus.Consume}" />
         </li>
         <li class="nav-item btn-group">
-          <TopItem title="Manage" />
+          <TopItem title="Manage" index=0 />
         </li>
       </ul>
       <!-- icon buttons and user button -->
