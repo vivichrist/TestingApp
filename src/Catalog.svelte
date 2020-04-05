@@ -13,7 +13,7 @@
 </script>
 
 <script>
-  export let rng = 5;
+  export let rng = 7;
   export let name = "";
   let limit = Math.ceil(data.length / rng);
 </script>
@@ -21,7 +21,7 @@
 <h4 class="text-left mt-5 mb-0 pb-0" style="width: 90vw;">Some Heading for {name}</h4>
 <div class="d-flex flex-row">
   <div id="{name}Captions" class="carousel slide" data-interval="false">
-    <ol class="carousel-indicators">
+    <ol class="carousel-indicators justify-content-end">
     {#each [...Array(limit - 1).keys()] as i}
       {#if i == 0}
         <li data-target="#{name}Captions" data-slide-to={i} class="active"></li>
@@ -34,17 +34,18 @@
       {#each [...Array(limit - 1).keys()] as i}
       {#if i == 0}
         <div class="carousel-item active">
-        <div class="d-flex bd-highlight">
+        <div class="d-flex bd-highlight justify-content-between">
         {#each data.slice(0, Math.min(rng, data.length - 1)) as item}
-          <div class="card flex-fill flex-grow-1">
+          <div class="card bg-secondary">
             <div class="card-body">
-              <h6 class="card-title"><b>{item.table_name}</b></h6>
-              <p class="card-text">{item.tablename}</p>
-              <ul class="card-text list-group list-group-horizontal flex-wrap">
+              <h6 class="card-title text-white flex-wrap">{item.tablename}</h6>
+              <p class="card-text">
               {#each item.tokens as token}
-                <li class="list-group-item p-1"> {token} </li>
+                <span class="border border-secondary bg-light rounded py-0 px-1 m-1">
+                  {token}
+                </span>
               {/each}
-              </ul>
+              </p>
             </div>
           </div>
         {/each}
@@ -54,15 +55,16 @@
         <div class="carousel-item">
         <div class="d-flex bd-highlight justify-content-between">
         {#each data.slice(i * rng, Math.min((i + 1) * rng, data.length - 1)) as item}
-          <div class="card flex-fill flex-grow-1">
+          <div class="card bg-secondary">
             <div class="card-body">
-              <h6 class="card-title"><b>{item.table_name}</b></h6>
-              <p class="card-text">{item.tablename}</p>
-              <ul class="card-text list-group list-group-horizontal flex-wrap">
+              <h6 class="card-title text-white flex-wrap">{item.tablename}</h6>
+              <p class="card-text">
               {#each item.tokens as token}
-                <li class="list-group-item p-1"> {token} </li>
+                <span class="border border-secondary bg-light rounded py-0 px-1 m-1">
+                  {token}
+                </span>
               {/each}
-              </ul>
+              </p>
             </div>
           </div>
         {/each}
@@ -83,14 +85,32 @@
 </div>
 
 <style>
+  h6 {
+    font-size: 15pt;
+  }
+  .card {
+    width: 12rem;
+    height: 15rem;
+    max-width: 15%
+  }
+  .card-text>li {
+    left: 0;
+    margin-left: 0;
+    padding-left: 0;
+    list-style-image: none;
+    list-style-type: circle;
+    list-style-position: outside;
+  }
   .carousel, .carousel-inner {
     width: 90vw;
-    height: 7rem;
+    height: 16rem;
     margin-top: 1rem;
     margin-bottom: 2.5rem;
   }
   .carousel-indicators {
-    bottom: 80%;
+    bottom: 95%;
+    margin-right: 0;
+    padding-right: 0;
     margin-bottom: 0;
   }
   .carousel-control-prev {
