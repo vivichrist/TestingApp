@@ -20,7 +20,7 @@
 </script>
 
 <h4 class="text-left mt-5 mb-0 pb-0" style="width: 90vw;">Some Heading for {name}</h4>
-<div class="d-flex flex-row">
+<div class="d-flex flex-row oline">
   <div id="{name}Captions" class="carousel slide" data-interval="false">
     <ol class="carousel-indicators justify-content-end">
     {#each [...Array(limit - 1).keys()] as i}
@@ -89,6 +89,11 @@
   h6 {
     font-size: 15pt;
   }
+  .oline {
+    width: 100vw;
+    border-top: 3px solid #f1ddff;
+    border-bottom: 3px solid #f1ddff;
+  }
   .card {
     width: 12rem;
     height: 15rem;
@@ -97,6 +102,8 @@
   .carousel, .carousel-inner {
     width: 90vw;
     height: 16rem;
+    margin-left: auto;
+    margin-right: auto;
     margin-top: 1rem;
     margin-bottom: 2.5rem;
   }
