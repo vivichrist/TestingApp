@@ -27,12 +27,32 @@ $cyan:    #17a2b8 !default;
 
 $primary:       $purple !default;
 $secondary:     $gray-700 !default;
+$ternary:       $gray-400 !default;
 $success:       lighten($purple, 15%) !default;
 $info:          lighten($purple, 30%) !default;
 $warning:       $red !default;
-$danger:        darken($purple, 30%) !default;
+$darkish:        darken($purple, 30%) !default;
 $light:         lighten($purple, 45%) !default;
 $dark:          darken($purple, 20%) !default;
+$darker:          darken($purple, 40%) !default;
+
+$theme-colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$theme-colors: map-merge(
+  (
+    "primary":    $primary,
+    "secondary":  $secondary,
+    "ternary":    $ternary,
+    "success":    $success,
+    "info":       $info,
+    "warning":    $warning,
+    "darkish":    $darkish,
+    "light":      $light,
+    "dark":       $dark,
+    "darker":     $darker,
+  ),
+  $theme-colors
+);
 
 $yiq-contrasted-threshold:  175 !default;
 

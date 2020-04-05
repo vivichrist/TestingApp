@@ -71,8 +71,8 @@
       <Rules />
     {:else if $content == 2}
       <Catalog name="c1" />
-      <Catalog name="c2" />
-      <Catalog name="c3" />
+      <Catalog name="c2" colour="primary" />
+      <Catalog name="c3" colour="warning" />
     {/if}
   </main>
 {:else}

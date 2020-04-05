@@ -6,7 +6,7 @@
       for (let key in obj) {
         if (!Array.isArray(obj[key])) {
           obj[key] = obj[key].replace(/_/g, ' '); // remove underscores
-        }
+        } else {obj[key].sort();}
       }
       return obj;
     }));
@@ -15,6 +15,7 @@
 <script>
   export let rng = 7;
   export let name = "";
+  export let colour = "ternary";
   let limit = Math.ceil(data.length / rng);
 </script>
 
@@ -36,12 +37,12 @@
         <div class="carousel-item active">
         <div class="d-flex bd-highlight justify-content-between">
         {#each data.slice(0, Math.min(rng, data.length - 1)) as item}
-          <div class="card bg-secondary">
+          <div class="card bg-{colour} border-secondary">
             <div class="card-body">
               <h6 class="card-title text-white flex-wrap">{item.tablename}</h6>
               <p class="card-text">
               {#each item.tokens as token}
-                <span class="border border-secondary bg-light rounded py-0 px-1 m-1">
+                <span class="border border-ternary bg-light rounded py-0 px-1 m-1">
                   {token}
                 </span>
               {/each}
@@ -55,12 +56,12 @@
         <div class="carousel-item">
         <div class="d-flex bd-highlight justify-content-between">
         {#each data.slice(i * rng, Math.min((i + 1) * rng, data.length - 1)) as item}
-          <div class="card bg-secondary">
+          <div class="card bg-{colour} border-secondary">
             <div class="card-body">
               <h6 class="card-title text-white flex-wrap">{item.tablename}</h6>
               <p class="card-text">
               {#each item.tokens as token}
-                <span class="border border-secondary bg-light rounded py-0 px-1 m-1">
+                <span class="border border-ternary bg-light rounded py-0 px-1 m-1">
                   {token}
                 </span>
               {/each}
@@ -93,14 +94,6 @@
     height: 15rem;
     max-width: 15%
   }
-  .card-text>li {
-    left: 0;
-    margin-left: 0;
-    padding-left: 0;
-    list-style-image: none;
-    list-style-type: circle;
-    list-style-position: outside;
-  }
   .carousel, .carousel-inner {
     width: 90vw;
     height: 16rem;
@@ -118,9 +111,6 @@
   }
   .carousel-control-next {
     right: -5%;
-  }
-  ul {
-    list-style-image: url('/fontawesome/svgs/solid/info.svg');
   }
   /* @media screen and (min-width: 1260px) {
     .d-flex {
