@@ -71,9 +71,9 @@
     {:else if $content == 1}
       <Rules />
     {:else if $content == 2}
-      <Catalog name="c1" />
-      <Catalog name="c2" colour="primary" />
-      <Catalog name="c3" colour="warning" />
+      <Catalog name="History Tables" type="history" />
+      <Catalog name="Consume Views" type="consume" />
+      <!-- <Catalog name="THPC Topic" colour="thpc" /> -->
     {:else}
       <ComingSoon />
     {/if}
