@@ -7,6 +7,7 @@
   import SideBar from './SideBar.svelte';
   import Rules from './Rules.svelte';
   import Catalog from './Catalog.svelte';
+  import ComingSoon from './ComingSoon.svelte';
 
   let signedIn = false;
 
@@ -73,6 +74,8 @@
       <Catalog name="c1" />
       <Catalog name="c2" colour="primary" />
       <Catalog name="c3" colour="warning" />
+    {:else}
+      <ComingSoon />
     {/if}
   </main>
 {:else}
