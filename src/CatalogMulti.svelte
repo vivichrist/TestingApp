@@ -14,16 +14,27 @@
 
 <script>
   export let rng = 7;
-  export let name = "History";
-  export let type = "history";
+  export let name = "Tpch Topic";
+  export let type = "tpc";
 
   let fdata = data.filter(obj => obj.tablename.includes(type))
                   .map(obj => {
     obj.tablename = obj.tablename.split(' ')
-                       .map( word => word[0].toUpperCase() + word.substr(1) )
-                       .join(' ');
+                        .map( word => word[0].toUpperCase() + word.substr(1) )
+                        .join(' ');
     return obj;
   });
+
+
+
+  const what_type = (str) => {
+    if (str.toLowerCase().includes("event")) {return "events";}
+    if (str.toLowerCase().includes("detail")) {return "detail";}
+    if (str.toLowerCase().includes("concept")) {return "concept";}
+    if (str.toLowerCase().includes("consume")) {return "consume";}
+    if (str.toLowerCase().includes("history")) {return "history";}
+    return "primary";
+  }
 
   $: limit = Math.ceil(fdata.length / rng);
   console.log(`${name}: ${fdata.length}`);
@@ -33,7 +44,7 @@
 <div class="d-flex flex-row oline">
   <div id="{type}Captions" class="carousel slide" data-interval="false">
     <ol class="carousel-indicators justify-content-end">
-    {#each [...Array(limit).keys()] as i}
+    {#each [...Array(limit - 1).keys()] as i}
       {#if i == 0}
         <li data-target="#{type}Captions" data-slide-to={i} class="active"></li>
       {:else}
@@ -47,7 +58,7 @@
         <div class="carousel-item active">
         <div class="d-flex bd-highlight justify-content-between">
         {#each fdata.slice(0, Math.min(rng, fdata.length)) as item}
-          <div class="card bg-{type}">
+          <div class="card bg-{what_type(item.tablename)}">
             <div class="card-body">
               <h6 class="card-title text-secondary flex-wrap">{item.tablename}</h6>
               <p class="card-text">
@@ -66,7 +77,7 @@
         <div class="carousel-item">
         <div class="d-flex bd-highlight justify-content-between">
         {#each fdata.slice(i * rng, Math.min((i + 1) * rng, fdata.length)) as item}
-          <div class="card bg-{type}">
+          <div class="card bg-{what_type(item.tablename)}">
             <div class="card-body">
               <h6 class="card-title text-secondary flex-wrap">{item.tablename}</h6>
               <p class="card-text">

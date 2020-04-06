@@ -7,6 +7,7 @@
   import SideBar from './SideBar.svelte';
   import Rules from './Rules.svelte';
   import Catalog from './Catalog.svelte';
+    import CatalogMulti from './CatalogMulti.svelte';
   import ComingSoon from './ComingSoon.svelte';
 
   let signedIn = false;
@@ -73,7 +74,7 @@
     {:else if $content == 2}
       <Catalog name="History Tables" type="history" />
       <Catalog name="Consume Views" type="consume" />
-      <!-- <Catalog name="THPC Topic" colour="thpc" /> -->
+      <CatalogMulti name="TPCH Topic" type="tpc h" />
     {:else}
       <ComingSoon />
     {/if}
