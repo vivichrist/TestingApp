@@ -14,8 +14,8 @@
 <div class="d-flex flex-column vw-100 align-items-center justify-content-between bgc" style="background-image: url({rndImage()});">
   <div id="SignInWrapper" class="d-block align-center flex-grow-1">
     <!-- <Email icon="at" hint="email"/> -->
-    <div class="d-block lc">
-      <img src="agiledata-logo-icon-white.svg" alt="agile data logo" id="logo"/>
+    <div class="lc">
+      <img id="logo" src="agiledata-logo-icon-white.svg" alt="agile data logo"/>
     </div>
     <div id="customBtn" class="SignIn btn btn-outline-primary"
                         on:click="{onSignIn}" role="button">
@@ -32,9 +32,11 @@
   #logo {
     height: 80px;
     box-shadow: none;
+    text-align: center;
   }
   .lc {
     margin-top: 35vh;
+    text-align: center;
   }
   footer {
     border-top: 3px solid white;
