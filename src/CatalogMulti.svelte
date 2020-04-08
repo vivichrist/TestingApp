@@ -1,7 +1,12 @@
 <script context="module">
   let cm_data = [];
   fetch('https://agiledata-core-prd.appspot.com/tables/?apikey=977609nhgfty86HJKhjkl78')
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Network response MultiCatagory views was not ok');
+      }
+      return res.json()
+    })
     .then(jsn => cm_data = jsn.map(obj => {
       for (let key in obj) {
         if (!Array.isArray(obj[key])) {
@@ -14,17 +19,10 @@
 
 <script>
   export let rng = 6;
-  export let name = "Tpch Topic";
-  export let type = "tpc";
+  export let name = "TPCH Topic";
+  export let type = "TPCH";
 
-  let fdata = cm_data.filter(obj => obj.tablename.includes(type))
-                     .map(obj => {
-    let ret = Object.create(obj);
-    ret.tablename = obj.tablename.split(' ')
-                       .map( word => word[0].toUpperCase() + word.substr(1) )
-                       .join(' ');
-    return ret;
-  });
+  let fdata = cm_data.filter(obj => obj.topics.some(t => t.toUpperCase().includes(type)));
 
   const what_type = (str) => {
     if (str.toLowerCase().includes("event")) {return "events";}
@@ -40,7 +38,7 @@
 </script>
 
 <h5 class="text-left font-weight-bold mt-5 mb-0 pb-0" style="width: 90vw;">{name}</h5>
-<div class="d-flex flex-row oline">
+<div class="d-flex flex-row vw-100">
   <div id="{type}Captions" class="carousel slide" data-interval="false">
     <ol class="carousel-indicators justify-content-end">
     {#each [...Array(limit).keys()] as i}
@@ -55,13 +53,13 @@
       {#each [...Array(limit).keys()] as i}
       {#if i == 0}
         <div class="carousel-item active">
-        <div class="d-flex bd-highlight justify-content-between">
+        <div class="d-flex bd-highlight justify-content-around">
         {#each fdata.slice(0, Math.min(rng, fdata.length)) as item}
-          <div class="card bg-{what_type(item.tablename)}">
+          <div class="card bg-{what_type(item.object)}">
             <div class="card-body">
-              <h6 class="card-title text-secondary flex-wrap">{item.tablename}</h6>
+              <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
               <p class="card-text">
-              {#each item.tokens as token}
+              {#each item.topics as token}
                 <span class="border border-ternary bg-light rounded py-0 px-1 m-1">
                   {token}
                 </span>
@@ -74,13 +72,15 @@
         </div>
       {:else}
         <div class="carousel-item">
-        <div class="d-flex bd-highlight justify-content-between">
-        {#each fdata.slice(i * rng, Math.min((i + 1) * rng, fdata.length)) as item}
-          <div class="card bg-{what_type(item.tablename)}">
+        <div class="d-flex bd-highlight justify-content-around">
+        {#each fdata.slice((i + 1) * rng >= fdata.length ?
+                           fdata.length - rng : i * rng,
+                Math.min((i + 1) * rng, fdata.length)) as item}
+          <div class="card bg-{what_type(item.object)}">
             <div class="card-body">
-              <h6 class="card-title text-secondary flex-wrap">{item.tablename}</h6>
+              <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
               <p class="card-text">
-              {#each item.tokens as token}
+              {#each item.topics as token}
                 <span class="border border-ternary bg-light rounded py-0 px-1 m-1">
                   {token}
                 </span>
@@ -108,11 +108,6 @@
 <style>
   h6 {
     font-size: 15pt;
-  }
-  .oline {
-    width: 100vw;
-    border-top: 3px solid #f1ddff;
-    border-bottom: 3px solid #f1ddff;
   }
   .card {
     width: 12rem;

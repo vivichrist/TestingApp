@@ -74,7 +74,7 @@
     {:else if $content == 2}
       <Catalog name="History Tables" type="history" />
       <Catalog name="Consume Views" type="consume" />
-      <CatalogMulti name="TPCH Topic" type="tpc h" />
+      <CatalogMulti name="TPCH Topic" type="TPCH" />
     {:else}
       <ComingSoon />
     {/if}

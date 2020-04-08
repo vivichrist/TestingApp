@@ -1,7 +1,12 @@
 <script context="module">
   let data = [];
   fetch('https://agiledata-core-prd.appspot.com/rules/?apikey=977609nhgfty86HJKhjkl78')
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('Network response for rules table was not ok');
+      }
+      return res.json()
+    })
     .then(jsn => data = jsn.map(obj => {
       for (let key in obj) {
         obj[key] = obj[key].replace(/_/g, ' '); // remove underscores
