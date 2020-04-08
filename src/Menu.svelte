@@ -31,7 +31,7 @@
         <li class="nav-Item btn-group">
           <MenuDrop title="Icealicous" items="{menus.Icealicous}" />
         </li>
-        <li class="nav-item btn-group">
+        <li class="nav-item btn-group active">
           <TopItem title="Catalog" index=2 />
         </li>
         <li class="nav-item btn-group">
@@ -72,6 +72,9 @@
   li {
     padding: 0;
     margin: 0;
+  }
+  li.active {
+    border-bottom: 3px solid white;
   }
   nav {
     margin: 0;

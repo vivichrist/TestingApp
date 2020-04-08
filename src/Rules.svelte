@@ -41,7 +41,7 @@
   // start index of the current page.
   $: startrng = Math.max(0, Math.min(limit, pos) - 1) * rng;
   // end index of the current page.
-  $: endrng = Math.min(startrng + Number(rng), data.length);
+  $: endrng = Math.min(startrng + Number(rng), fdata.length);
   // page data segment from fdata.
   $: dataseg = fdata.slice(startrng, endrng);
 

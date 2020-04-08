@@ -1,8 +1,8 @@
 <script context="module">
-  let data = [];
+  let cm_data = [];
   fetch('https://agiledata-core-prd.appspot.com/tables/?apikey=977609nhgfty86HJKhjkl78')
     .then(res => res.json())
-    .then(jsn => data = jsn.map(obj => {
+    .then(jsn => cm_data = jsn.map(obj => {
       for (let key in obj) {
         if (!Array.isArray(obj[key])) {
           obj[key] = obj[key].replace(/[_.]/g, ' '); // remove underscores and dot
@@ -13,19 +13,18 @@
 </script>
 
 <script>
-  export let rng = 7;
+  export let rng = 6;
   export let name = "Tpch Topic";
   export let type = "tpc";
 
-  let fdata = data.filter(obj => obj.tablename.includes(type))
-                  .map(obj => {
-    obj.tablename = obj.tablename.split(' ')
-                        .map( word => word[0].toUpperCase() + word.substr(1) )
-                        .join(' ');
-    return obj;
+  let fdata = cm_data.filter(obj => obj.tablename.includes(type))
+                     .map(obj => {
+    let ret = Object.create(obj);
+    ret.tablename = obj.tablename.split(' ')
+                       .map( word => word[0].toUpperCase() + word.substr(1) )
+                       .join(' ');
+    return ret;
   });
-
-
 
   const what_type = (str) => {
     if (str.toLowerCase().includes("event")) {return "events";}
@@ -37,14 +36,14 @@
   }
 
   $: limit = Math.ceil(fdata.length / rng);
-  console.log(`${name}: ${fdata.length}`);
+  console.log(`${name}: ${fdata.length} out of ${cm_data.length}`);
 </script>
 
 <h5 class="text-left font-weight-bold mt-5 mb-0 pb-0" style="width: 90vw;">{name}</h5>
 <div class="d-flex flex-row oline">
   <div id="{type}Captions" class="carousel slide" data-interval="false">
     <ol class="carousel-indicators justify-content-end">
-    {#each [...Array(limit - 1).keys()] as i}
+    {#each [...Array(limit).keys()] as i}
       {#if i == 0}
         <li data-target="#{type}Captions" data-slide-to={i} class="active"></li>
       {:else}

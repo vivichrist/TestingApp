@@ -1,8 +1,8 @@
 <script context="module">
-  let data = [];
+  let cat_data = [];
   fetch('https://agiledata-core-prd.appspot.com/tables/?apikey=977609nhgfty86HJKhjkl78')
     .then(res => res.json())
-    .then(jsn => data = jsn.map(obj => {
+    .then(jsn => cat_data = jsn.map(obj => {
       for (let key in obj) {
         if (!Array.isArray(obj[key])) {
           obj[key] = obj[key].replace(/[_.]/g, ' '); // remove underscores and dot
@@ -13,20 +13,21 @@
 </script>
 
 <script>
-  export let rng = 7;
+  export let rng = 6;
   export let name = "History";
   export let type = "history";
 
-  let fdata = data.filter(obj => obj.tablename.includes(type))
-                  .map(obj => {
-    obj.tablename = obj.tablename.split(' ')
+  let fdata = cat_data.filter(obj => obj.tablename.includes(type))
+                      .map(obj => {
+    let ret = Object.create(obj);
+    ret.tablename = obj.tablename.split(' ')
                        .map( word => word[0].toUpperCase() + word.substr(1) )
                        .join(' ');
-    return obj;
+    return ret;
   });
 
   $: limit = Math.ceil(fdata.length / rng);
-  console.log(`${name}: ${fdata.length}`);
+  console.log(`${name}: ${fdata.length} out of ${cat_data.length}`);
 </script>
 
 <h5 class="text-left font-weight-bold mt-5 mb-0 pb-0" style="width: 90vw;">{name}</h5>
