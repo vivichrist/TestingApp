@@ -1,5 +1,6 @@
 <script>
-  let images = ["/img/male-character-comming-soon.webp"];
+  let images = ["/img/male-character-comming-soon.webp",
+               "/img/female-character-coming-soon.webp"];
 
   const rndImage = () => {
     return images[Math.floor(Math.random() * images.length)];
