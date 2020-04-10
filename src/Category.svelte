@@ -48,9 +48,9 @@
           <div class="card bg-{type}">
             <div class="card-body">
               <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
-              <p class="card-text">
+              <p class="card-text my-1">
               {#each item.topics as token}
-                <span class="border border-ternary bg-light rounded py-0 px-1 m-1">
+                <span class="border border-ternary bg-light rounded py-0 px-1 mx-0">
                   {token}
                 </span>
               {/each}
@@ -69,9 +69,9 @@
           <div class="card bg-{type}">
             <div class="card-body">
               <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
-              <p class="card-text">
+              <p class="card-text my-1">
               {#each item.topics as token}
-                <span class="border border-ternary bg-light rounded py-0 px-1 m-1">
+                <span class="border border-ternary bg-light rounded py-0 px-1 mx-0">
                   {token}
                 </span>
               {/each}

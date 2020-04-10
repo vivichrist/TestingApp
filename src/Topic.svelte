@@ -25,7 +25,7 @@
   let fdata = cm_data.filter(obj => obj.topics.some(t => t.includes(type)));
 
   const what_type = (str) => {
-    if (str.toLowerCase().includes("event")) {return "events";}
+    if (str.toLowerCase().includes("event")) {return "event";}
     if (str.toLowerCase().includes("detail")) {return "detail";}
     if (str.toLowerCase().includes("concept")) {return "concept";}
     if (str.toLowerCase().includes("consume")) {return "consume";}

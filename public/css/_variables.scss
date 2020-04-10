@@ -35,7 +35,7 @@ $history:       #DDE2EC !default;
 $consume:       #9DB18E !default;
 $concept:       #634256 !default;
 $detail:        #A68FA8 !default;
-$events:        #516557 !default;
+$event:        #516557 !default;
 $dark:          darken($purple, 20%) !default;
 $darkish:        darken($purple, 30%) !default;
 $darker:          darken($purple, 40%) !default;
@@ -54,7 +54,7 @@ $theme-colors: map-merge(
     "consume":    $consume,
     "concept":    $concept,
     "detail":     $detail,
-    "events":     $events,
+    "event":      $event,
     "darkish":    $darkish,
     "dark":       $dark,
     "darker":     $darker,
