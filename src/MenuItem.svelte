@@ -5,6 +5,7 @@
 
   export let title = "";
   export let items = "";
+  export let active = false;
 
   let named_links = [];
   // split items string into pairs of arguments (name, url)
@@ -14,22 +15,27 @@
                                     .split(' ')
                                     .map(t => t = t.replace('_',' ')));
 </script>
+<li class="nav-item btn-group" class:active={active}>
+  <div role="button" in transition:fly="{{y: -100, duration: 500}}"
+      class="btn btn-primary py-4 border-0"
+      on:click={() => active = true}
+      data-toggle="dropdown">
+    {title}
+  </div>
 
-<div role="button" in transition:fly="{{y: -100, duration: 500}}" class="btn btn-primary py-4 border-0" data-toggle="dropdown">
-  {title}
-</div>
-<div class="dropdown-menu bg-light mt-3">
-  {#each named_links as [ mname, link ] }
-    {#if mname === "divider"}
-      <div class="dropdown-divider"></div>
-    {:else}
-      <div class="dropdown-item text-dark" on:click={() => $content = link}>
-        {mname}
-      </div>
-    {/if}
-  {/each}
-</div>
 
+  <div class="dropdown-menu bg-light mt-3">
+    {#each named_links as [ mname, link ] }
+      {#if mname === "divider"}
+        <div class="dropdown-divider"></div>
+      {:else}
+        <div class="dropdown-item text-dark" on:click={() => $content = link}>
+          {mname}
+        </div>
+      {/if}
+    {/each}
+  </div>
+</li>
 
 <style>
   .btn:hover {

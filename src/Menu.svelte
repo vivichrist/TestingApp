@@ -17,6 +17,14 @@
 
   export let user = "";
   export let pic = "";
+
+  let active = {
+    "Catalog": true,
+    "Events": false,
+    "Rules": false,
+    "Consume": false,
+    "Manage": false,
+  }
 </script>
 
 <header class="bg-primary">
@@ -28,24 +36,12 @@
     <!-- nav menu -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
       <ul class="navbar-nav">
-        <li class="nav-Item btn-group">
           <MenuDrop title="Icealicous" items="{menus.Icealicous}" />
-        </li>
-        <li class="nav-item btn-group active">
-          <TopItem title="Catalog" index=2 />
-        </li>
-        <li class="nav-item btn-group">
-          <MenuItem title="Events" items="{menus.Events}" />
-        </li>
-        <li class="nav-item btn-group">
-          <MenuItem title="Rules" items="{menus.Rules}" />
-        </li>
-        <li class="nav-item btn-group">
-          <MenuItem title="Consume" items="{menus.Consume}" />
-        </li>
-        <li class="nav-item btn-group">
-          <TopItem title="Manage" index=0 />
-        </li>
+          <TopItem title="Catalog" index={2} bind:active={active.Catalog}/>
+          <MenuItem title="Events" bind:active={active.Events} items="{menus.Events}" />
+          <MenuItem title="Rules" bind:active={active.Rules} items="{menus.Rules}" />
+          <MenuItem title="Consume" bind:active={active.Consume} items="{menus.Consume}" />
+          <TopItem title="Manage" index={0} bind:active={active.Manage} />
       </ul>
       <!-- icon buttons and user button -->
       <ul class="navbar-nav ml-auto mr-3">

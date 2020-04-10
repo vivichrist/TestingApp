@@ -6,9 +6,8 @@
   import Login from './Login.svelte';
   import SideBar from './SideBar.svelte';
   import Rules from './Rules.svelte';
-  import Catalog from './Catalog.svelte';
-    import CatalogMulti from './CatalogMulti.svelte';
   import ComingSoon from './ComingSoon.svelte';
+  import Catalog from './Catalog.svelte';
 
   let signedIn = false;
 
@@ -72,9 +71,7 @@
     {:else if $content == 1}
       <Rules />
     {:else if $content == 2}
-      <Catalog name="History Tables" type="history" />
-      <Catalog name="Consume Views" type="consume" />
-      <CatalogMulti name="TPCH Topic" type="TPCH" />
+      <Catalog />
     {:else}
       <ComingSoon />
     {/if}
@@ -92,6 +89,5 @@
     margin: 0;
     padding: 0;
     width: 100%;
-    height: calc(100vh - 4.5rem);
 	}
 </style>

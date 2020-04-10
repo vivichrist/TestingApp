@@ -75,10 +75,12 @@
   };
 </script>
 
-<div class="d-flex flex-column">
-  <div class="alert alert-success m-0 py-1" role="button">
+<div class="nav sticky-top vw-100 nav-fill bg-white border-bottom border-ternary">
+  <span class="nav-item text-left p-2" role="button">
     <i class="fa fa-plus"></i> Add a Rule
-  </div>
+  </span>
+</div>
+<div class="d-flex flex-column">
   <div class="inner table-responsive">
   <table class="table bg-white">
     <thead class="thead-black">
@@ -107,7 +109,6 @@
 <style>
   .d-flex {
     display: flex;
-    overflow: auto;
     padding: 0.8rem;
   }
   .inner {
@@ -127,27 +128,18 @@
     line-height: 2.5rem;
   }
   @media screen and (min-width: 1260px) {
-    .d-flex {
-      height: calc(100vh - 4.5rem);
-    }
     .rows {
       max-width: 14vw;
       font-size: 12pt;
     }
   }
   @media screen and (max-width: 1260px) {
-    .d-flex {
-      height: calc(100vh - 4.4rem);
-    }
     .rows {
       max-width: 10vw;
       font-size: 10pt;
     }
   }
   @media screen and (max-width: 970px) {
-    .d-flex {
-      height: calc(100vh - 4.2rem);
-    }
     .rows {
       max-width: 8vw;
       font-size: 9pt;

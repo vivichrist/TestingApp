@@ -22,7 +22,7 @@
   export let name = "TPCH Topic";
   export let type = "TPCH";
 
-  let fdata = cm_data.filter(obj => obj.topics.some(t => t.toUpperCase().includes(type)));
+  let fdata = cm_data.filter(obj => obj.topics.some(t => t.includes(type)));
 
   const what_type = (str) => {
     if (str.toLowerCase().includes("event")) {return "events";}

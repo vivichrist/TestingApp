@@ -4,22 +4,26 @@
 
   export let title = "";
   export let items = "";
+  export let active = false;
 
-  let named_links = [];
   // split items string into pairs of arguments (name, url)
-  let re = /\S+\s\S+\s?/g
-  named_links = items.match(re)
-                     .map(x => x = x.trim()
-                                    .split(' ')
-                                    .map(t => t = t.replace('_',' ')));
+  let named_links = items.match(/\S+\s\S+\s?/g)
+                         .map(x => x = x.trim()
+                                        .split(' ')
+                                        .map(t => t = t.replace('_',' ')
+                         )
+  );
 
 </script>
 <!-- the triggering button for the menu dropdown -->
-<button type="button" in transition:fly="{{x: -200, duration: 800}}"
-        class="btn btn-dark px-3 py-0 mx-4 my-3 dropdown-toggle"
-        data-toggle="dropdown">
-  {title}
-</button>
+<li class="nav-item btn-group" class:active={active}>
+  <button type="button" in transition:fly="{{x: -200, duration: 800}}"
+          class="btn btn-dark px-3 py-0 mx-4 my-3 dropdown-toggle"
+          on:click={() => active = true}
+          data-toggle="dropdown">
+    {title}
+  </button>
+</li>
 <!-- the menu that appears under the button -->
 <div class="dropdown-menu mt-3 ml-3">
   {#each named_links as [ mname, link ] }

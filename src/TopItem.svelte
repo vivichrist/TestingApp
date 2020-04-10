@@ -4,13 +4,16 @@
 
   export let title = "";
   export let index = 0;
+  export let active = false;
 </script>
 
-<div role="button" in transition:fly="{{y: -100, duration: 500}}"
-                   class="btn btn-primary py-4 border-0"
-                   on:click="{() => content.set(index)}">
-  {title}
-</div>
+<li class="nav-item btn-group" class:active={active}>
+  <div role="button" in transition:fly="{{y: -100, duration: 500}}"
+                    class="btn btn-primary py-4 border-0"
+                    on:click="{() => {content.set(index); active = true;}}">
+    {title}
+  </div>
+</li>
 
 
 <style>
