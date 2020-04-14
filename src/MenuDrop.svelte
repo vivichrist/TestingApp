@@ -4,48 +4,47 @@
 
   export let title = "";
   export let items = "";
-  export let active = false;
 
-  // split items string into pairs of arguments (name, url)
+  // split menu items string into pairs of arguments (name, url)
   let named_links = items.match(/\S+\s\S+\s?/g)
                          .map(x => x = x.trim()
                                         .split(' ')
-                                        .map(t => t = t.replace('_',' ')
-                         )
-  );
-
+                                        .map(t => t = t.replace('_',' ')) );
 </script>
 <!-- the triggering button for the menu dropdown -->
-<li class="nav-item btn-group" class:active={active}>
+<div class="nav-item btn-group">
   <button type="button" in transition:fly="{{x: -200, duration: 800}}"
-          class="btn btn-dark px-3 py-0 mx-4 my-3 dropdown-toggle"
-          on:click={() => active = true}
-          data-toggle="dropdown">
+          class="btn btn-dark dropdown-toggle my-3 mx-3"
+          id="{title}MenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     {title}
   </button>
-</li>
-<!-- the menu that appears under the button -->
-<div class="dropdown-menu mt-3 ml-3">
-  {#each named_links as [ mname, link ] }
-    {#if mname === "divider"}
-      <div class="dropdown-divider text-dark"></div>
-    {:else}
-      <div class="dropdown-item" role="button" on:click="{() => $content = link}">
-        {mname}
-      </div>
-    {/if}
-  {/each}
+  <!-- the menu that appears under the button -->
+  <div class="dropdown-menu" aria-labelledby="{title}MenuButton">
+    {#each named_links as [ mname, link ] }
+      {#if mname === "divider"}
+        <div class="dropdown-divider text-dark"></div>
+      {:else}
+        <div class="dropdown-item" role="button"
+             on:click="{() => $content = link}">
+          {mname}
+        </div>
+      {/if}
+    {/each}
+  </div>
 </div>
 
 <style>
+  .btn {
+    box-sizing: border-box;
+    z-index: 1;
+  }
   @media screen and (min-width: 1200px) {
     .dropdown-item {
       font-size: 14pt;
     }
     .btn {
       font-size: 14pt;
-      padding-left: 3rem;
-      padding-right: 3rem;
     }
   }
   @media screen and (max-width: 1200px) {
@@ -54,8 +53,6 @@
     }
     .btn {
       font-size: 12pt;
-      padding-left: 2rem;
-      padding-right: 2rem;
     }
   }
   @media screen and (max-width: 930px) {
@@ -64,8 +61,6 @@
     }
     .btn {
       font-size: 11pt;
-      padding-left: 1rem;
-      padding-right: 1rem;
     }
   }
 </style>

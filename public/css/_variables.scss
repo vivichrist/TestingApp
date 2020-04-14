@@ -24,6 +24,37 @@ $yellow:  #ffc107 !default;
 $green:   #28a745 !default;
 $teal:    #20c997 !default;
 $cyan:    #17a2b8 !default;
+$chalkwhite: #DDE2EC !default;
+$eggplant: #634256 !default;
+$norway:  #9DB18E !default;
+$amethystsmoke: #A68FA8 !default;
+$nandor:  #516557 !default;
+
+$colors: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$colors: map-merge(
+  (
+    "blue":       $blue,
+    "indigo":     $indigo,
+    "amethystsmoke": $amethystsmoke,
+    "purple":     $purple,
+    "eggplant":   $eggplant,
+    "pink":       $pink,
+    "red":        $red,
+    "orange":     $orange,
+    "yellow":     $yellow,
+    "green":      $green,
+    "nandor":     $nandor,
+    "norway":     $norway,
+    "teal":       $teal,
+    "cyan":       $cyan,
+    "chalkwhite": $chalkwhite,
+    "white":      $white,
+    "gray":       $gray-600,
+    "gray-dark":  $gray-800
+  ),
+  $colors
+);
 
 $primary:       $purple !default;
 $secondary:     $gray-700 !default;
@@ -31,14 +62,14 @@ $ternary:       $gray-400 !default;
 $success:       lighten($purple, 15%) !default;
 $info:          lighten($purple, 30%) !default;
 $light:         lighten($purple, 45%) !default;
-$history:       #DDE2EC !default;
-$consume:       #9DB18E !default;
-$concept:       #634256 !default;
-$detail:        #A68FA8 !default;
-$event:        #516557 !default;
+$history:       $chalkwhite !default;
+$consume:       $norway !default;
+$concept:       $eggplant !default;
+$detail:        $amethystsmoke !default;
+$event:         $nandor !default;
 $dark:          darken($purple, 20%) !default;
-$darkish:        darken($purple, 30%) !default;
-$darker:          darken($purple, 40%) !default;
+$darkish:       darken($purple, 30%) !default;
+$darker:        darken($purple, 40%) !default;
 
 $theme-colors: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -90,12 +121,15 @@ $enable-deprecation-messages:                 true !default;
 $line-height-lg:              1.5 !default;
 $line-height-sm:              1.5 !default;
 
-$border-width:                1px !default;
+$border-width:                2px !default;
 $border-color:                $black !default;
 
 $border-radius:               .25rem !default;
 $border-radius-lg:            .5rem !default;
 $border-radius-sm:            .2rem !default;
+
+$component-active-color:      $white !default;
+$component-active-bg:         $primary !default;
 
 $rounded-pill:                25rem !default;
 
@@ -111,6 +145,15 @@ $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier Ne
 $font-size-base:              .875rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg:                $font-size-base * .825 !default;
 $font-size-sm:                $font-size-base * .625 !default;
+
+$font-weight-lighter:         lighter !default;
+$font-weight-light:           300 !default;
+$font-weight-normal:          400 !default;
+$font-weight-bold:            700 !default;
+$font-weight-bolder:          bolder !default;
+
+$font-weight-base:            $font-weight-normal !default;
+$line-height-base:            1.5 !default;
 
 $h1-font-size: 4rem !default;
 $h2-font-size: 3rem !default;
@@ -154,11 +197,64 @@ $table-border-level:          -6 !default;
 
 // Buttons
 
+$input-btn-padding-y:         .375rem !default;
 $input-btn-padding-x:         1rem !default;
+$input-btn-font-family:       null !default;
+$input-btn-font-size:         $font-size-base !default;
+$input-btn-line-height:       $line-height-base !default;
+
+$input-btn-focus-width:       .2rem !default;
+$input-btn-focus-color:       rgba($component-active-bg, .25) !default;
+$input-btn-focus-box-shadow:  0 0 0 $input-btn-focus-width $input-btn-focus-color !default;
+
+$input-btn-padding-y-sm:      .25rem !default;
+$input-btn-padding-x-sm:      .5rem !default;
+$input-btn-font-size-sm:      $font-size-sm !default;
+$input-btn-line-height-sm:    $line-height-sm !default;
+
+$input-btn-padding-y-lg:      .5rem !default;
+$input-btn-padding-x-lg:      1rem !default;
+$input-btn-font-size-lg:      $font-size-lg !default;
+$input-btn-line-height-lg:    $line-height-lg !default;
+
+$input-btn-border-width:      $border-width !default;
+
+$btn-padding-y:               $input-btn-padding-y !default;
+$btn-padding-x:               $input-btn-padding-x !default;
+$btn-font-family:             $input-btn-font-family !default;
+$btn-font-size:               $input-btn-font-size !default;
+$btn-line-height:             $input-btn-line-height !default;
+$btn-white-space:             null !default; // Set to `nowrap` to prevent text wrapping
+
+$btn-padding-y-sm:            $input-btn-padding-y-sm !default;
+$btn-padding-x-sm:            $input-btn-padding-x-sm !default;
+$btn-font-size-sm:            $input-btn-font-size-sm !default;
+$btn-line-height-sm:          $input-btn-line-height-sm !default;
+
+$btn-padding-y-lg:            $input-btn-padding-y-lg !default;
+$btn-padding-x-lg:            $input-btn-padding-x-lg !default;
+$btn-font-size-lg:            $input-btn-font-size-lg !default;
+$btn-line-height-lg:          $input-btn-line-height-lg !default;
+
+$btn-border-width:            $input-btn-border-width !default;
+
+$btn-font-weight:             $font-weight-normal !default;
+$btn-box-shadow:              inset 0 1px 0 rgba($white, .15), 0 1px 1px rgba($black, .075) !default;
+$btn-focus-width:             $input-btn-focus-width !default;
+$btn-focus-box-shadow:        $input-btn-focus-box-shadow !default;
+$btn-disabled-opacity:        .65 !default;
+$btn-active-box-shadow:       inset 0 3px 5px rgba($black, .125) !default;
+
+$btn-link-disabled-color:     $gray-600 !default;
+
+$btn-block-spacing-y:         .5rem !default;
 // Allows for customizing button radius independently from global border radius
 $btn-border-radius:           0.25rem !default;
 $btn-border-radius-lg:        0.5rem !default;
 $btn-border-radius-sm:        0.2rem !default;
+
+$btn-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out !default;
+
 
 // Forms
 

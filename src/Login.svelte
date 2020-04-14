@@ -17,7 +17,7 @@
     <div class="lc">
       <img id="logo" src="agiledata-logo-icon-white.svg" alt="agile data logo"/>
     </div>
-    <div id="customBtn" class="SignIn btn btn-outline-primary"
+    <div id="customBtn" class="SignIn btn btn-outline-primary border-0"
                         on:click="{onSignIn}" role="button">
       <span class="text-info align-center">Login</span>
     </div>

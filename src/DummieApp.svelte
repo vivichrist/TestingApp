@@ -60,7 +60,7 @@
 <!-- {#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()} -->
 {#if signedIn}
   <Menu user={ident.name} pic={ident.img_url} />
-  <main class="d-flex flex-row align-items-center justify-content-center flex-wrap">
+  <div class="d-flex flex-row align-items-center justify-content-center flex-wrap">
     <!-- Management interface -->
     <!-- {#if $manage}
       <SideBar />
@@ -75,7 +75,7 @@
     {:else}
       <ComingSoon />
     {/if}
-  </main>
+  </div>
 {:else}
   <div class="d-flex flex-row align-items-between justify-content-center flex-wrap">
     <Login />
@@ -83,11 +83,11 @@
 {/if}
 
 <style>
-	main {
-    display: flex;
-    box-sizing: border-box;
-    margin: 0;
+	div.align-items-center {
+    position: absolute;
+    top: 4.5rem;
     padding: 0;
+    margin: 0;
     width: 100%;
 	}
 </style>

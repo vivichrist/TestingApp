@@ -3,7 +3,7 @@
   fetch('https://agiledata-core-prd.appspot.com/tables/?apikey=977609nhgfty86HJKhjkl78')
     .then(res => {
       if (!res.ok) {
-        throw new Error('Network response MultiCatagory views was not ok');
+        throw new Error('Network response Topic views was not ok');
       }
       return res.json()
     })
@@ -134,19 +134,4 @@
   .carousel-control-next {
     right: -5%;
   }
-  /* @media screen and (min-width: 1260px) {
-    .d-flex {
-      height: calc(100vh - 4.5rem);
-    }
-  }
-  @media screen and (max-width: 1260px) {
-    .d-flex {
-      height: calc(100vh - 4.4rem);
-    }
-  }
-  @media screen and (max-width: 970px) {
-    .d-flex {
-      height: calc(100vh - 4.2rem);
-    }
-  } */
 </style>

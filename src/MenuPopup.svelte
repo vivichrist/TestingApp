@@ -1,24 +1,20 @@
 <script>
-  import { content } from './stores.js'
-  import { fly } from 'svelte/transition';
-  import Icon from './Icon.svelte';
+  import { content } from './stores.js';
 
-  export let awesome = "";
   export let items = "";
 
-  let named_links = [];
   // split items string into pairs of arguments (name, url)
-  let re = /\S+\s\S+\s?/g
-  named_links = items.match(re)
+  let named_links = items.match(/\S+\s\S+\s?/g)
                      .map(x => x = x.trim()
                                     .split(' ')
                                     .map(t => t = t.replace('_',' ')));
 
 </script>
 
-<div role="button" in transition:fly="{{x: 150, duration: 800}}"
-     class="btn btn-primary btn-lg" data-toggle="dropdown">
-  <i class={awesome}></i>
+<div role="button"
+     class="btn btn-lg" data-toggle="dropdown"
+     aria-haspopup="true" aria-expanded="false">
+  <slot>?</slot>
 </div>
 
 <!-- the menu that appears under the button -->
@@ -39,9 +35,6 @@
     .dropdown-item {
       font-size: 14pt;
     }
-    i {
-      font-size: 24pt;
-    }
     .btn {
       font-size: 14pt;
       padding-left: 1rem;
@@ -52,9 +45,6 @@
     .dropdown-item {
       font-size: 12pt;
     }
-    i {
-      font-size: 20pt;
-    }
     .btn {
       font-size: 12pt;
       padding-left: 0.75rem;
@@ -64,9 +54,6 @@
   @media screen and (max-width: 930px) {
     .dropdown-item {
       font-size: 11pt;
-    }
-    i {
-      font-size: 16pt;
     }
     .btn {
       font-size: 10pt;

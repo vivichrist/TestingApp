@@ -5,43 +5,42 @@
 
   export let title = "";
   export let items = "";
-  export let active = false;
 
-  let named_links = [];
-  // split items string into pairs of arguments (name, url)
-  let re = /\S+\s+\S+\s?/g
-  named_links = items.match(re)
-                     .map(x => x = x.trim()
-                                    .split(' ')
-                                    .map(t => t = t.replace('_',' ')));
+  // split menu items string into pairs of arguments (name, url)
+  let named_links = items.match(/\S+\s\S+\s?/g)
+                         .map(x => x = x.trim()
+                                        .split(' ')
+                                        .map(t => t = t.replace('_',' ')) );
 </script>
-<li class="nav-item btn-group" class:active={active}>
-  <div role="button" in transition:fly="{{y: -100, duration: 500}}"
-      class="btn btn-primary py-4 border-0"
-      on:click={() => active = true}
-      data-toggle="dropdown">
-    {title}
-  </div>
 
-
-  <div class="dropdown-menu bg-light mt-3">
-    {#each named_links as [ mname, link ] }
-      {#if mname === "divider"}
-        <div class="dropdown-divider"></div>
-      {:else}
-        <div class="dropdown-item text-dark" on:click={() => $content = link}>
-          {mname}
-        </div>
-      {/if}
-    {/each}
-  </div>
-</li>
+<!-- the triggering button for the menu dropdown -->
+<button type="button" in transition:fly="{{y: -100, duration: 500}}"
+    href="#" class="nav-link btn btn-primary py-3 px-5"
+    id="{title}MenuButton"  aria-pressed="false"
+    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  {title}
+</button>
+<!-- the menu that appears under the button -->
+<div class="dropdown-menu bg-light" aria-labelledby="{title}MenuButton">
+  {#each named_links as [ mname, link ] }
+    {#if mname === "divider"}
+      <div class="dropdown-divider"></div>
+    {:else}
+      <button class="dropdown-item text-dark"
+              on:click={() => $content = link}>
+        {mname}
+      </button>
+    {/if}
+  {/each}
+</div>
 
 <style>
   .btn:hover {
     text-shadow: 1px 1px 2px black;
   }
-  div {
+  .btn {
+    border-radius: 0;
+    box-sizing: border-box;
     z-index: 1;
   }
   @media screen and (min-width: 1260px) {
@@ -50,8 +49,6 @@
     }
     .btn {
       font-size: 14pt;
-      padding-left: 3rem;
-      padding-right: 3rem;
     }
   }
   @media screen and (max-width: 1260px) {
@@ -60,8 +57,6 @@
     }
     .btn {
       font-size: 12pt;
-      padding-left: 2rem;
-      padding-right: 2rem;
     }
   }
   @media screen and (max-width: 970px) {
@@ -70,8 +65,6 @@
     }
     .btn {
       font-size: 11pt;
-      padding-left: 1rem;
-      padding-right: 1rem;
     }
   }
 </style>

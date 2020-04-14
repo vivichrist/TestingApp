@@ -75,7 +75,7 @@
   };
 </script>
 
-<div class="nav sticky-top vw-100 nav-fill bg-white border-bottom border-ternary">
+<div class="nav sticky-top w-100 nav-fill bg-white border-bottom border-ternary">
   <span class="nav-item text-left p-2" role="button">
     <i class="fa fa-plus"></i> Add a Rule
   </span>
@@ -107,6 +107,9 @@
 </div>
 
 <style>
+  .nav {
+    top: 4.5rem;
+  }
   .d-flex {
     display: flex;
     padding: 0.8rem;

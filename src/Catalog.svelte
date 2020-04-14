@@ -15,8 +15,6 @@
       topics.add(element);
     });
   }));
-  console.log(`Number of Catagories ${categories.size}`);
-  console.log(`Number of Topics ${topics.size}`);
 </script>
 
 <script>

@@ -1,33 +1,22 @@
-<!-- <script>
-  // your script goes here
-</script> -->
+<script>
+  let titles = ["Topics", "Events", "Concepts", "Details", "History", "Consume",
+                "Recently Added", "Most Viewed", "My Lists"];
+</script>
 
 <ul class="nav sticky-top vw-100 nav-fill bg-white border-bottom border-ternary">
-  <li class="nav-item">
-    <span role="button" class="nav-link">Topics</span>
-  </li>
-  <li class="nav-item">
-    <span role="button" class="nav-link">Events</span>
-  </li>
-  <li class="nav-item">
-    <span role="button" class="nav-link">Concepts</span>
-  </li>
-  <li class="nav-item">
-    <span role="button" class="nav-link">Details</span>
-  </li>
-  <li class="nav-item">
-    <span role="button" class="nav-link">History</span>
-  </li>
-  <li class="nav-item">
-    <span role="button" class="nav-link">Consume</span>
-  </li>
+  {#each titles as item}
     <li class="nav-item">
-    <span role="button" class="nav-link">Recently Added</span>
-  </li>
+      <span role="button" class="nav-link under-dark">{item}</span>
+    </li>
+  {:else}
     <li class="nav-item">
-    <span role="button" class="nav-link">Most Viewed</span>
-  </li>
-  <li class="nav-item">
-    <span role="button" class="nav-link">My Lists</span>
-  </li>
+      <span role="button" class="nav-link under-dark">No Data</span>
+    </li>
+  {/each}
 </ul>
+
+<style>
+  ul {
+    top: 4.5rem;
+  }
+</style>

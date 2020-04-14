@@ -15,73 +15,86 @@
   import MenuPopup from "./MenuPopup.svelte";
   import Icon from "./Icon.svelte";
 
-  export let user = "";
-  export let pic = "";
+  export let user = "No User";
+  export let pic = "img/user.png";
 
-  let active = {
-    "Catalog": true,
-    "Events": false,
-    "Rules": false,
-    "Consume": false,
-    "Manage": false,
-  }
 </script>
 
-<header class="bg-primary">
-  <nav class="navbar navbar-expand-md bg-primary navbar-dark fixed-top">
-    <button class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <!-- nav menu -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-          <MenuDrop title="Icealicous" items="{menus.Icealicous}" />
-          <TopItem title="Catalog" index={2} bind:active={active.Catalog}/>
-          <MenuItem title="Events" bind:active={active.Events} items="{menus.Events}" />
-          <MenuItem title="Rules" bind:active={active.Rules} items="{menus.Rules}" />
-          <MenuItem title="Consume" bind:active={active.Consume} items="{menus.Consume}" />
-          <TopItem title="Manage" index={0} bind:active={active.Manage} />
-      </ul>
-      <!-- icon buttons and user button -->
-      <ul class="navbar-nav ml-auto mr-3">
-        <li class="nav-item btn-group">
-          <MenuPopup awesome="fas fa-plus" items={menus.Plus}/>
-        </li>
-        <li class="nav-item">
+
+<nav class="navbar navbar-expand-md bg-primary d-flex flex-row fixed-top">
+  <button class="navbar-toggler" type="button" data-toggle="collapse"
+          data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <!-- nav menu -->
+  <div class="collapse navbar-collapse align-items-stretch" id="collapsibleNavbar">
+    <MenuDrop title="Icealicous" items="{menus.Icealicous}" />
+    <nav class="navbar-nav align-items-stretch justify-content-around">
+      <div class="nav-item btn-group align-self-center under">
+        <TopItem item={2}>Catalog</TopItem>
+      </div>
+      <div class="nav-item btn-group align-self-center under">
+        <MenuItem title="Events" items="{menus.Events}" />
+      </div>
+      <div class="nav-item btn-group align-self-center under">
+        <MenuItem title="Rules" items="{menus.Rules}" />
+      </div>
+      <div class="nav-item btn-group align-self-center under">
+        <MenuItem title="Consume" items="{menus.Consume}" />
+      </div>
+      <div class="nav-item btn-group align-self-center under">
+        <TopItem item={0}>Manage</TopItem>
+      </div>
+    </nav>
+    <!-- icon buttons and user button -->
+    <nav class="navbar-nav align-items-stretch justify-content-end">
+      <div class="nav-item btn-group">
+        <MenuPopup items={menus.Plus}>
+          <Icon awesome="fas fa-plus" />
+        </MenuPopup>
+      </div>
+      <div class="nav-item btn-group">
+        <div role="button" class="btn btn-lg">
           <Icon awesome="fas fa-cog" />
-        </li>
-        <li class="nav-item">
-          <div role="button" class="btn btn-primary mx-0 px-0">
-            <img src={pic} class="user rounded-circle" alt={user} />
-          </div>
-        </li>
-      </ul>
-    </div>
-  </nav>
-</header>
+        </div>
+      </div>
+      <div class="nav-item btn-group">
+        <div type="button" class="align-self-center btn btn-lg">
+          <img src={pic} class="user img-fluid rounded-circle" alt={user} />
+        </div>
+      </div>
+    </nav>
+  </div>
+</nav>
 
 <style>
-  header {
-    padding: 0;
+  .user {
+    display: inline-flex;
   }
-  li {
+  div.nav-item {
     padding: 0;
     margin: 0;
   }
-  li.active {
-    border-bottom: 3px solid white;
-  }
-  nav {
+  nav.navbar {
     margin: 0;
     padding: 0;
     box-shadow: 0 5px 10px #d7baff;
   }
-  .navbar {
-    position: static;
+  nav.navbar-nav {
+    margin: 0;
+    padding: 0;
+    width: 75%;
   }
+
+  div.navbar-collapse {
+    height: 4.5rem;
+  }
+
   @media screen and (min-width: 1260px) {
-    header {
+    div.navbar-collapse {
+      height: 4.4rem;
+    }
+    nav.navbar {
       height: 4.5rem;
     }
     .btn {
@@ -92,15 +105,14 @@
     .user {
       width: 2rem;
       height: 2rem;
-      padding-left: 0;
-      padding-right: 0;
-      margin-left: 1rem;
-      margin-right: 1rem;
     }
   }
   @media screen and (max-width: 1260px) {
-    header {
+    nav.navbar {
       height: 4.4rem;
+    }
+    div.navbar-collapse {
+      height: 4.3rem;
     }
     .btn {
       font-size: 16pt;
@@ -110,15 +122,14 @@
     .user {
       width: 1.8rem;
       height: 1.8rem;
-      padding-left: 0;
-      padding-right: 0;
-      margin-left: 1rem;
-      margin-right: 1rem;
     }
   }
   @media screen and (max-width: 970px) {
-    header {
+    nav.navbar {
       height: 4.2rem;
+    }
+    div.navbar-collapse {
+      height: 4.1rem;
     }
     .btn {
       font-size: 12pt;
@@ -128,10 +139,6 @@
     .user {
       width: 1.6rem;
       height: 1.6rem;
-      padding-left: 0;
-      padding-right: 0;
-      margin-left: 1rem;
-      margin-right: 1rem;
     }
   }
 </style>
