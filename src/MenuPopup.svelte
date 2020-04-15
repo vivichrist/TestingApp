@@ -12,7 +12,7 @@
 </script>
 
 <div role="button"
-     class="btn btn-lg" data-toggle="dropdown"
+     class="btn" data-toggle="dropdown"
      aria-haspopup="true" aria-expanded="false">
   <slot>?</slot>
 </div>

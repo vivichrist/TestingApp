@@ -15,7 +15,7 @@
 
 <!-- the triggering button for the menu dropdown -->
 <button type="button" in transition:fly="{{y: -100, duration: 500}}"
-    href="#" class="nav-link btn btn-primary py-3 px-5"
+    href="#" class="nav-link btn btn-primary py-3 px-auto m-0"
     id="{title}MenuButton"  aria-pressed="false"
     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   {title}
@@ -41,6 +41,8 @@
   .btn {
     border-radius: 0;
     box-sizing: border-box;
+    padding-left: auto;
+    padding-right: auto;
     z-index: 1;
   }
   @media screen and (min-width: 1260px) {

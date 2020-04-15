@@ -20,7 +20,6 @@
 
 </script>
 
-
 <nav class="navbar navbar-expand-md bg-primary d-flex flex-row fixed-top">
   <button class="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#collapsibleNavbar">
@@ -29,7 +28,7 @@
   <!-- nav menu -->
   <div class="collapse navbar-collapse align-items-stretch" id="collapsibleNavbar">
     <MenuDrop title="Icealicous" items="{menus.Icealicous}" />
-    <nav class="navbar-nav align-items-stretch justify-content-around">
+    <nav class="navbar-nav align-items-stretch justify-content-around left">
       <div class="nav-item btn-group align-self-center under">
         <TopItem item={2}>Catalog</TopItem>
       </div>
@@ -47,19 +46,19 @@
       </div>
     </nav>
     <!-- icon buttons and user button -->
-    <nav class="navbar-nav align-items-stretch justify-content-end">
-      <div class="nav-item btn-group">
+    <nav class="navbar-nav align-items-center justify-content-end right">
+      <div class="nav-item">
         <MenuPopup items={menus.Plus}>
           <Icon awesome="fas fa-plus" />
         </MenuPopup>
       </div>
-      <div class="nav-item btn-group">
-        <div role="button" class="btn btn-lg">
+      <div class="nav-item">
+        <div role="button" class="btn">
           <Icon awesome="fas fa-cog" />
         </div>
       </div>
-      <div class="nav-item btn-group">
-        <div type="button" class="align-self-center btn btn-lg">
+      <div class="nav-item">
+        <div type="button" class="align-self-center btn">
           <img src={pic} class="user img-fluid rounded-circle" alt={user} />
         </div>
       </div>
@@ -76,14 +75,21 @@
     margin: 0;
   }
   nav.navbar {
-    margin: 0;
     padding: 0;
+    margin: 0;
     box-shadow: 0 5px 10px #d7baff;
   }
-  nav.navbar-nav {
+  .navbar-nav.left {
+    display: inline-flex;
     margin: 0;
     padding: 0;
-    width: 75%;
+    width: 65%;
+  }
+
+  .navbar-nav.right {
+    margin: 0;
+    padding: 0;
+    width: 35%;
   }
 
   div.navbar-collapse {
@@ -99,8 +105,8 @@
     }
     .btn {
       font-size: 18pt;
-      padding-left: 3rem;
-      padding-right: 3rem;
+      padding-left: auto;
+      padding-right: auto;
     }
     .user {
       width: 2rem;
@@ -116,8 +122,8 @@
     }
     .btn {
       font-size: 16pt;
-      padding-left: 2rem;
-      padding-right: 2rem;
+      padding-left: auto;
+      padding-right: auto;
     }
     .user {
       width: 1.8rem;

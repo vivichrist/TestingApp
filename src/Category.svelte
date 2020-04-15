@@ -18,14 +18,19 @@
 </script>
 
 <script>
-  export let rng = 6;
   export let name = "History";
   export let type = "history";
 
+  let rng = Math.floor(window.outerWidth / 240);
   let fdata = cat_data.filter(obj => obj.object.includes(type));
 
   $: limit = Math.ceil(fdata.length / rng);
+  const handleWidth = ()  => {
+    rng = Math.floor(window.outerWidth / 240);
+  };
 </script>
+
+<svelte:window on:resize={handleWidth} />
 
 <h5 class="text-left font-weight-bold mt-5 mb-0 pb-0" style="width: 90vw;">{name}</h5>
 <div class="d-flex flex-row vw-100">
@@ -43,7 +48,7 @@
       {#each [...Array(limit).keys()] as i}
       {#if i == 0}
         <div class="carousel-item active">
-        <div class="d-flex bd-highlight justify-content-around">
+        <div class="d-flex bd-highlight justify-content-start">
         {#each fdata.slice(0, Math.min(rng, fdata.length)) as item}
           <div class="card bg-{type}">
             <div class="card-body">
@@ -62,7 +67,7 @@
         </div>
       {:else}
         <div class="carousel-item">
-        <div class="d-flex bd-highlight justify-content-around">
+        <div class="d-flex bd-highlight justify-content-start">
         {#each fdata.slice((i + 1) * rng >= fdata.length ?
                            fdata.length - rng : i * rng,
                 Math.min((i + 1) * rng, fdata.length)) as item}
@@ -102,7 +107,9 @@
   .card {
     width: 12rem;
     height: 15rem;
-    max-width: 15%
+    max-width: 200px;
+    margin-left: 1.2%;
+    margin-right: 1.2%;
   }
   .carousel, .carousel-inner {
     width: 90vw;
