@@ -7,7 +7,7 @@
 
 <div role="button" in transition:fly="{{y: -100, duration: 500}}"
                   on:click="{() => content.set(item)}"
-                  class="nav-link btn btn-primary py-3 px-auto m-0">
+                  class="nav-link btn btn-primary py-3 m-0">
   <slot>???</slot>
 </div>
 

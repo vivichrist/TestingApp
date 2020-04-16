@@ -29,19 +29,19 @@
   <div class="collapse navbar-collapse align-items-stretch" id="collapsibleNavbar">
     <MenuDrop title="Icealicous" items="{menus.Icealicous}" />
     <nav class="navbar-nav align-items-stretch justify-content-around left">
-      <div class="nav-item btn-group align-self-center under">
+      <div class="nav-item d-flex flex-fill btn-group align-self-center under">
         <TopItem item={2}>Catalog</TopItem>
       </div>
-      <div class="nav-item btn-group align-self-center under">
+      <div class="nav-item d-flex flex-fill btn-group align-self-center under">
         <MenuItem title="Events" items="{menus.Events}" />
       </div>
-      <div class="nav-item btn-group align-self-center under">
+      <div class="nav-item d-flex flex-fill btn-group align-self-center under">
         <MenuItem title="Rules" items="{menus.Rules}" />
       </div>
-      <div class="nav-item btn-group align-self-center under">
+      <div class="nav-item d-flex flex-fill btn-group align-self-center under">
         <MenuItem title="Consume" items="{menus.Consume}" />
       </div>
-      <div class="nav-item btn-group align-self-center under">
+      <div class="nav-item d-flex flex-fill btn-group align-self-center under">
         <TopItem item={0}>Manage</TopItem>
       </div>
     </nav>
