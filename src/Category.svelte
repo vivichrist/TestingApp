@@ -108,8 +108,8 @@
     width: 12rem;
     height: 15rem;
     max-width: 200px;
-    margin-left: 1.2%;
-    margin-right: 1.2%;
+    margin-left: 10px;
+    margin-right: 10px;
   }
   .carousel, .carousel-inner {
     width: 90vw;
