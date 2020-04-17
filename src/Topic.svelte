@@ -37,6 +37,9 @@
   const handleWidth = ()  => {
     rng = Math.floor(window.outerWidth / 240);
   };
+
+  const hidePopups = () =>
+        window.$('[data-toggle="popover"]').popover('hide');
 </script>
 
 <svelte:window on:resize={handleWidth} />
@@ -98,11 +101,13 @@
       {/if}
       {/each}
     </div>
-    <a class="carousel-control-prev" href="#{type}Captions" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#{type}Captions" role="button"
+       data-slide="prev" on:click={window.hidePopups}>
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#{type}Captions" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#{type}Captions" role="button"
+       data-slide="next" on:click={window.hidePopups}>
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>

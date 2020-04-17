@@ -60,7 +60,9 @@
 <!-- {#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()} -->
 {#if signedIn}
   <Menu user={ident.name} pic={ident.img_url} />
-  <div class="d-flex flex-row align-items-center justify-content-center flex-wrap">
+  <div class="d-flex flex-row align-items-center justify-content-center flex-wrap"
+        on:wheel={window.hidePopups}
+        on:click={window.hidePopups}>
     <!-- Management interface -->
     <!-- {#if $manage}
       <SideBar />

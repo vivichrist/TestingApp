@@ -15,6 +15,9 @@
       topics.add(element);
     });
   }));
+
+  window.hidePopups = () =>
+        window.$('[data-toggle="popover"]').popover('hide');
 </script>
 
 <script>
