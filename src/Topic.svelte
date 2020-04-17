@@ -64,7 +64,7 @@
         {#each fdata.slice(0, Math.min(rng, fdata.length)) as item}
           <div class="card bg-{what_type(item.object)}">
             <div class="card-body m-0 p-2">
-              <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
+              <h6 class="card-title heading-{what_type(item.object)} flex-wrap">{item.alias}</h6>
               <p class="card-text">
               {#each item.topics as token}
                 <span class="border border-ternary bg-light topic px-1 py-0 m-1 rounded">
@@ -85,7 +85,7 @@
                 Math.min((i + 1) * rng, fdata.length)) as item}
           <div class="card bg-{what_type(item.object)}">
             <div class="card-body m-0 p-2">
-              <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
+              <h6 class="card-title heading-{what_type(item.object)} flex-wrap">{item.alias}</h6>
               <p class="card-text">
               {#each item.topics as token}
                 <span class="border border-ternary bg-light topic px-1 py-0 m-1 rounded">
@@ -118,8 +118,11 @@
   h6 {
     font-size: 15pt;
   }
-    .topic {
+  .topic {
     line-height: 2em;
+  }
+  .heading-concept {
+    color: var(--light);
   }
   .card {
     width: 12rem;

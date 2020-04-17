@@ -36,9 +36,9 @@ $colors: map-merge(
   (
     "blue":       $blue,
     "indigo":     $indigo,
-    "amethystsmoke": $amethystsmoke,
-    "purple":     $purple,
     "eggplant":   $eggplant,
+    "purple":     $purple,
+    "amethystsmoke": $amethystsmoke,
     "pink":       $pink,
     "red":        $red,
     "orange":     $orange,
@@ -93,7 +93,7 @@ $theme-colors: map-merge(
   $theme-colors
 );
 
-$yiq-contrasted-threshold:  175 !default;
+$yiq-contrasted-threshold:  120 !default;
 
 
 // Body

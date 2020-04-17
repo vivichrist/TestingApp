@@ -79,7 +79,7 @@
                   </svg>
                 </button>
               </span>
-              <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
+              <h6 class="card-title heading-{type} flex-wrap">{item.alias}</h6>
               <p class="card-text my-1">
               {#each item.topics as token}
                 <span class="border border-ternary bg-light topic rounded px-1 py-0 m-1">
@@ -116,7 +116,7 @@
                   </svg>
                 </button>
               </span>
-              <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
+              <h6 class="card-title flex-wrap heading-{type}">{item.alias}</h6>
               <p class="card-text my-1">
               {#each item.topics as token}
                 <span class="border border-ternary bg-light topic rounded px-1 py-0 m-1">
@@ -152,6 +152,9 @@
   .topic {
     line-height: 2em;
   }
+  .heading-concept {
+    color: var(--light);
+  }
   h6 {
     font-size: 15pt;
   }
@@ -182,19 +185,4 @@
   .carousel-control-next {
     right: -5%;
   }
-  /* @media screen and (min-width: 1260px) {
-    .d-flex {
-      height: calc(100vh - 4.5rem);
-    }
-  }
-  @media screen and (max-width: 1260px) {
-    .d-flex {
-      height: calc(100vh - 4.4rem);
-    }
-  }
-  @media screen and (max-width: 970px) {
-    .d-flex {
-      height: calc(100vh - 4.2rem);
-    }
-  } */
 </style>
