@@ -63,11 +63,11 @@
         <div class="d-flex bd-highlight justify-content-start">
         {#each fdata.slice(0, Math.min(rng, fdata.length)) as item}
           <div class="card bg-{what_type(item.object)}">
-            <div class="card-body">
+            <div class="card-body m-0 p-2">
               <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
               <p class="card-text">
               {#each item.topics as token}
-                <span class="border border-ternary bg-light rounded py-0 px-1 m-1">
+                <span class="border border-ternary bg-light topic px-1 py-0 m-1 rounded">
                   {token}
                 </span>
               {/each}
@@ -84,11 +84,11 @@
                            fdata.length - rng : i * rng,
                 Math.min((i + 1) * rng, fdata.length)) as item}
           <div class="card bg-{what_type(item.object)}">
-            <div class="card-body">
+            <div class="card-body m-0 p-2">
               <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
               <p class="card-text">
               {#each item.topics as token}
-                <span class="border border-ternary bg-light rounded py-0 px-1 m-1">
+                <span class="border border-ternary bg-light topic px-1 py-0 m-1 rounded">
                   {token}
                 </span>
               {/each}
@@ -117,6 +117,9 @@
 <style>
   h6 {
     font-size: 15pt;
+  }
+    .topic {
+    line-height: 2em;
   }
   .card {
     width: 12rem;

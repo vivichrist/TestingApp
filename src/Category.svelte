@@ -62,11 +62,11 @@
         <div class="d-flex bd-highlight justify-content-start">
         {#each fdata.slice(0, Math.min(rng, fdata.length)) as item}
           <div class="card bg-{type}">
-            <div class="card-body" data-toggle="popover" title="{item.alias}"
+            <div class="card-body m-0 p-2" data-toggle="popover" title="{item.alias}"
                  data-trigger="focus"
                  data-content="{item.topics}"
                  on:contextmenu|preventDefault={handlePopup}>
-              <span class="float-right m-0 p-0">
+              <span class="float-right m-0 p-1">
                 <button class="btn btn-primary btn-sm p-0 m-0 card-icon">
                   <svg class="bi bi-pencil m-0 p-0" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/>
@@ -82,7 +82,7 @@
               <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
               <p class="card-text my-1">
               {#each item.topics as token}
-                <span class="border border-ternary bg-light rounded py-0 px-1 mx-0">
+                <span class="border border-ternary bg-light topic rounded px-1 py-0 m-1">
                   {token}
                 </span>
               {/each}
@@ -99,11 +99,11 @@
                            fdata.length - rng : i * rng,
                 Math.min((i + 1) * rng, fdata.length)) as item}
           <div class="card bg-{type}">
-            <div class="card-body" data-toggle="popover" title="{item.alias}"
+            <div class="card-body m-0 p-2" data-toggle="popover" title="{item.alias}"
                  data-trigger="focus"
                  data-content="{item.topics}"
                  on:contextmenu|preventDefault={handlePopup}>
-              <span class="float-right m-0 p-0">
+              <span class="float-right m-0 p-1">
                 <button class="btn btn-primary m-0 p-0 btn-sm card-icon">
                   <svg class="bi bi-pencil m-0 p-0" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/>
@@ -119,7 +119,7 @@
               <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
               <p class="card-text my-1">
               {#each item.topics as token}
-                <span class="border border-ternary bg-light rounded py-0 px-1 mx-0">
+                <span class="border border-ternary bg-light topic rounded px-1 py-0 m-1">
                   {token}
                 </span>
               {/each}
@@ -148,6 +148,9 @@
 <style>
   .card-icon {
     padding-left: 0.33em;
+  }
+  .topic {
+    line-height: 2em;
   }
   h6 {
     font-size: 15pt;
