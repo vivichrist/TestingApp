@@ -5155,7 +5155,7 @@ a.close.disabled {
   line-break: auto;
   font-size: 0.546875rem;
   word-wrap: break-word;
-  background-color: #755A99;
+  background-color: #fff;
   background-clip: padding-box;
   border: 2px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.5rem; }
@@ -5183,7 +5183,7 @@ a.close.disabled {
     .bs-popover-top > .arrow::after, .bs-popover-auto[x-placement^="top"] > .arrow::after {
       bottom: 2px;
       border-width: 0.5rem 0.5rem 0;
-      border-top-color: #755A99; }
+      border-top-color: #fff; }
 
 .bs-popover-right, .bs-popover-auto[x-placement^="right"] {
   margin-left: 0.5rem; }
@@ -5199,7 +5199,7 @@ a.close.disabled {
     .bs-popover-right > .arrow::after, .bs-popover-auto[x-placement^="right"] > .arrow::after {
       left: 2px;
       border-width: 0.5rem 0.5rem 0.5rem 0;
-      border-right-color: #755A99; }
+      border-right-color: #fff; }
 
 .bs-popover-bottom, .bs-popover-auto[x-placement^="bottom"] {
   margin-top: 0.5rem; }
@@ -5212,7 +5212,7 @@ a.close.disabled {
     .bs-popover-bottom > .arrow::after, .bs-popover-auto[x-placement^="bottom"] > .arrow::after {
       top: 2px;
       border-width: 0 0.5rem 0.5rem 0.5rem;
-      border-bottom-color: #755A99; }
+      border-bottom-color: #fff; }
   .bs-popover-bottom .popover-header::before, .bs-popover-auto[x-placement^="bottom"] .popover-header::before {
     position: absolute;
     top: 0;
@@ -5221,7 +5221,7 @@ a.close.disabled {
     width: 1rem;
     margin-left: -0.5rem;
     content: "";
-    border-bottom: 2px solid #6e548f; }
+    border-bottom: 2px solid #f7f7f7; }
 
 .bs-popover-left, .bs-popover-auto[x-placement^="left"] {
   margin-right: 0.5rem; }
@@ -5237,15 +5237,15 @@ a.close.disabled {
     .bs-popover-left > .arrow::after, .bs-popover-auto[x-placement^="left"] > .arrow::after {
       right: 2px;
       border-width: 0.5rem 0 0.5rem 0.5rem;
-      border-left-color: #755A99; }
+      border-left-color: #fff; }
 
 .popover-header {
   padding: 0.5rem 0.75rem;
   margin-bottom: 0;
   font-size: 0.875rem;
   color: #212529;
-  background-color: #6e548f;
-  border-bottom: 2px solid #614b7f;
+  background-color: #f7f7f7;
+  border-bottom: 2px solid #ebebeb;
   border-top-left-radius: calc(0.5rem - 2px);
   border-top-right-radius: calc(0.5rem - 2px); }
   .popover-header:empty {

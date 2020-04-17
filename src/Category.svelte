@@ -28,6 +28,17 @@
   const handleWidth = ()  => {
     rng = Math.floor(window.outerWidth / 240);
   };
+
+  window.$('[data-toggle="popover"]').popover({ container: 'body'});
+
+  const handlePopup = (e) => {
+    window.$('[data-toggle="popover"]').each(function() {
+      if (e.target !== this) {
+        window.$(this).popover('hide');
+      }
+    });
+    window.$(e.target).popover('toggle');
+  };
 </script>
 
 <svelte:window on:resize={handleWidth} />
@@ -51,7 +62,10 @@
         <div class="d-flex bd-highlight justify-content-start">
         {#each fdata.slice(0, Math.min(rng, fdata.length)) as item}
           <div class="card bg-{type}">
-            <div class="card-body">
+            <div class="card-body" data-toggle="popover" title="{item.alias}"
+                 data-trigger="focus"
+                 data-content="{item.topics}"
+                 on:contextmenu|preventDefault={handlePopup}>
               <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
               <p class="card-text my-1">
               {#each item.topics as token}
@@ -72,7 +86,10 @@
                            fdata.length - rng : i * rng,
                 Math.min((i + 1) * rng, fdata.length)) as item}
           <div class="card bg-{type}">
-            <div class="card-body">
+            <div class="card-body" data-toggle="popover" title="{item.alias}"
+                 data-trigger="focus"
+                 data-content="{item.topics}"
+                 on:contextmenu|preventDefault={handlePopup}>
               <h6 class="card-title text-secondary flex-wrap">{item.alias}</h6>
               <p class="card-text my-1">
               {#each item.topics as token}
