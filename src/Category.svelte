@@ -129,6 +129,9 @@
   .heading-concept {
     color: var(--light);
   }
+  .heading-event {
+    color: var(--light);
+  }
   h6 {
     font-size: 15pt;
   }

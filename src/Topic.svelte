@@ -126,6 +126,9 @@
   .heading-concept {
     color: var(--light);
   }
+  .heading-event {
+    color: var(--light);
+  }
   .card {
     width: 12rem;
     height: 15rem;
