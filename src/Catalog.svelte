@@ -16,14 +16,15 @@
     });
   }));
 
-  window.hidePopups = () =>
-        window.$('[data-toggle="popover"]').popover('hide');
 </script>
 
 <script>
+  import { popup } from "./stores.js";
   import Topic from './Topic.svelte';
   import Category from './Category.svelte';
   import SubMenu from "./SubMenu.svelte";
+
+  window.hidePopups = () => window.$($popup).popover('hide');
 </script>
 
 <SubMenu />

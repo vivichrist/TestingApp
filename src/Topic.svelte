@@ -18,6 +18,8 @@
 </script>
 
 <script>
+  import { popup } from './stores.js'
+
   export let name = "TPCH Topic";
   export let type = "TPCH";
 
@@ -40,6 +42,12 @@
 
   const hidePopups = () =>
         window.$('[data-toggle="popover"]').popover('hide');
+
+  const handlePopup = (e) => {
+    window.$($popup).popover('hide');
+    window.$(e.target).popover('toggle');
+    $popup = e.target;
+  };
 </script>
 
 <svelte:window on:resize={handleWidth} />
@@ -58,12 +66,28 @@
     </ol>
     <div class="carousel-inner">
       {#each [...Array(limit).keys()] as i}
-      {#if i == 0}
-        <div class="carousel-item active">
+        <div class="carousel-item {i == 0 ? 'active' : ''}">
         <div class="d-flex bd-highlight justify-content-start">
         {#each fdata.slice(0, Math.min(rng, fdata.length)) as item}
           <div class="card bg-{what_type(item.object)}">
-            <div class="card-body m-0 p-2">
+            <div class="card-body m-0 p-2" data-toggle="popover" title="{item.alias}"
+                 data-trigger="focus" data-template={`<div class="popover dropdown-menu">
+        <h3 class="popover-header"></h3>
+        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Concept </div>
+        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Detail </div>
+        <div class="dropdown-item text-dark"> View Events </div>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Change Rules </div>
+        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Validation Rules </div>
+        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Consume Rules </div>
+        <div class="dropdown-divider"></div>
+        <div class="dropdown-item text-dark"> Create Concept </div>
+        <div class="dropdown-item text-dark"> Create Detail </div>
+        <div class="dropdown-item text-dark"> Create Event </div>
+        <div class="dropdown-item text-dark"> Create Rule </div>
+        </div>`} data-html={true}
+                 data-content={item.alias.split(' ')[0]}
+                 on:contextmenu|preventDefault={handlePopup}>
               <h6 class="card-title heading-{what_type(item.object)} flex-wrap">{item.alias}</h6>
               <p class="card-text">
               {#each item.topics as token}
@@ -77,28 +101,6 @@
         {/each}
         </div>
         </div>
-      {:else}
-        <div class="carousel-item">
-        <div class="d-flex bd-highlight justify-content-start">
-        {#each fdata.slice((i + 1) * rng >= fdata.length ?
-                           fdata.length - rng : i * rng,
-                Math.min((i + 1) * rng, fdata.length)) as item}
-          <div class="card bg-{what_type(item.object)}">
-            <div class="card-body m-0 p-2">
-              <h6 class="card-title heading-{what_type(item.object)} flex-wrap">{item.alias}</h6>
-              <p class="card-text">
-              {#each item.topics as token}
-                <span class="border border-ternary bg-light topic px-1 py-0 m-1 rounded">
-                  {token}
-                </span>
-              {/each}
-              </p>
-            </div>
-          </div>
-        {/each}
-        </div>
-        </div>
-      {/if}
       {/each}
     </div>
     <a class="carousel-control-prev" href="#{type}Captions" role="button"
