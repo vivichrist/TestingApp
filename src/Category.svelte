@@ -1,37 +1,18 @@
-<script context="module">
-  let cat_data = [];
-  fetch('https://agiledata-core-prd.appspot.com/tables/?apikey=977609nhgfty86HJKhjkl78')
-    .then(res => {
-      if (!res.ok) {
-        throw new Error('Network response for Catagory views was not ok');
-      }
-      return res.json()
-    })
-    .then(jsn => cat_data = jsn.map(obj => {
-      for (let key in obj) {
-        if (!Array.isArray(obj[key])) {
-          obj[key] = obj[key].replace(/[_.]/g, ' '); // remove underscores and dot
-        } else {obj[key].sort();}
-      }
-      return obj;
-    }));
-</script>
-
 <script>
   import { popup } from './stores.js'
 
-  export let name = "History";
-  export let type = "history";
+  export let data = [];
+  export let name = "Missing Category";
+  export let type = "NoCategory";
+  export const filterfn = undefined;
 
   let rng = Math.floor(window.outerWidth / 240);
-  let fdata = cat_data.filter(obj => obj.object.includes(type));
 
-  $: limit = Math.ceil(fdata.length / rng);
+  $: limit = Math.ceil(data.length / rng);
+
   const handleWidth = ()  => {
     rng = Math.floor(window.outerWidth / 240);
   };
-
-  window.$('[data-toggle="popover"]').popover({ container: 'body' });
 
   const handlePopup = (e) => {
     window.$($popup).popover('hide');
@@ -46,6 +27,7 @@
 <div class="d-flex flex-row vw-100">
   <div id="{type}Captions" class="carousel slide" data-interval="false">
     <ol class="carousel-indicators justify-content-end">
+    {#if data.length > rng }
     {#each [...Array(limit).keys()] as i}
       {#if i == 0}
         <li data-target="#{type}Captions" data-slide-to={i} class="active"></li>
@@ -53,12 +35,13 @@
         <li data-target="#{type}Captions" data-slide-to={i == limit ? 0 : i}></li>
       {/if}
     {/each}
+    {/if}
     </ol>
     <div class="carousel-inner">
       {#each [...Array(limit).keys()] as i}
         <div class="carousel-item {i == 0 ? 'active' : ''}">
         <div class="d-flex bd-highlight justify-content-start">
-        {#each fdata.slice(0, Math.min(rng, fdata.length)) as item}
+        {#each data.slice(0, Math.min(rng, data.length)) as item}
           <div class="card bg-{type}">
             <div class="card-body m-0 p-2" data-toggle="popover" title="{item.alias}"
                  data-trigger="focus" data-template={`<div class="popover dropdown-menu">
@@ -106,6 +89,7 @@
         </div>
       {/each}
     </div>
+    {#if data.length > rng }
     <a class="carousel-control-prev" href="#{type}Captions" role="button"
        data-slide="prev" on:click={window.hidePopups}>
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -116,6 +100,7 @@
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
     </a>
+    {/if}
   </div>
 </div>
 

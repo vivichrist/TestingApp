@@ -8,6 +8,7 @@
   import Rules from './Rules.svelte';
   import ComingSoon from './ComingSoon.svelte';
   import Catalog from './Catalog.svelte';
+  import CatalogDetails from './CatalogDetails.svelte';
 
   let signedIn = false;
 
@@ -74,6 +75,8 @@
       <Rules />
     {:else if $content == 2}
       <Catalog />
+    {:else if $content == 3}
+      <CatalogDetails />
     {:else}
       <ComingSoon />
     {/if}

@@ -4,7 +4,7 @@
     Events: "Link_1 13 divider 0 Link_2 13 Link_3 13 divider 0 Link_4 13",
     Rules: "Add_Rules 13 divider 0 All_Rules 1 Change_Rules 1 Validation_Rules 13 Consume_Rules 13 divider 0 Lineage 13",
     Consume: "Link_1 13 divider 0 Link_2 13 Link_3 13 divider 0 Link_4 13",
-    Plus: "Blah 13 divider 0 Blah_Blah 13"
+    Plus: "CatalogDetails 3 divider 0 Blah_Blah 13"
   };
 </script>
 
@@ -47,7 +47,7 @@
     </nav>
     <!-- icon buttons and user button -->
     <nav class="navbar-nav align-items-center justify-content-end right">
-      <div class="nav-item">
+      <div class="nav-item d-flex btn-group">
         <MenuPopup items={menus.Plus}>
           <Icon awesome="fas fa-plus" />
         </MenuPopup>
