@@ -1,17 +1,18 @@
 <script>
   import { popup } from './stores.js'
+  import CatCard from './CatCard.svelte';
 
   export let data = [];
   export let name = "Missing Category";
   export let type = "NoCategory";
   export const filterfn = undefined;
 
-  let rng = Math.floor(window.outerWidth / 240);
+  let rng = Math.floor(window.outerWidth / 235);
 
   $: limit = Math.ceil(data.length / rng);
 
   const handleWidth = ()  => {
-    rng = Math.floor(window.outerWidth / 240);
+    rng = Math.floor(window.outerWidth / 235);
   };
 
   const handlePopup = (e) => {
@@ -23,67 +24,29 @@
 
 <svelte:window on:resize={handleWidth} />
 
-<h5 class="text-left font-weight-bold mt-5 mb-0 pb-0" style="width: 90vw;">{name}</h5>
-<div class="d-flex flex-row vw-100">
-  <div id="{type}Captions" class="carousel slide" data-interval="false">
-    <ol class="carousel-indicators justify-content-end">
+<div class="d-inline-flex flex-fill flex-row justify-content-start"
+     style="width: {Math.min(data.length, rng) * 240 + 80}px;">
+  <div id="{type}Captions" class="carousel slide flex-fill justify-content-start"
+       data-interval="false">
+    <h5 class="d-block text-left font-weight-bold mb-0 pb-0">
+      {name}
+    </h5>
     {#if data.length > rng }
+    <ol class="carousel-indicators justify-content-end">
     {#each [...Array(limit).keys()] as i}
-      {#if i == 0}
-        <li data-target="#{type}Captions" data-slide-to={i} class="active"></li>
-      {:else}
-        <li data-target="#{type}Captions" data-slide-to={i == limit ? 0 : i}></li>
-      {/if}
+        <li data-target="#{type}Captions"
+            data-slide-to={i == limit ? 0 : i}
+            class="{i === 0 ? 'active' : ''}">
+        </li>
     {/each}
-    {/if}
     </ol>
+    {/if}
     <div class="carousel-inner">
       {#each [...Array(limit).keys()] as i}
         <div class="carousel-item {i == 0 ? 'active' : ''}">
         <div class="d-flex bd-highlight justify-content-start">
-        {#each data.slice(0, Math.min(rng, data.length)) as item}
-          <div class="card bg-{type}">
-            <div class="card-body m-0 p-2" data-toggle="popover" title="{item.alias}"
-                 data-trigger="focus" data-template={`<div class="popover dropdown-menu">
-        <h3 class="popover-header"></h3>
-        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Concept </div>
-        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Detail </div>
-        <div class="dropdown-item text-dark"> View Events </div>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Change Rules </div>
-        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Validation Rules </div>
-        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Consume Rules </div>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-item text-dark"> Create Concept </div>
-        <div class="dropdown-item text-dark"> Create Detail </div>
-        <div class="dropdown-item text-dark"> Create Event </div>
-        <div class="dropdown-item text-dark"> Create Rule </div>
-        </div>`} data-html={true}
-                 data-content={item.alias.split(' ')[0]}
-                 on:contextmenu|preventDefault={handlePopup}>
-              <span class="float-right m-0 p-1">
-                <button class="btn btn-primary btn-sm p-0 m-0 card-icon">
-                  <svg class="bi bi-pencil m-0 p-0" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 011.414 0l2 2a1 1 0 010 1.414l-9 9a1 1 0 01-.39.242l-3 1a1 1 0 01-1.266-1.265l1-3a1 1 0 01.242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z" clip-rule="evenodd"/>
-                    <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 00.5.5H4v.5a.5.5 0 00.5.5H5v.5a.5.5 0 00.5.5H6v-1.5a.5.5 0 00-.5-.5H5v-.5a.5.5 0 00-.5-.5H3z" clip-rule="evenodd"/>
-                  </svg>
-                </button>
-                <button class="btn btn-primary m-0 p-0 btn-sm card-icon">
-                  <svg class="bi bi-three-dots-vertical" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M9.5 13a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zm0-5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" clip-rule="evenodd"/>
-                  </svg>
-                </button>
-              </span>
-              <h6 class="card-title heading-{type} flex-wrap">{item.alias}</h6>
-              <p class="card-text my-1">
-              {#each item.topics as token}
-                <span class="border border-ternary bg-light topic rounded px-1 py-0 m-1">
-                  {token}
-                </span>
-              {/each}
-              </p>
-            </div>
-          </div>
+        {#each data.slice(rng * i, Math.min(rng * (i + 1), data.length)) as item}
+          <CatCard colour={item.object} item={item} handlePopup={handlePopup} />
         {/each}
         </div>
         </div>
@@ -105,46 +68,23 @@
 </div>
 
 <style>
-  .card-icon {
-    padding-left: 0.33em;
-  }
-  .topic {
-    line-height: 2em;
-  }
-  .heading-concept {
-    color: var(--light);
-  }
-  .heading-event {
-    color: var(--light);
-  }
-  h6 {
-    font-size: 15pt;
-  }
-  .card {
-    width: 12rem;
-    height: 15rem;
-    max-width: 200px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
   .carousel, .carousel-inner {
-    width: 90vw;
-    height: 16rem;
-    margin-left: auto;
-    margin-right: auto;
+    height: 18rem;
+    margin-right: 0;
+    margin-left: 2rem;
     margin-top: 1rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
   .carousel-indicators {
-    bottom: 95%;
-    margin-right: 0;
+    bottom: 85%;
+    margin-right: 5rem;
     padding-right: 0;
     margin-bottom: 0;
   }
   .carousel-control-prev {
-    left: -5%;
+    left: -2%;
   }
   .carousel-control-next {
-    right: -5%;
+    right: 0;
   }
 </style>

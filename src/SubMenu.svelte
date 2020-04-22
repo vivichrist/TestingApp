@@ -10,14 +10,13 @@
     {name: "Most Viewed", filterby: ""},
     {name: "My Lists", filterby: ""}
   ];
-  export const filterfn = undefined;
+  export let filterfn = undefined;
 </script>
 
 <ul class="nav sticky-top vw-100 nav-fill bg-white border-bottom border-ternary">
   {#each titles as item}
-    <li class="nav-item">
-      <span role="button" class="nav-link under-dark"
-            on:click={() => filterfn(item.filterby)}>
+    <li class="nav-item" on:click={() => filterfn(item.filterby)}>
+      <span role="button" class="nav-link under-dark">
         {item.name}
       </span>
     </li>

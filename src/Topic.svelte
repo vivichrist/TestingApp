@@ -1,5 +1,6 @@
 <script>
   import { popup } from './stores.js'
+  import CatCard from './CatCard.svelte';
 
   export let data = [];
   export let name = "Missing Topic";
@@ -7,16 +8,6 @@
   export const filterfn = undefined;
 
   let rng = Math.floor(window.outerWidth / 240);
-  // let fdata = data.filter(obj => obj.topics.some(t => t.includes(type)));
-
-  const what_type = (str) => {
-    if (str.toLowerCase().includes("event")) {return "event";}
-    if (str.toLowerCase().includes("detail")) {return "detail";}
-    if (str.toLowerCase().includes("concept")) {return "concept";}
-    if (str.toLowerCase().includes("consume")) {return "consume";}
-    if (str.toLowerCase().includes("history")) {return "history";}
-    return "primary";
-  }
 
   $: limit = Math.ceil(data.length / rng);
 
@@ -29,58 +20,36 @@
     window.$(e.target).popover('toggle');
     $popup = e.target;
   };
+
+
 </script>
 
 <svelte:window on:resize={handleWidth} />
 
-<h5 class="text-left font-weight-bold mt-5 mb-0 pb-0" style="width: 90vw;">{name}</h5>
-<div class="d-flex flex-row vw-100">
-  <div id="{type}Captions" class="carousel slide" data-interval="false">
-    <ol class="carousel-indicators justify-content-end">
+<div class="d-flex flex-row"
+     style="width: calc(100vw - {data.length < rng ? (rng - data.length) * 200 : 0}px);">
+  <div id="{type}Captions" class="carousel slide" data-interval="false"
+       style="width: calc(90vw - {data.length < rng ? (rng - data.length) * 200 : 0}px);">
+    <h5 class="d-block text-left font-weight-bold mt-5 mb-0 pb-0">
+      {name}
+    </h5>
     {#if data.length > rng }
+    <ol class="carousel-indicators justify-content-end">
     {#each [...Array(limit).keys()] as i}
-      {#if i == 0}
-        <li data-target="#{type}Captions" data-slide-to={i} class="active"></li>
-      {:else}
-        <li data-target="#{type}Captions" data-slide-to={i == limit ? 0 : i}></li>
-      {/if}
+        <li data-target="#{type}Captions"
+            data-slide-to={i == limit ? 0 : i}
+            class="{i === 0 ? 'active' : ''}">
+        </li>
     {/each}
-    {/if}
     </ol>
-    <div class="carousel-inner">
+    {/if}
+    <div class="carousel-inner"
+         style="width: calc(90vw - {data.length < rng ? (rng - data.length) * 200 : 0}px);">
       {#each [...Array(limit).keys()] as i}
         <div class="carousel-item {i == 0 ? 'active' : ''}">
         <div class="d-flex bd-highlight justify-content-start">
-        {#each data.slice(0, Math.min(rng, data.length)) as item}
-          <div class="card bg-{what_type(item.object)}">
-            <div class="card-body m-0 p-2" data-toggle="popover" title="{item.alias}"
-                 data-trigger="focus" data-template={`<div class="popover dropdown-menu">
-        <h3 class="popover-header"></h3>
-        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Concept </div>
-        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Detail </div>
-        <div class="dropdown-item text-dark"> View Events </div>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Change Rules </div>
-        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Validation Rules </div>
-        <div class="dropdown-item text-dark"> View <span class="popover-body m-0 p-0"></span> Consume Rules </div>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-item text-dark"> Create Concept </div>
-        <div class="dropdown-item text-dark"> Create Detail </div>
-        <div class="dropdown-item text-dark"> Create Event </div>
-        <div class="dropdown-item text-dark"> Create Rule </div>
-        </div>`} data-html={true}
-                 data-content={item.alias.split(' ')[0]}
-                 on:contextmenu|preventDefault={handlePopup}>
-              <h6 class="card-title heading-{what_type(item.object)} flex-wrap">{item.alias}</h6>
-              <p class="card-text">
-              {#each item.topics as token}
-                <span class="border border-ternary bg-light topic px-1 py-0 m-1 rounded">
-                  {token}
-                </span>
-              {/each}
-              </p>
-            </div>
-          </div>
+        {#each data.slice(rng * i, Math.min(rng * (i + 1), data.length)) as item}
+          <CatCard colour={item.object} item={item} handlePopup={handlePopup} />
         {/each}
         </div>
         </div>
@@ -102,25 +71,6 @@
 </div>
 
 <style>
-  h6 {
-    font-size: 15pt;
-  }
-  .topic {
-    line-height: 2em;
-  }
-  .heading-concept {
-    color: var(--light);
-  }
-  .heading-event {
-    color: var(--light);
-  }
-  .card {
-    width: 12rem;
-    height: 15rem;
-    max-width: 200px;
-    margin-left: 10px;
-    margin-right: 10px;
-  }
   .carousel, .carousel-inner {
     width: 90vw;
     height: 16rem;
@@ -130,7 +80,7 @@
     margin-bottom: 2.5rem;
   }
   .carousel-indicators {
-    bottom: 95%;
+    bottom: 70%;
     margin-right: 0;
     padding-right: 0;
     margin-bottom: 0;

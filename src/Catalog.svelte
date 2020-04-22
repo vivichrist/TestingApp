@@ -18,6 +18,10 @@
     });
   };
 
+  const compareKV = (a, b) => {
+      return a[1].length - b[1].length;
+  }
+
   fetch(
     'https://agiledata-core-prd.appspot.com/tables/?apikey=977609nhgfty86HJKhjkl78')
   .then(res => {
@@ -44,22 +48,18 @@
   import SubMenu from "./SubMenu.svelte";
 
   let cat_filter = {};
-  for (const k of categories.keys()) {
-    cat_filter[k] = true;
-  }
+  for (const k of categories.keys()) {cat_filter[k] = true;}
 
   let top_filter = {};
-  for (const k of topics.keys()) {
-    top_filter[k] = true;
-  }
+  for (const k of topics.keys()) {top_filter[k] = true;}
 
   const filter_by = (f) => {
-    if (f === "topics") {
-      Object.values(top_filter).map(v => v = true);
-      Object.values(cat_filter).map(v => v = false);
+    if (f     ===    "topics") {
+      for (const k of     topics.keys()) {top_filter[k] = true;}
+      for (const k of categories.keys()) {cat_filter[k] = false;}
     } else if (f === "categories") {
-      Object.values(cat_filter).map(v => v = true);
-      Object.values(top_filter).map(v => v = false);
+      for (const k of categories.keys()) {cat_filter[k] = true;}
+      for (const k of     topics.keys()) {top_filter[k] = false;}
     } else {
       Object.entries(cat_filter).forEach(([k, v]) => v = f.some(e => e === k));
       Object.entries(top_filter).forEach(([k, v]) => v = f.some(e => e === k));
@@ -91,16 +91,16 @@
   window.$('[data-toggle="popover"]').popover({ container: 'body' });
 </script>
 
-<SubMenu />
-{#each Array.from(categories) as [cat, thedata]}
+<SubMenu filterfn={filter_by}/>
+{#each Array.from(categories).sort(compareKV) as [cat, thedata]}
   {#if cat_filter[cat]}
     <Category name="{cat[0].toUpperCase() + cat.substr(1)} Area"
               type={cat} data={thedata} filterfn={filter_by} />
   {/if}
 {/each}
-{#each Array.from(topics) as [topic, thedata]}
+{#each Array.from(topics).sort(compareKV) as [topic, thedata]}
   {#if top_filter[topic]}
-    <Topic name="{topic} Topic" type={topic} data={thedata}
+    <Category name="{topic} Topic" type={topic} data={thedata}
            filterfn={filter_by} />
   {/if}
 {/each}
