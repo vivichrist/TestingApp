@@ -1,5 +1,5 @@
 <script>
-  import { content } from './stores.js';
+  import { content, pageseg } from './stores.js';
 
   import Menu from './Menu.svelte';
   import Search from './Search.svelte';
@@ -50,12 +50,24 @@
     signedIn = false;
     console.log("onsign-out");
   }
+
+  window.dataLayer = window.dataLayer || [];
+
+  const gtag = () => {
+    dataLayer.push(arguments);
+  }
+  gtag('js', new Date());
+  gtag('config', 'G-KJ5J48K166');
+
 </script>
 
 <svelte:head>
 	<script src="https://apis.google.com/js/api:client.js"></script>
   <meta name="google-signin-scope" content="profile email openid"/>
   <meta name="google-signin-client_id" content="461979086851-bbjhehqb9qpn3boroii8l4klmcc718bd.apps.googleusercontent.com"/>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KJ5J48K166"></script>
 </svelte:head>
 
 <!-- {#if signedIn && gapi.auth2.getAuthInstance().isSignedIn.get()} -->
@@ -76,7 +88,7 @@
     {:else if $content == 2}
       <Catalog />
     {:else if $content == 3}
-      <CatalogDetails />
+      <CatalogDetails data={$pageseg} />
     {:else}
       <ComingSoon />
     {/if}

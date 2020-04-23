@@ -18,10 +18,6 @@
     });
   };
 
-  const compareKV = (a, b) => {
-      return a[1].length - b[1].length;
-  }
-
   fetch(
     'https://agiledata-core-prd.appspot.com/tables/?apikey=977609nhgfty86HJKhjkl78')
   .then(res => {
@@ -43,7 +39,6 @@
   import { popup } from "./stores.js";
   window.hidePopups = () => window.$($popup).popover('hide');
 
-  import Topic from './Topic.svelte';
   import Category from './Category.svelte';
   import SubMenu from "./SubMenu.svelte";
 
@@ -53,23 +48,17 @@
   let top_filter = {};
   for (const k of topics.keys()) {top_filter[k] = true;}
 
-  const filter_by = (f) => {
-    if (f     ===    "topics") {
-      for (const k of     topics.keys()) {top_filter[k] = true;}
-      for (const k of categories.keys()) {cat_filter[k] = false;}
-    } else if (f === "categories") {
-      for (const k of categories.keys()) {cat_filter[k] = true;}
-      for (const k of     topics.keys()) {top_filter[k] = false;}
-    } else {
-      Object.entries(cat_filter).forEach(([k, v]) => v = f.some(e => e === k));
-      Object.entries(top_filter).forEach(([k, v]) => v = f.some(e => e === k));
-      if (Object.values(cat_filter).some() && Object.values(top_filter).some()) {
-        data.forEach(e => refilter_maps(e));
-      }
-    };
-  };
+  const reset_maps = () => {
+    categories.clear();
+    topics.clear();
+  }
 
-  const refilter_maps = (obj) => {
+  const compareKV = (a, b) => {
+      return a[1].length - b[1].length;
+  }
+
+
+ const refilter_maps = (obj) => {
     if (cat_filter[obj.object]) {
       if (categories.has(obj.object)) {
         categories.get(obj.object).push(obj);
@@ -88,19 +77,50 @@
     };
   };
 
+  const filter_by = (f) => {
+    if (typeof f === "string") {
+      if        (f === "reset") {
+        reset_maps();
+        data.forEach(e => filter_maps(e));
+        for (const k of categories.keys()) {cat_filter[k] = true;}
+        for (const k of     topics.keys()) {top_filter[k] = true;}
+      } else if (f === "topics") {
+        for (const k of     topics.keys()) {top_filter[k] = true;}
+        for (const k of categories.keys()) {cat_filter[k] = false;}
+      } else {
+        if (Object.keys(cat_filter).some(e => e === f)) {
+          for (const k of Object.keys(cat_filter)) {cat_filter[k] = k === f;}
+          for (const k of Object.keys(top_filter)) {top_filter[k] = false;}
+          reset_maps();
+          data.forEach(e => refilter_maps(e));
+        }
+      };
+    } else if (Array.isArray(f)) { // an array of strings
+      if (Object.keys(cat_filter).some(e => f.some(k => k === e))) {
+        for (const k of categories.keys()) {
+          cat_filter[k] = f.some(d => d === k);
+        }};
+      if (Object.keys(top_filter).some(e => f.some(k => k === e))) {
+        for (const k of topics.keys()) {
+          top_filter[k] = f.some(d => d === k);
+        }};
+      data.forEach(e => refilter_maps(e));
+    };
+  };
+
   window.$('[data-toggle="popover"]').popover({ container: 'body' });
 </script>
 
 <SubMenu filterfn={filter_by}/>
-{#each Array.from(categories).sort(compareKV) as [cat, thedata]}
+{#each Array.from(categories) as [cat, thedata]}
   {#if cat_filter[cat]}
     <Category name="{cat[0].toUpperCase() + cat.substr(1)} Area"
               type={cat} data={thedata} filterfn={filter_by} />
   {/if}
 {/each}
-{#each Array.from(topics).sort(compareKV) as [topic, thedata]}
+{#each Array.from(topics) as [topic, thedata]}
   {#if top_filter[topic]}
     <Category name="{topic} Topic" type={topic} data={thedata}
-           filterfn={filter_by} />
+              filterfn={filter_by} />
   {/if}
 {/each}

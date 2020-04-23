@@ -46,7 +46,9 @@
         <div class="carousel-item {i == 0 ? 'active' : ''}">
         <div class="d-flex bd-highlight justify-content-start">
         {#each data.slice(rng * i, Math.min(rng * (i + 1), data.length)) as item}
-          <CatCard colour={item.object} item={item} handlePopup={handlePopup} />
+          <CatCard colour={item.object} item={item}
+                   handlePopup={handlePopup}
+                   {filterfn} />
         {/each}
         </div>
         </div>

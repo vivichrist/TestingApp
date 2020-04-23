@@ -1,15 +1,5 @@
 <script>
-  export let data = {
-    "alias": "Customer Orders Part",
-    "id": "consume.customer_orders_part",
-    "name": "customer_orders_part",
-    "object": "consume",
-    "topics": [
-      "Customer",
-      "Orders",
-      "Part"
-    ]
-  };
+  export let data = {};
 </script>
 
 <div class="container-fluid">
@@ -22,7 +12,9 @@
       </span>
       <h5 class="mt-5">{data.alias}</h5>
       <div class="input-group left-side">
-        <textarea class="form-control ml-3" aria-label="With textarea"></textarea>
+        <textarea class="form-control ml-3" aria-label="With textarea">
+          {data.id} {data.name}
+        </textarea>
         <div class="input-group-prepend">
           <span class="input-group-text border-0">With textarea</span>
         </div>
